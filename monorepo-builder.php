@@ -54,7 +54,7 @@ return static function ( ContainerConfigurator $container_configurator ): void {
 		]
 	);
 
-	$parameters->set(Option::DEFAULT_BRANCH_NAME, 'main');
+	$parameters->set( Option::DEFAULT_BRANCH_NAME, 'main' );
 
 	$services = $container_configurator->services();
 
