@@ -27,6 +27,9 @@ class ServicesTest extends WP_UnitTestCase {
 	 * @param string $service_id_to_check Service ID to test.
 	 */
 	public function test_services_can_be_instantiated( string $service_id_to_check ): void {
+		if ( ! function_exists( 'boxuk_container' ) ) {
+			self::markTestSkipped( 'Services can only be tested when the boxuk_container() is available.' );
+		}
 		$container = boxuk_container();
 		$service_ids = $container->getServiceIds();
 		$services = array_filter( $service_ids, static function ( $service_id ) use( $service_id_to_check ) {

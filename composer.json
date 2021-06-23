@@ -57,6 +57,7 @@
         "wp-phpunit/wp-phpunit": "^5.4"
     },
     "extra": {
+        "wordpress-install-dir": "wp",
         "installer-types": [
             "styleguide"
         ],
@@ -71,7 +72,6 @@
                 "type:wordpress-theme"
             ]
         },
-        "wordpress-install-dir": "wp",
         "force-mu": [
             "boxuk/boxuk-base-wp-plugin",
             "jamesrwilliams/flagpole"

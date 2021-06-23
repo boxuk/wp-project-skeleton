@@ -45,6 +45,7 @@
         "twig/extensions": "Needed for the i18n-twig WP CLI command."
     },
     "extra": {
+        "wordpress-install-dir": "wp",
         "branch-alias": {
             "dev-main": "0.2-dev"
         }
