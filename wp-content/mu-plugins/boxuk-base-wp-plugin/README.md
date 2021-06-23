@@ -4,7 +4,7 @@
 
 A WordPress plugin that includes a number of things to help us work on WordPress projects.
 
-[![GPLv2 License](https://img.shields.io/github/license/boxuk/wp-project-skeleton)](https://github.com/boxuk/wp-project-skeleton/blob/655aec98f07aa7925ff15b707c5a155deb45d4d2/LICENSE)
+[![GPLv2 License](https://img.shields.io/github/license/boxuk/boxuk-base-wp-plugin)](https://github.com/boxuk/boxuk-base-wp-plugin/blob/6675942f8babaa9447c1224225eae153981af660/LICENSE)
 
 ## WP-CLI
 

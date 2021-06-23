@@ -8,7 +8,7 @@ A base WordPress project from Box UK to get you up and running quickly.
 
 
 
-| [![Build Status](https://travis-ci.com/boxuk/wp-project-skeleton.svg?token=3rRfYiN6sMupp1z6RpzN&branch=main)](https://travis-ci.com/boxuk/wp-project-skeleton) | [![GPLv2 License](https://img.shields.io/github/license/boxuk/wp-project-skeleton)](https://github.com/boxuk/wp-project-skeleton/blob/655aec98f07aa7925ff15b707c5a155deb45d4d2/LICENSE) |
+| [![Build Status](https://travis-ci.com/boxuk/wp-project-skeleton.svg?token=3rRfYiN6sMupp1z6RpzN&branch=main)](https://travis-ci.com/boxuk/wp-project-skeleton) | [![GPLv2 License](https://img.shields.io/github/license/boxuk/wp-project-skeleton)](https://github.com/boxuk/wp-project-skeleton/blob/528933ef462e00b36fbd6a6f3371da62c1227eac/LICENSE) |
 |-----|-----|
 
 ## Installation
