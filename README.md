@@ -37,7 +37,7 @@ Frontend:
 >
 > On Chrome, type `thisisunsafe` to bypass. On other browsers follow the prompts.
 >
-> To find out more about this and what options you have, [read the dedicated section on HTTPS](docs/dev/HTTPS.md).
+> To find out more about this and what options you have, [read the dedicated section on HTTPS](docs/dev/https.md).
 
 Admin:
 
