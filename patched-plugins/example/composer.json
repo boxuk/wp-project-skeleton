@@ -1,0 +1,12 @@
+{
+    "name": "wp-patched-plugins/example",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.0"
+        }
+    }
+}

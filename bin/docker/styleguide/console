@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker-compose -f docker-compose-styleguide.yml exec --user www-data styleguide ./bin/console "$@"

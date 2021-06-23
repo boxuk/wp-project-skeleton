@@ -1,0 +1,36 @@
+<?php
+/**
+ * Example service class.
+ *
+ * @package BoxUk
+ */
+
+declare( strict_types=1 );
+
+namespace BoxUk\Mu\Plugins\{{plugin_autoload_name}};
+
+/**
+ * Example service class.
+ */
+class ExampleService {
+	/**
+	 * ExampleService constructor.
+	 */
+	public function __construct() {
+		// Use init() for hooks, use this for injection of dependent classes.
+	}
+
+	/**
+	 * Init method for defining hooks.
+	 */
+	public function init(): void {
+		add_action( 'init', [ $this, 'example_callback' ] );
+	}
+
+	/**
+	 * Example callback method.
+	 */
+	public function example_callback(): void {
+		// Change me.
+	}
+}

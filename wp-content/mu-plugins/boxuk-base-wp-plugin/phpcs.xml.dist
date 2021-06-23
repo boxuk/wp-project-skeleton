@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<ruleset name="Box UK WordPress plugin">
+	<description>A custom set of rules to check for a Box UK WordPress plugin</description>
+
+	<file>.</file>
+
+	<config name="testVersion" value="7.3" />
+	<config name="minimum_supported_wp_version" value="5.3" />
+	<config name="severity" value="1" />
+
+	<!-- How to scan -->
+	<arg value="sp"/> <!-- Show sniff and progress -->
+	<arg name="severity" value="1" /> <!-- Set severity argument -->
+	<arg name="colors"/> <!-- Show results with colors. Disable if working on Windows -->
+	<arg name="parallel" value="8"/> <!-- Enables parallel processing when available for faster results -->
+	<arg name="extensions" value="php,js"/> <!-- Limit to PHP and JS files -->
+
+	<!-- EXCLUDED FILES AND FOLDERS -->
+	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>*/cache/*</exclude-pattern>
+
+	<!-- Exclude the Node Modules directory. -->
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+
+	<!-- Exclude the Composer Vendor directory. -->
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Exclude minified files. -->
+	<exclude-pattern>*\.min\.*</exclude-pattern>
+
+	<!-- DEFINE STANDARDS -->
+
+	<!-- Rules: Check PHP version compatibility - see https://github.com/PHPCompatibility/PHPCompatibilityWP -->
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Include the VIP GO standard. Even when not on VIP this is a useful standard to follow. -->
+	<rule ref="WordPress-VIP-Go">
+		<!-- Exclude these so we can use PSR-4 autoloading -->
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+	</rule>
+
+	<!-- Include the WordPress-Extra standard. -->
+	<rule ref="WordPress-Extra">
+		<!--
+		Remove the rules that don't suit this project or conflict with neutron standard.
+		We can do this by running `phpcs` with the '-s' flag, which allows us to
+		see the names of the sniffs reporting errors.
+		Once we know the sniff names, we can opt to exclude sniffs which don't
+		suit our project.
+		-->
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+		<exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
+		<exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
+		<exclude name="PSR2.Namespaces.NamespaceDeclaration" />
+		<exclude name="WordPress.PHP.DisallowShortTernary.Found" />
+	</rule>
+
+	<!-- Use a set of modern (PHP >7) linting guidelines. -->
+	<rule ref="NeutronStandard">
+	    <exclude name="NeutronStandard.Constants.DisallowDefine.Define" />
+		<exclude name="NeutronStandard.Functions.LongFunction.LongFunction" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace" />
+	</rule>
+
+	<!-- Let's also check that everything is properly documented. -->
+	<rule ref="WordPress-Docs" />
+</ruleset>

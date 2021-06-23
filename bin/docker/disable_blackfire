@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker-compose -f docker-compose.yml -f docker-compose-blackfire.yml stop && docker-compose up -d --remove-orphans

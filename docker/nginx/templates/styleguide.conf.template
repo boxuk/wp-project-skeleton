@@ -1,0 +1,77 @@
+# Styleguide
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name *.styleguide.local;
+    root /var/www/html/${STYLEGUIDE_DIR}/public;
+
+    ssl_certificate /etc/pki/tls/certs/insecure_https.crt;
+    ssl_certificate_key /etc/pki/tls/private/insecure_https.key;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+    ssl_session_tickets off;
+
+    # modern configuration
+    ssl_protocols TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+    }
+
+    location / {
+        # try to serve file directly, fallback to index.php
+        try_files $uri /index.php$is_args$args;
+    }
+
+    location ~ ^/index\.php(/|$) {
+        include fastcgi_params;
+
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        fastcgi_pass styleguide:9000;
+        fastcgi_index index.php;
+
+        fastcgi_param HTTPS off;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+
+        fastcgi_param HTTP_X_TRACE_ID $request_id;
+
+        # optionally set the value of the environment variables used in the application
+        # fastcgi_param APP_ENV prod;
+        # fastcgi_param APP_SECRET <app-secret-id>;
+        # fastcgi_param DATABASE_URL "mysql://db_user:db_pass@host:3306/db_name";
+
+        # When you are using symlinks to link the document root to the
+        # current version of your application, you should pass the real
+        # application path instead of the path to the symlink to PHP
+        # FPM.
+        # Otherwise, PHP's OPcache may not properly detect changes to
+        # your PHP files (see https://github.com/zendtech/ZendOptimizerPlus/issues/126
+        # for more information).
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+        # Prevents URIs that include the front controller. This will 404:
+        # http://domain.tld/index.php/some-path
+        # Remove the internal directive to allow URIs like this
+        internal;
+    }
+
+    # return 404 for all other php files not matching the front controller
+    # this prevents access to other php files you don't want to be accessible.
+    location ~ \.php$ {
+        return 404;
+    }
+
+    client_max_body_size 10M;
+
+    error_log  /var/log/nginx/error-styleguide.log;
+    access_log /var/log/nginx/access-styleguide.log;
+}

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Compiles .po to .mo files.
+
+# Import root .env file so we have access to $PROJECT_NAME
+. .env
+
+for file in wp-content/languages/$PROJECT_NAME-*.po ; do
+    #dest="${file::-2}mo" - does not work in old bash and macs
+    #solution: https://superuser.com/a/1363835
+    dest="${file::$((${#file} - 2))}mo"
+
+    msgfmt -o "$dest" "$file"
+done
+
+echo -e "Done.\n"

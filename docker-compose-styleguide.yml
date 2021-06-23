@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+    styleguide:
+        build:
+            context: docker/styleguide
+            args:
+                STYLEGUIDE_DIR: ${STYLEGUIDE_DIR}
+        volumes:
+            - '${STYLEGUIDE_DIR}:/var/www/html/${STYLEGUIDE_DIR}/:cached'
+            - '${STYLEGUIDE_DIR}/vendor:/var/www/html/${STYLEGUIDE_DIR}/vendor:delegated'
+            - '${STYLEGUIDE_DIR}/public/assets:/var/www/html/${STYLEGUIDE_DIR}/public/assets:cached'
+            - '${STYLEGUIDE_DIR}/system/library/components:/var/www/html/${STYLEGUIDE_DIR}/system/library/components:cached'
+            - styleguide_var:/var/www/html/styleguide/var/:delegated
+
+    nodejs:
+        image: node:lts
+        volumes:
+            - '${STYLEGUIDE_DIR}:/usr/src/app'
+            - yarn_cache:/usr/local/share/.cache/yarn/v6:delegated
+            - styleguide_node_modules:/usr/src/app/styleguide/node_modules:delegated
+
+    # Extend our nginx container to include the styleguide template.
+    nginx:
+        image: nginx
+        volumes:
+            - './docker/nginx/templates:/etc/nginx/templates'
+        environment:
+            - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx/conf.d/conf
+            - STYLEGUIDE_DIR=${STYLEGUIDE_DIR}
+
+volumes:
+    styleguide_var: {}
+    yarn_cache: { }
+    styleguide_node_modules: { }

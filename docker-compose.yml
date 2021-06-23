@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+
+    database:
+        image: mariadb
+        env_file:
+            - ./docker/database/.env
+        command: --init-file /data/application/init.sql
+        volumes:
+            - ./docker/database/init.sql:/data/application/init.sql
+        ports:
+            - '127.0.0.1:3307:3306' # always bind to 127.0.0.1 or 192.168.34.1 etc. Never bind to 0.0.0.0 unless you know what you are doing
+
+    app:
+        build:
+            context: docker/app
+            dockerfile: Dockerfile
+            args:
+                USER_ID: ${USER_ID:-0}
+                GROUP_ID: ${GROUP_ID:-0}
+        env_file:
+            - ./docker/app/.env
+        volumes:
+            - '.:/var/www/html/:delegated'
+        extra_hosts:
+            - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
+
+    app_xdebug:
+        build:
+            context: docker/app
+            dockerfile: Dockerfile_xdebug
+            args:
+                USER_ID: ${USER_ID:-0}
+                GROUP_ID: ${GROUP_ID:-0}
+        env_file:
+            - ./docker/app/.env
+        volumes:
+            - '.:/var/www/html/:delegated'
+        extra_hosts:
+            - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
+
+    nginx:
+        image: nginx
+        volumes:
+            - '.:/var/www/html/'
+            - './docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+            - './docker/nginx/conf:/etc/nginx/conf.d/conf'
+            - './docker/nginx/insecure_https.crt:/etc/pki/tls/certs/insecure_https.crt:delegated'
+            - './docker/nginx/insecure_https.key:/etc/pki/tls/private/insecure_https.key:delegated'
+        ports:
+            - '127.0.0.1:80:80' # always bind to 127.0.0.1 or 192.168.34.1 etc. Never bind to 0.0.0.0 unless you know what you are doing
+            - '127.0.0.1:443:443' # always bind to 127.0.0.1 or 192.168.34.1 etc. Never bind to 0.0.0.0 unless you know what you are doing
+        networks:
+            default:
+                ipv4_address: 192.168.35.10
+
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - '127.0.0.1:1025:1025'
+            - '127.0.0.1:8025:8025'
+
+    memcached:
+        image: memcached
+        entrypoint:
+            - memcached
+            - -I 5m # Increase item size from the default 1mb to 5mb
+
+networks:
+    default:
+        external:
+            name: ${DOCKER_NETWORK_NAME:-boxuk-docker}

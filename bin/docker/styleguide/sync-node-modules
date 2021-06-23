@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Import root .env file so we have access to $STYLEGUIDE_DIR
+. .env
+
+NODE_CONTAINER_ID="$( docker-compose -f docker-compose-styleguide.yml ps -q nodejs )"
+
+docker cp $NODE_CONTAINER_ID:/usr/src/app/node_modules/. $STYLEGUIDE_DIR/node_modules

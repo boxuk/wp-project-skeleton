@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo 'Deleting boxuk cache...';
+
+rm -rf wp-content/mu-plugins/000-boxuk/cache/*
+
+echo 'Flushing object cache...';
+
+bin/wp cache flush

@@ -1,0 +1,37 @@
+<phpunit
+        bootstrap="tests/bootstrap.php"
+        backupGlobals="false"
+        colors="true"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        beStrictAboutTestsThatDoNotTestAnything="true"
+        beStrictAboutOutputDuringTests="true"
+>
+    <php>
+        <env name="WP_PHPUNIT__TESTS_CONFIG" value="tests/wp-tests-config.php" />
+    </php>
+    <testsuites>
+        <testsuite name="MU Plugin tests">
+            <directory prefix="test-" suffix=".php">./wp-content/mu-plugins/**/tests</directory>
+            <directory suffix="Test.php">./wp-content/mu-plugins/**/tests</directory>
+            <exclude>./wp-content/mu-plugins/flagpole/tests</exclude>
+        </testsuite>
+        <testsuite name="Theme tests">
+            <directory suffix="Test.php">./wp-content/themes/**/tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./</directory>
+            <exclude>
+                <directory>./bin</directory>
+                <directory>./docker</directory>
+                <directory>./wp-content/mu-plugins/flagpole</directory>
+                <directory>./wp-content/plugins</directory>
+                <directory>./wp-content/vendor</directory>
+                <directory>./tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

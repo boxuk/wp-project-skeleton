@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Copies .pot files to the .po equivalents
+# It won't copy over existing files, so if you need to re-generate, you need to delete the .po file first.
+
+# Import root .env file so we have access to $PROJECT_NAME
+. .env
+
+# Space delimited array of locales
+locales=(en_GB)
+
+for i in "${locales[@]}"; do
+    if [ ! -f "wp-content/languages/${PROJECT_NAME}-${i}.po" ]; then
+        echo "languages/${PROJECT_NAME}-${i}.po does not exist, creating"
+        cp -n wp-content/languages/${PROJECT_NAME}.pot "wp-content/languages/${PROJECT_NAME}-${i}.po"
+    else
+        echo "wp-content/languages/${PROJECT_NAME}-${i}.po already exists, skipping"
+    fi
+done

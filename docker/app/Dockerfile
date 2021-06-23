@@ -1,0 +1,50 @@
+FROM php:7.4-fpm
+
+ARG USER_ID
+ARG GROUP_ID
+
+# Do all apt-get installs on one line so they are installed on the same layer
+RUN set -eux; \
+    apt-get -y update; \
+    apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev --no-install-recommends; \
+    apt-get clean && apt-get autoremove; \
+    rm -rf /var/lib/apt/lists/*; \
+    pecl install memcache-4.0.5.2; \
+    pecl install imagick && docker-php-ext-enable imagick; \
+    docker-php-ext-enable memcache; \
+    docker-php-ext-configure intl; \
+    docker-php-ext-install -j$(nproc) mysqli opcache zip intl gd
+
+# Composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# MhSendmail
+RUN set -eux; \
+    curl -sSLo /usr/bin/mhsendmail https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64; \
+    chmod ugo+x /usr/bin/mhsendmail
+
+# Blackfire
+# https://blackfire.io/docs/integrations/docker/php-docker
+RUN set -eux; \
+    version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"); \
+    curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version; \
+    mkdir -p /tmp/blackfire; \
+    tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire; \
+    mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get ('extension_dir');")/blackfire.so; \
+    rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz;
+
+RUN set -eux; \
+    if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
+      userdel -f www-data; \
+      if getent group www-data ; then groupdel www-data; fi; \
+      groupadd -g ${GROUP_ID} www-data; \
+      useradd -l -u ${USER_ID} -g www-data www-data; \
+      install -d -m 0755 -o www-data -g www-data /home/www-data; \
+    fi
+
+COPY ./php/*.ini /usr/local/etc/php/conf.d/
+
+WORKDIR /var/www/html
+RUN chown -R www-data:www-data /var/www
+EXPOSE 9000
+CMD ["php-fpm"]

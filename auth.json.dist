@@ -1,0 +1,8 @@
+{
+    "http-basic": {
+        "example.pluginvendor.com": {
+            "username": "USERNAME_HERE",
+            "password": "PASSWORD_HERE"
+        }
+    }
+}

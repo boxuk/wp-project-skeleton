@@ -1,0 +1,25 @@
+state: site
+settings:
+    title: Box UK WordPress Project
+    description: Just another Box UK WordPress project.
+    admin_email: boxuk@example.com
+    date_format: F j, Y
+    time_format: g:i a
+    active_theme: twentytwentyone
+    super_admins:
+        - admin
+    upload_filetypes: jpg jpeg png gif mov avi mpg 3gp 3g2 midi mid pdf doc ppt odt pptx docx pps ppsx xls xlsx key mp3 ogg flac m4a wav mp4 m4v webm ogv flv
+    site_unlimited_upload: true
+    site_upload_space: 100
+    site_max_upload: 20000
+    permalink_structure: /%postname%/
+    active_plugins:
+        - advanced-caching/advanced-caching.php
+        - query-monitor/query-monitor.php
+users:
+    admin:
+        display_name: admin
+        first_name: "Admin"
+        last_name: "Admin"
+        email: boxuk@example.com
+        role: "administrator"

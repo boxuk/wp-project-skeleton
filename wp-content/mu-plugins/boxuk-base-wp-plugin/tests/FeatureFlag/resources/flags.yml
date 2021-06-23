@@ -1,0 +1,6 @@
+feature_flags:
+    disable_rss:
+        title: Disable RSS feeds
+        description: Disable RSS feeds across the site
+        enforced: false
+        stable: true

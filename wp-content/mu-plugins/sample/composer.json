@@ -1,0 +1,22 @@
+{
+    "homepage": "https://boxuk.com",
+    "type": "wordpress-muplugin",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "BoxUk\\Mu\\Plugins\\Sample\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BoxUk\\Mu\\Plugins\\Sample\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

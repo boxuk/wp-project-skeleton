@@ -1,0 +1,7 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    BoxUk\Mu\Plugins\{{plugin_autoload_name}}\ExampleService:
+        public: true # If a service is being used directly (i.e. not being injected into another class) you have to mark it as public.

@@ -1,0 +1,51 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    base_plugin.query_repository:
+        class: BoxUk\Plugins\Base\Database\QueryRepository
+        public: true
+
+    base_plugin.post_repository:
+        class: BoxUk\Plugins\Base\Database\PostRepository
+        public: true
+
+    symfony.yaml_parser:
+        class: Symfony\Component\Yaml\Parser
+
+    base_plugin.feature_flag_flagpole_provider:
+        class: BoxUk\Plugins\Base\FeatureFlag\Provider\FlagpoleProvider
+
+    base_plugin.feature_flag_manager:
+        class: BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager
+        public: true
+        arguments:
+            - '@symfony.yaml_parser'
+            - '@base_plugin.feature_flag_flagpole_provider'
+
+    base_plugin.enable_gutenberg:
+        class: BoxUk\Plugins\Base\Gutenberg\EnableGutenberg
+        public: true
+
+    BoxUk\Plugins\Base\FeatureFlag\Provider\ProviderInterface: '@BoxUk\Plugins\Base\FeatureFlag\Provider\FlagpoleProvider'
+
+    BoxUk\Plugins\Base\Event\HookDispatcher:
+        public: true
+
+    # Set up aliases for autowiring, this is needed so we can keep the old service names for backwards compatibility.
+    # See: https://symfony.com/doc/current/service_container/autowiring.html#using-aliases-to-enable-autowiring
+    Symfony\Component\Yaml\Parser: '@symfony.yaml_parser'
+    BoxUk\Plugins\Base\FeatureFlag\Provider\FlagpoleProvider: '@base_plugin.feature_flag_flagpole_provider'
+    BoxUk\Plugins\Base\Database\QueryRepository:
+        alias: 'base_plugin.query_repository'
+        public: true
+    BoxUk\Plugins\Base\Database\PostRepository:
+        alias: 'base_plugin.post_repository'
+        public: true
+    BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager:
+        alias: 'base_plugin.feature_flag_manager'
+        public: true
+    BoxUk\Plugins\Base\Gutenberg\EnableGutenberg:
+        alias: 'base_plugin.enable_gutenberg'
+        public: true

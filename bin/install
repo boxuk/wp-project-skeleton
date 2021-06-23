@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+
+# Usage: bin/install [project_name] [styleguide_dir] [docker_network_name]
+#
+# Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker
+
+GREEN='\033[0;32m'
+BG_GREEN='\033[42m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+# Remove any existing styleguide nginx conf if it exists
+rm -f docker/nginx/conf/styleguide.conf
+
+echo 'Setting up .env vars...';
+
+if [ $1 ]; then
+    echo -e "Using ${GREEN}${1}${NC} for PROJECT_NAME";
+    export PROJECT_NAME="${1}";
+else
+    echo -e "Using ${GREEN}boxuk-wp-skeleton${NC} for PROJECT_NAME";
+    export PROJECT_NAME="boxuk-wp-skeleton";
+fi
+
+if [ $2 ]; then
+    echo -e "Using ${GREEN}${2}${NC} for STYLEGUIDE_DIR";
+    export STYLEGUIDE_DIR="${2}";
+else
+    export STYLEGUIDE_DIR="";
+fi
+
+if [ $3 ]; then
+    echo -e "Using ${GREEN}${3}${NC} for DOCKER_NETWORK_NAME";
+    export DOCKER_NETWORK_NAME="${3}";
+else
+    echo -e "Using ${GREEN}boxuk-docker${NC} for DOCKER_NETWORK_NAME";
+    export DOCKER_NETWORK_NAME="boxuk-docker";
+fi
+
+envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR,\$DOCKER_NETWORK_NAME < .env.dist > .env
+envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR < ./docker/app/.env.dist > ./docker/app/.env
+
+if [ ! -f ./docker/database/.env ]; then
+    cp ./docker/database/.env.dist ./docker/database/.env;
+fi
+
+if [ ! -f ./tests/.env ]; then
+    cp ./tests/.env.dist ./tests/.env;
+fi
+
+if [[ "$(docker network ls | grep ${DOCKER_NETWORK_NAME})" == "" ]] ; then
+    echo 'Setting up docker network...';
+    docker network create --subnet=192.168.35.0/24 $DOCKER_NETWORK_NAME;
+fi
+
+echo 'Stopping any running containers...';
+
+docker-compose stop;
+
+# Import .env files so we have access to env vars. docker/app/.env will override the root.
+. .env;
+. ./docker/app/.env;
+
+echo 'Building docker containers...';
+
+if [ ! -z "${STYLEGUIDE_DIR}" ]; then
+    docker-compose -f docker-compose.yml -f docker-compose-styleguide.yml build;
+    docker-compose -f docker-compose.yml -f docker-compose-styleguide.yml up -d;
+else
+    docker-compose build;
+    docker-compose up -d;
+fi
+
+echo 'Running composer install...';
+
+bin/docker/composer install;
+
+echo 'Setting up object-cache.php...';
+
+cp wp-content/plugins/memcached/object-cache.php wp-content/object-cache.php
+
+if [ ! -z "${STYLEGUIDE_DIR}" ]; then
+    echo 'Installing styleguide...';
+    bin/docker/styleguide/composer install;
+    bin/docker/styleguide/yarn install;
+    bin/docker/styleguide/sync-node-modules;
+    bin/docker/styleguide/yarn encore dev;
+fi
+
+echo 'Please hold...';
+
+sleep 10;
+
+echo 'Thanks for holding, proceeding to install WordPress...';
+
+bin/docker/wp core install --url="${WP_HOME}" --title="${PROJECT_NAME}" --admin_user=admin --admin_email=boxuk@example.com;
+
+echo 'Emptying site...';
+
+bin/docker/wp site empty;
+
+echo 'Setting up state...';
+
+bin/docker/wp dictator impose site-state.yml;
+
+echo 'Setting up fixtures...'
+
+bin/docker/wp package install git@github.com:nlemoine/wp-cli-fixtures.git;
+bin/docker/wp fixtures load;
+
+STYLEGUIDE_HOSTS_ENTRY=
+if [ ! -z "${STYLEGUIDE_DIR}" ]; then
+    STYLEGUIDE_HOSTS_ENTRY="${PROJECT_NAME}.styleguide.local"
+fi
+
+while true; do
+    read -p "Do you wish to add a hosts entry (you will be prompted for password)? [Y/N]" yn
+
+    case $yn in
+        [Yy]* ) echo "127.0.0.1 ${PROJECT_NAME}.local ${STYLEGUIDE_HOSTS_ENTRY}" | sudo tee -a /etc/hosts; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo -e "\n${BOLD}${BG_GREEN}Installation complete! Next steps...${NC}\n";
+echo -e "${GREEN}Set admin password:";
+echo -e "${NC}bin/docker/wp user update admin --user_pass=password_here";
+echo -e "\n${GREEN}Visit site:";
+echo -e "${NC}${WP_HOME}";
+echo -e "\n${GREEN}Visit admin:";
+echo -e "${NC}${WP_HOME}/wp-admin";

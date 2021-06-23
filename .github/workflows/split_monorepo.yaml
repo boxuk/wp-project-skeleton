@@ -1,0 +1,97 @@
+name: Split Monorepo
+
+on:
+    push:
+        branches:
+            - main
+        tags:
+            - '*'
+
+env:
+    GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+jobs:
+    boxuk_packages_split:
+        # The following ensures this only occurs for the base skeleton repository.
+        if: "github.repository == 'boxuk/wp-project-skeleton'"
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: false
+            matrix:
+                # define package to repository map (wp-content gets prefixed)
+                package:
+                    -
+                        local_path: 'mu-plugins/boxuk-base-wp-plugin'
+                        split_repository: 'boxuk-base-wp-plugin'
+
+        steps:
+            -   uses: actions/checkout@v2
+
+            # no tag
+            -
+                if: "!startsWith(github.ref, 'refs/tags/')"
+                uses: "symplify/monorepo-split-github-action@2.0"
+                with:
+                    package-directory: 'wp-content/${{ matrix.package.local_path }}'
+                    split-repository-organization: 'boxuk'
+                    split-repository-name: '${{ matrix.package.split_repository }}'
+                    user-name: "boxuk"
+                    user-email: "developers@boxuk.com"
+
+            # with tag
+            -
+                if: "startsWith(github.ref, 'refs/tags/')"
+                uses: "symplify/monorepo-split-github-action@2.0"
+                with:
+                    tag: ${GITHUB_REF#refs/tags/}
+                    package-directory: 'wp-content/${{ matrix.package.local_path }}'
+                    split-repository-organization: 'boxuk'
+                    split-repository-name: '${{ matrix.package.split_repository }}'
+                    user-name: "boxuk"
+                    user-email: "developers@boxuk.com"
+
+# The following is an example of how you can set up a monorepo split for your project. Either for shared plugins, or a shared theme, or both!
+#
+#    project_packages_split:
+#        # The following ensures this only occurs for the given repository name.
+#        if: "github.repository == 'your-organisation-name/your-repository-name'"
+#        runs-on: ubuntu-latest
+#
+#        strategy:
+#            fail-fast: false
+#            matrix:
+#                # define package to repository map (wp-content gets prefixed)
+#                package:
+#                    -
+#                        local_path: 'mu-plugins/your-shared-plugin'
+#                        split_repository: 'repository-name-of-your-shared-plugin'
+#                    -
+#                        local_path: 'themes/your-theme'
+#                        split_repository: 'repository-name-of-your-shared-theme'
+#
+#        steps:
+#            -   uses: actions/checkout@v2
+#
+#            # no tag
+#            -
+#                if: "!startsWith(github.ref, 'refs/tags/')"
+#                uses: "symplify/monorepo-split-github-action@2.0"
+#                with:
+#                    package-directory: 'wp-content/${{ matrix.package.local_path }}'
+#                    split-repository-organization: 'your-organisation'
+#                    split-repository-name: '${{ matrix.package.split_repository }}'
+#                    user-name: "github-user-name"
+#                    user-email: "github-email-address"
+#
+#            # with tag
+#            -
+#                if: "startsWith(github.ref, 'refs/tags/')"
+#                uses: "symplify/monorepo-split-github-action@2.0"
+#                with:
+#                    tag: ${GITHUB_REF#refs/tags/}
+#                    package-directory: 'wp-content/${{ matrix.package.local_path }}'
+#                    split-repository-organization: 'your-organisation'
+#                    split-repository-name: '${{ matrix.package.split_repository }}'
+#                    user-name: "github-user-name"
+#                    user-email: "github-email-address"

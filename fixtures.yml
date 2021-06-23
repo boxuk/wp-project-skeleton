@@ -1,0 +1,83 @@
+## This file contains some basic sample fixtures, you'll likely want to amend for your use case.
+
+## Attachments
+Hellonico\Fixtures\Entity\Attachment:
+    default (template):
+        post_title: <words(2, true)>
+    pics{1..15} (extends default):
+        file: <picsum(<uploadDir()>, 1200, 1200)>
+
+## Terms
+Hellonico\Fixtures\Entity\Term:
+    category{1..10}:
+        name (unique): <words(2, true)> # '(unique)' is required
+        description: <sentence()>
+        parent: '50%? <termId(childless=1)>' # 50% of created categories will have a top level parent category
+    tag{1..100}:
+        name (unique): <words(2, true)> # '(unique)' is required
+        taxonomy: post_tag
+
+Hellonico\Fixtures\Entity\Post:
+    ## Pages
+    home_page:
+        post_title: Homepage
+        post_type: page
+        post_status: publish
+        meta:
+            _wp_page_template: front-page.php
+    about_page:
+        post_title: About
+        post_type: page
+        post_status: publish
+        post_content: <paragraphs(5, true)>
+    cookie_policy:
+        post_title: Cookies Policy
+        post_type: page
+        post_status: publish
+        post_content: <paragraphs(5, true)>
+    privacy_policy:
+        post_title: Privacy Policy
+        post_status: publish
+        post_type: page
+        post_content: <paragraphs(5, true)>
+    terms_and_conditions:
+        post_title: Terms and Conditions
+        post_status: publish
+        post_type: page
+        post_content: <paragraphs(5, true)>
+    ## Posts
+    default (template):
+        post_title: <words(2, true)>
+        post_date: <dateTimeThisDecade()>
+        post_content: <paragraphs(5, true)>
+        post_excerpt: <paragraphs(1, true)>
+        meta:
+            _thumbnail_id: '@pics*->ID'
+    post{1..30} (extends default):
+        post_category: '1x @category*->term_id'
+        tax_input:
+            post_tag: '5x @tag*->term_id'
+
+## Menu
+Hellonico\Fixtures\Entity\NavMenu:
+    main_menu:
+        name: Main Menu
+        locations:
+            - main_menu
+    footer_menu:
+        name: Footer
+        locations:
+            - footer_menu
+
+## Menu Items
+Hellonico\Fixtures\Entity\NavMenuItem:
+    home:
+        menu_item_object: '@home_page'
+        menu_id: '@main_menu->term_id'
+    about:
+        menu_item_object: '@about_page'
+        menu_id: '@main_menu->term_id'
+        menu_item_parent_id: '@home->ID'
+    about_footer:
+        menu_item_object: '@about_page'
+        menu_id: '@footer_menu->term_id'

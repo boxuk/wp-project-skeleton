@@ -1,0 +1,107 @@
+{
+    "name": "boxuk/wp-project-skeleton",
+    "description": "A skeleton WordPress project to be used as a base for new WordPress projects.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "options": {
+                "symlink": false
+            },
+            "type": "path",
+            "url": "./patched-plugins/*"
+        },
+        {
+            "options": {
+                "symlink": false
+            },
+            "type": "path",
+            "url": "./premium-plugins/*"
+        }
+    ],
+    "config": {
+        "vendor-dir": "wp-content/vendor",
+        "bin-dir": "bin",
+        "classmap-authoritative": true,
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "platform": {
+            "php": "7.4",
+            "ext-mbstring": "1",
+            "ext-intl": "1"
+        }
+    },
+    "require": {
+        "boxuk/dictator": "^0.7",
+        "boxuk/wp-muplugin-loader": "^1.2",
+        "inpsyde/wp-translation-downloader": "^2.0",
+        "jamesrwilliams/flagpole": "@beta",
+        "oomphinc/composer-installers-extender": "^2",
+        "roots/wordpress": "^5",
+        "symfony/config": "^5.0",
+        "symfony/dependency-injection": "^5.0",
+        "symfony/dotenv": "^5.0",
+        "symfony/yaml": "^5.0",
+        "wpackagist-plugin/advanced-caching": "@dev",
+        "wpackagist-plugin/memcached": "^3.2",
+        "wpackagist-plugin/query-monitor": "^3.5"
+    },
+    "require-dev": {
+        "jenko/wp-plugin-trouble-detector": "^0.1.0",
+        "phpunit/phpunit": "^7",
+        "wp-cli/wp-cli-bundle": "^2.4",
+        "wp-phpunit/wp-phpunit": "^5.4"
+    },
+    "extra": {
+        "installer-types": [
+            "styleguide"
+        ],
+        "installer-paths": {
+            "wp-content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        },
+        "wordpress-install-dir": "wp",
+        "force-mu": [
+            "boxuk/boxuk-base-wp-plugin",
+            "jamesrwilliams/flagpole"
+        ],
+        "mu-require-file": "zzz-mu-require.php",
+        "wp-translation-downloader": {
+            "auto-run": false,
+            "languages": [
+                "en_GB"
+            ],
+            "directory": "wp-content/languages"
+        }
+    },
+    "replace": {
+        "boxuk/boxuk-base-wp-plugin": "self.version"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BoxUk\\Mu\\Plugins\\SampleWithHooks\\Tests\\": "wp-content/mu-plugins/sample-with-hooks/tests",
+            "BoxUk\\Mu\\Plugins\\Sample\\Tests\\": "wp-content/mu-plugins/sample/tests",
+            "BoxUk\\Plugins\\Base\\Tests\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/tests"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "BoxUk\\Mu\\Plugins\\SampleWithHooks\\": "wp-content/mu-plugins/sample-with-hooks/src",
+            "BoxUk\\Mu\\Plugins\\Sample\\": "wp-content/mu-plugins/sample/src",
+            "BoxUk\\Plugins\\Base\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

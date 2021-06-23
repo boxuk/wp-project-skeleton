@@ -1,0 +1,8 @@
+feature_flags:
+    # Below is an example flag. Delete and define your flags here.
+    log_sample_text:
+        title: Log sample text
+        description: Log sample text to query monitor
+        enforced: false
+        stable: true
+        label: Samples

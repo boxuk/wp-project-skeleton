@@ -1,0 +1,37 @@
+# Copyright (C) 2021 Box UK
+# This file is distributed under the .
+# Copyright (C) 2021 Box UK
+# This file is distributed under the same license as the Box UK Boilerplate (using timber) theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: boxuk-wp-skeleton 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/themes\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-06-03T15:22:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: boxuk-wp-skeleton\n"
+
+#. Plugin Name of the plugin
+msgid "Box UK WordPress Project Skeleton Sample Plugin"
+msgstr ""
+
+#. Plugin Name of the plugin
+msgid "Box UK WordPress Project Skeleton Sample With Hooks Plugin"
+msgstr ""
+
+#. Theme Name of the theme
+msgid "Box UK Boilerplate (using timber)"
+msgstr ""
+
+#. Description of the theme
+msgid "A custom theme based off the boxuk styleguide boilerplate using timber."
+msgstr ""
+
+#. Author of the theme
+msgid "Box UK"
+msgstr ""
