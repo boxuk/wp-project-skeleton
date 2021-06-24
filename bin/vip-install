@@ -13,7 +13,8 @@ if [ ! -d "wp-content" ]
 then
     echo 'Cloning wp-content...'
 
-    git clone git@github.com:boxuk/box-wp-content.git wp-content
+    # Or change this to be your VIP wp-content repo.
+    git clone https://github.com/Automattic/vip-go-skeleton wp-content
 
     echo 'Download vip plugins and dropins...'
 
