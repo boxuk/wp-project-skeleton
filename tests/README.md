@@ -2,4 +2,14 @@
 
 This is used for bootstrapping tests, actually writing of tests should be done within individual `mu-plugins`.
 
-Please follow the [Running the tests](https://github.com/boxuk/wp-project-skeleton#running-the-tests) section of the main README.
+## Running the tests
+
+### Using docker
+
+* `bin/docker/phpunit`
+
+### Not using docker
+
+* Ensure `tests/.env` exists and is configured correctly.
+* `tests/create-test-db.sh` (if you need to create the database
+* `bin/phpunit`
