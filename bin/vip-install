@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Exit when any command fails
+set -e
+
 # Usage: bin/vip-install [project_name] [styleguide_dir] [docker_network_name]
 #
 # Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker
