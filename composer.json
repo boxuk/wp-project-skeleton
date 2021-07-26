@@ -47,7 +47,7 @@
         "symfony/dotenv": "^5.0",
         "symfony/yaml": "^5.0",
         "wpackagist-plugin/advanced-caching": "@dev",
-        "wpackagist-plugin/memcached": "^3.2",
+        "wpackagist-plugin/memcached": "^4.0",
         "wpackagist-plugin/query-monitor": "^3.5"
     },
     "require-dev": {
