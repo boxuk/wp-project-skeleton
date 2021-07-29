@@ -42,3 +42,15 @@ feature_flags:
 This will register with the feature flagging library you are using, as long as we support it. Current supported feature flagging libraries:
 
 * [Flagpole](https://github.com/jamesrwilliams/flagpole)
+
+## WPScan
+
+We encourage running [WPScan](https://github.com/wpscanteam/wpscan) at regular intervals (at least weekly). This can be done via the following command:
+
+`bin/docker/wpscan`
+
+> An API token can be added via `./docker/wpscan/.env`
+
+The URL of the local site (the value of `WP_HOME`) will be added automatically, as will `disable-tls-checks` (this is needed due to the self-signed certificate).
+
+You can pass any other options as you wish.
