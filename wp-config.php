@@ -59,8 +59,8 @@ if ( file_exists( WP_CONTENT_DIR . '/themes' ) ) {
 }
 
 // The duplication below is deliberate.
-$GLOBALS['wp_theme_directories'][] = ABSPATH . 'wp-content/themes';
-$GLOBALS['wp_theme_directories'][] = ABSPATH . 'wp-content/themes';
+$GLOBALS['wp_theme_directories'][] = __DIR__ . '/wp/wp-content/themes';
+$GLOBALS['wp_theme_directories'][] = __DIR__ . '/wp/wp-content/themes';
 // phpcs:enable WordPress.WP.GlobalVariablesOverride.Prohibited
 
 /**
