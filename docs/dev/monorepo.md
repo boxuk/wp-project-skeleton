@@ -14,3 +14,17 @@ Some uses cases for this:
 
 * If your organisation has a theme within a separate repository which you want to work on within the project.
 * You use a shared plugin within a separate repository whcih you want to work on within the project.
+
+## Useful commands
+
+### Merge
+
+`tools/monorepo-builder/vendor/bin/monorepo-builder merge`
+
+> Merge the composer.json of all sub packages into the main composer.json
+
+### Release
+
+`tools/monorepo-builder/vendor/bin/monorepo-builder release v1.0.0`
+
+> Release a new version of the main package and all sub-packages. Change v1.0.0 to the version you wish to release. Append `--dry-run` to do a dry run without actually releasing anything
