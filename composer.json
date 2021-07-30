@@ -102,6 +102,12 @@
             "BoxUk\\Plugins\\Base\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/src"
         }
     },
+    "scripts": {
+        "install-tools": [
+            "@composer install --working-dir=tools/monorepo-builder",
+            "@composer install --working-dir=tools/php_codesniffer"
+        ]
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

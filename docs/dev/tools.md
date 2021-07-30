@@ -6,9 +6,16 @@ The way we get around this is to install composer based tools in a separate tool
 
 ## Adding a new tool
 
-`mkdir -p tools/tool-name`
-`composer require --working-dir=tools/tool-name toolvendor/tool-name`
+* `mkdir -p tools/tool-name`
+* `composer require --working-dir=tools/tool-name toolvendor/tool-name`
+* Update the `install-tools` script in the root `composer.json`
 
 You would then use the tool as thus:
 
 `tools/tool-name/vendor/bin/tool-name`
+
+## Installing tools
+
+As we use dependabot for keeping on top of updates for our tools, we likely need to ensure we're running the latest version locally, the easiest way to do this is by running:
+
+`composer install-tools`
