@@ -86,7 +86,7 @@
         }
     },
     "replace": {
-        "boxuk/boxuk-base-wp-plugin": "0.1.0"
+        "boxuk/boxuk-base-wp-plugin": "0.2.0"
     },
     "autoload-dev": {
         "psr-4": {
