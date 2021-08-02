@@ -52,7 +52,7 @@
     },
     "require-dev": {
         "jenko/wp-plugin-trouble-detector": "^0.1.0",
-        "phpunit/phpunit": "^7",
+        "phpunit/phpunit": "^9",
         "wp-cli/wp-cli-bundle": "^2.4",
         "wp-phpunit/wp-phpunit": "^5.4"
     },
