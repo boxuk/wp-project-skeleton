@@ -15,7 +15,9 @@ services:
             - styleguide_var:/var/www/html/styleguide/var/:delegated
 
     nodejs:
-        image: node:lts
+        build:
+            context: docker/node
+            dockerfile: Dockerfile
         volumes:
             - '${STYLEGUIDE_DIR}:/usr/src/app'
             - yarn_cache:/usr/local/share/.cache/yarn/v6:delegated
@@ -23,7 +25,9 @@ services:
 
     # Extend our nginx container to include the styleguide template.
     nginx:
-        image: nginx
+        build:
+            context: docker/nginx
+            dockerfile: Dockerfile
         volumes:
             - './docker/nginx/templates:/etc/nginx/templates'
         environment:
