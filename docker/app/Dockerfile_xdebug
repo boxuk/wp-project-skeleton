@@ -1,4 +1,4 @@
-FROM php:7.4.22-fpm
+FROM php:8.0.9-fpm
 
 ARG USER_ID
 ARG GROUP_ID
@@ -53,7 +53,7 @@ CMD ["php-fpm"]
 
 
 
-FROM php:7.4-fpm
+FROM php:8.0.9-fpm
 
 ARG USER_ID
 ARG GROUP_ID
