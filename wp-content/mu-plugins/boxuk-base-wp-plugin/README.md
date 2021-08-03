@@ -52,6 +52,14 @@ __DIR__ . '/flags.yaml' );
 It's useful to allow a phased approach to enabling gutenberg across a site. This helper will allow you to use tags in order to 'turn on' gutenberg for
 select posts easily.
 
+## Security
+
+Provides a number of security enhancements by default:
+
+* Remove users endpoints from the REST API
+* 404s author queries to protect against author enumeration
+* Sets X-Frame-Options header to SAMEORIGIN to protect against clickjacking
+
 ## License
 
 [GPLv2](https://choosealicense.com/licenses/gpl-2.0/)
