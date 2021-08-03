@@ -42,7 +42,8 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
     # Docker blackfire image.
     -   package-ecosystem: docker
         directory: "/docker/blackfire"
@@ -53,7 +54,8 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
     # Docker database image.
     -   package-ecosystem: docker
         directory: "/docker/database"
@@ -64,7 +66,8 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
     # Docker mailhog image.
     -   package-ecosystem: docker
         directory: "/docker/mailhog"
@@ -75,7 +78,8 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
     # Docker memcached image.
     -   package-ecosystem: docker
         directory: "/docker/memcached"
@@ -86,7 +90,8 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
     # Docker nginx image.
     -   package-ecosystem: docker
         directory: "/docker/nginx"
@@ -97,7 +102,8 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
     # Docker node image.
     -   package-ecosystem: docker
         directory: "/docker/node"
@@ -108,7 +114,8 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
     # Docker styleguide image.
     -   package-ecosystem: docker
         directory: "/docker/styleguide"
@@ -119,4 +126,5 @@ updates:
         commit-message:
             prefix: "[SETUP]"
         ignore:
-            - update-types: ["version-update:semver-major"]
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
