@@ -106,6 +106,9 @@
         "install-tools": [
             "@composer install --working-dir=tools/monorepo-builder",
             "@composer install --working-dir=tools/php_codesniffer"
+        ],
+        "phpcs": [
+            "tools/php_codesniffer/vendor/bin/phpcs"
         ]
     },
     "minimum-stability": "dev",
