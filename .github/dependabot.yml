@@ -27,3 +27,75 @@ updates:
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[DEPS]"
+    # Docker app image.
+    -   package-ecosystem: docker
+        directory: "/docker/app"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+    # Docker blackfire image.
+    -   package-ecosystem: docker
+        directory: "/docker/blackfire"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+    # Docker database image.
+    -   package-ecosystem: docker
+        directory: "/docker/database"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+    # Docker mailhog image.
+    -   package-ecosystem: docker
+        directory: "/docker/mailhog"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+    # Docker memcached image.
+    -   package-ecosystem: docker
+        directory: "/docker/memcached"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+    # Docker nginx image.
+    -   package-ecosystem: docker
+        directory: "/docker/nginx"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+    # Docker node image.
+    -   package-ecosystem: docker
+        directory: "/docker/node"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+    # Docker styleguide image.
+    -   package-ecosystem: docker
+        directory: "/docker/styleguide"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"

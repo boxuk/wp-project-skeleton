@@ -3,7 +3,9 @@ version: '3'
 services:
 
     blackfire:
-        image: blackfire/blackfire
+        build:
+            context: docker/blackfire
+            dockerfile: Dockerfile
         env_file:
             - docker/blackfire/.env
         ports:
