@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60b2203108000b0a09f61173aee4de9c",
+    "content-hash": "a020f44d6e1e2cf13ad4fdd7b3e65505",
     "packages": [
         {
             "name": "boxuk/dictator",
@@ -486,7 +486,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/refs/tags/5.8"
+                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/refs/tags/5.8",
+                "reference": "5.8"
             },
             "require": {
                 "php": ">=5.3.2",
