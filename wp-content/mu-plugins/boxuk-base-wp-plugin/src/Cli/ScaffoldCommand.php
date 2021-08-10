@@ -153,7 +153,7 @@ final class ScaffoldCommand extends Scaffold_Command {
 		}
 
 		if ( ! Utils\get_flag_value( $assoc_args, 'skip-post-warnings' ) ) {
-			WP_CLI::warning( 'Remember to run `bin/monorepo-builder merge` from the root of the project to sync composer settings.' );
+			WP_CLI::warning( 'Remember to run `tools/monorepo-builder/vendor/bin/monorepo-builder merge` from the root of the project to sync composer settings.' );
 			WP_CLI::warning( 'Remember to run `composer install` from the root of the project to update the autoloader.' );
 		}
 	}

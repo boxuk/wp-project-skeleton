@@ -8,11 +8,11 @@ fi
 
 echo 'Scaffolding new mu-plugin...'
 
-bin/docker/wp scaffold boxuk-mu-plugin $1 ${@:2} --skip-post-warnings
+bin/docker/wp scaffold boxuk-mu-plugin $1 "${@:2}" --skip-post-warnings
 
 echo 'Merging composer files...'
 
-bin/monorepo-builder merge
+tools/monorepo-builder/vendor/bin/monorepo-builder merge
 
 echo 'Updating autoloader...'
 

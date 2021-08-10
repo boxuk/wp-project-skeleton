@@ -121,7 +121,7 @@ Under the hood this runs the following commands:
 
 `bin/docker/wp scaffold boxuk-mu-plugin my-plugin` to scaffold the plugin
 
-`bin/monorepo-builder merge` to merge composer settings
+`tools/monorepo-builder/vendor/bin/monorepo-builder merge` to merge composer settings
 
 `bin/docker/composer dump-autoload` to update the composer autoloader
 
