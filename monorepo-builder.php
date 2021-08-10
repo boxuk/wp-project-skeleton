@@ -7,7 +7,6 @@
 
 declare( strict_types=1 );
 
-use MonorepoBuilder20210802\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushNextDevReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
@@ -47,7 +46,7 @@ return static function ( ContainerConfigurator $container_configurator ): void {
 	$parameters->set(
 		Option::DATA_TO_REMOVE,
 		[
-			ComposerJsonSection::REQUIRE_DEV => [
+			'require-dev' => [
 				'roots/wordpress' => '*',
 				'symfony/dotenv' => '*',
 			],
