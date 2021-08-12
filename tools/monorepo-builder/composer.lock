@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "symplify/monorepo-builder",
-            "version": "9.4.26",
+            "version": "9.4.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/monorepo-builder.git",
-                "reference": "6a615473e9aee5f4a8efd70c3ae9293c128beb01"
+                "reference": "7c330b34f3ee02c8c3138b5a576ef8e2e0739503"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/6a615473e9aee5f4a8efd70c3ae9293c128beb01",
-                "reference": "6a615473e9aee5f4a8efd70c3ae9293c128beb01",
+                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/7c330b34f3ee02c8c3138b5a576ef8e2e0739503",
+                "reference": "7c330b34f3ee02c8c3138b5a576ef8e2e0739503",
                 "shasum": ""
             },
             "require": {
@@ -34,7 +34,7 @@
             ],
             "description": "Prefixed version of Not only Composer tools to build a Monorepo.",
             "support": {
-                "source": "https://github.com/symplify/monorepo-builder/tree/9.4.26"
+                "source": "https://github.com/symplify/monorepo-builder/tree/9.4.28"
             },
             "funding": [
                 {
@@ -46,7 +46,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-09T13:48:51+00:00"
+            "time": "2021-08-11T15:40:33+00:00"
         }
     ],
     "aliases": [],
