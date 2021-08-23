@@ -14,6 +14,7 @@ Hellonico\Fixtures\Entity\Term:
         description: <sentence()>
         parent: '50%? <termId(childless=1)>' # 50% of created categories will have a top level parent category
     tag{1..100}:
+        __construct: ['post_tag']
         name (unique): <words(2, true)> # '(unique)' is required
         taxonomy: post_tag
 
