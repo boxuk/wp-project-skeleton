@@ -58,16 +58,16 @@
         },
         {
             "name": "boxuk/wp-muplugin-loader",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boxuk/wp-muplugin-loader.git",
-                "reference": "4a9257cd9e9ca7560ddc32d200481edda5c0abe7"
+                "reference": "0466b5865038c15eebe783453cc2ea471e7e6fa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boxuk/wp-muplugin-loader/zipball/4a9257cd9e9ca7560ddc32d200481edda5c0abe7",
-                "reference": "4a9257cd9e9ca7560ddc32d200481edda5c0abe7",
+                "url": "https://api.github.com/repos/boxuk/wp-muplugin-loader/zipball/0466b5865038c15eebe783453cc2ea471e7e6fa6",
+                "reference": "0466b5865038c15eebe783453cc2ea471e7e6fa6",
                 "shasum": ""
             },
             "require": {
@@ -111,9 +111,9 @@
             ],
             "support": {
                 "issues": "https://github.com/boxuk/wp-muplugin-loader/issues",
-                "source": "https://github.com/boxuk/wp-muplugin-loader/tree/1.5.1"
+                "source": "https://github.com/boxuk/wp-muplugin-loader/tree/1.6.0"
             },
-            "time": "2021-08-24T13:20:31+00:00"
+            "time": "2021-08-27T11:45:29+00:00"
         },
         {
             "name": "composer/installers",
