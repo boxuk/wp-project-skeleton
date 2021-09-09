@@ -4,27 +4,28 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b64338c84bda4614a3d068223f3f71ec",
+    "content-hash": "c7ccf3015c6b67d6a4c6f4651902a3bd",
     "packages": [
         {
             "name": "boxuk/dictator",
-            "version": "v0.7",
+            "version": "v0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boxuk/dictator.git",
-                "reference": "6a2a4650c845ed3a2ea5cdd65b188b57255d57d1"
+                "reference": "a0fcea26c86d35349dc006a902ab04ae718c63f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boxuk/dictator/zipball/6a2a4650c845ed3a2ea5cdd65b188b57255d57d1",
-                "reference": "6a2a4650c845ed3a2ea5cdd65b188b57255d57d1",
+                "url": "https://api.github.com/repos/boxuk/dictator/zipball/a0fcea26c86d35349dc006a902ab04ae718c63f4",
+                "reference": "a0fcea26c86d35349dc006a902ab04ae718c63f4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
             "require-dev": {
-                "wp-cli/wp-cli-bundle": "^2.4"
+                "wp-cli/wp-cli-bundle": "^2.4",
+                "wp-cli/wp-cli-tests": "^3.0"
             },
             "type": "wp-cli-package",
             "autoload": {
@@ -52,9 +53,9 @@
             "description": "The Dictator controls the state of WordPress",
             "homepage": "https://github.com/boxuk/dictator",
             "support": {
-                "source": "https://github.com/boxuk/dictator/tree/v0.7"
+                "source": "https://github.com/boxuk/dictator/tree/v0.8"
             },
-            "time": "2021-04-27T09:32:43+00:00"
+            "time": "2021-09-08T15:44:58+00:00"
         },
         {
             "name": "boxuk/wp-muplugin-loader",

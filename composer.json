@@ -36,7 +36,7 @@
         }
     },
     "require": {
-        "boxuk/dictator": "^0.7",
+        "boxuk/dictator": "^0.8",
         "boxuk/wp-muplugin-loader": "^1.2",
         "inpsyde/wp-translation-downloader": "^2.0",
         "jamesrwilliams/flagpole": "@beta",
