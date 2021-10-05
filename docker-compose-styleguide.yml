@@ -8,10 +8,10 @@ services:
             args:
                 STYLEGUIDE_DIR: ${STYLEGUIDE_DIR}
         volumes:
-            - '${STYLEGUIDE_DIR}:/var/www/html/${STYLEGUIDE_DIR}/:cached'
-            - '${STYLEGUIDE_DIR}/vendor:/var/www/html/${STYLEGUIDE_DIR}/vendor:delegated'
-            - '${STYLEGUIDE_DIR}/public/assets:/var/www/html/${STYLEGUIDE_DIR}/public/assets:cached'
-            - '${STYLEGUIDE_DIR}/system/library/components:/var/www/html/${STYLEGUIDE_DIR}/system/library/components:cached'
+            - './${STYLEGUIDE_DIR}:/var/www/html/${STYLEGUIDE_DIR}/:cached'
+            - './${STYLEGUIDE_DIR}/vendor:/var/www/html/${STYLEGUIDE_DIR}/vendor:delegated'
+            - './${STYLEGUIDE_DIR}/public/assets:/var/www/html/${STYLEGUIDE_DIR}/public/assets:cached'
+            - './${STYLEGUIDE_DIR}/system/library/components:/var/www/html/${STYLEGUIDE_DIR}/system/library/components:cached'
             - styleguide_var:/var/www/html/styleguide/var/:delegated
 
     nodejs:
@@ -19,7 +19,7 @@ services:
             context: docker/node
             dockerfile: Dockerfile
         volumes:
-            - '${STYLEGUIDE_DIR}:/usr/src/app'
+            - './${STYLEGUIDE_DIR}:/usr/src/app'
             - yarn_cache:/usr/local/share/.cache/yarn/v6:delegated
             - styleguide_node_modules:/usr/src/app/styleguide/node_modules:delegated
 

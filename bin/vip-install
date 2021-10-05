@@ -136,8 +136,12 @@ while true; do
 done
 
 echo -e "\n${BOLD}${BG_GREEN}Installation complete! Next steps...${NC}\n";
-echo -e "${GREEN}Set admin password:";
-echo -e "${NC}bin/docker/wp user update admin --user_pass=password_here";
+
+# N.B This site administrator is required because the administrator set up in the fixtures will not be permitted to log in on VIP projects:
+# https://github.com/Automattic/vip-go-mu-plugins/blob/master/security.php#L46
+# https://github.com/Automattic/vip-go-mu-plugins/blob/master/security.php#L102-L109
+echo -e "${GREEN}Set up site administrator. The username will be \"site_admin\", ${BOLD}please make a note of the generated password displayed in the output${NC}";
+echo -e "${NC}bin/docker/wp user create site_admin test@example.com --role=administrator"
 echo -e "\n${GREEN}Visit site:";
 echo -e "${NC}${WP_HOME}";
 echo -e "\n${GREEN}Visit admin:";

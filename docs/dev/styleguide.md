@@ -8,7 +8,7 @@ An example of how to bring in a styleguide is via composer:
 
 ## Where should the styleguide live?
 
-In our example here we have declared that the styleguide is part of the theme and therefore lives within our theme. However, feel free to change this and have styleguide live wherever you want (such as the root). Just make sure to update the `STYLEGUIDE_DIR` in `.env` and ensure the symlinks are set up appropriately.
+In our example here we have declared that the styleguide is part of the theme and therefore lives within our theme. However, feel free to change this and have styleguide live wherever you want (such as the root). Just make sure to update the `STYLEGUIDE_DIR` in `.env` and ensure the symlinks are set up appropriately. N.B do not prepend the `STYLEGUIDE_DIR` value with `.` or `./`
 
 ## What if I don't need a styleguide?
 
