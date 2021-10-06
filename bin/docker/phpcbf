@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker-compose exec --user www-data app composer install -a --working-dir=tools/php_codesniffer
+docker-compose exec --user www-data app ./tools/php_codesniffer/vendor/bin/phpcbf . --severity=1 "$@"

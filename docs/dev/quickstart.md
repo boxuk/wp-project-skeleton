@@ -14,7 +14,7 @@ the [docker setup](docker-setup.md) or [non docker setup](non-docker-setup.md) d
 bin/install [project_name] [styleguide_dir] [docker_network_name]
 
 # project_name will default to boxuk-wp-skeleton if not provided.
-# only include a stylguide_dir when including a styleguide
+# only include a stylguide_dir when including a styleguide - do not prepend the styleguide_dir with . or ./
 # docker_network_name will default to boxuk-docker, if you wish to rename without supplying a styleguide_dir pass an empty string as the 2nd argument, e.g. `bin/install my-project '' my-network`
 ```
 
