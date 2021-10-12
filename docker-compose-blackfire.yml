@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
 
@@ -10,3 +10,8 @@ services:
             - docker/blackfire/.env
         ports:
             - '127.0.0.1:8707:8707'
+
+networks:
+    default:
+        external: true
+        name: ${DOCKER_NETWORK_NAME:-boxuk-docker}

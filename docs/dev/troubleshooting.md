@@ -12,6 +12,28 @@ sleep 10; # Increase this and retry, it may need to go as high as 30.
 # ...
 ```
 
+## Docker errors
+
+> ERROR: readlink /var/lib/docker/overlay2: invalid argument
+
+Often this is due to a corrupted image that needs to be rebuilt sans cache.
+
+`docker-compose build --no-cache`
+
+Or you can amend the install script to include the `--no-cache` option, e.g.
+
+```diff
+ if [ ! -z "${STYLEGUIDE_DIR}" ]; then
+-    docker-compose -f docker-compose.yml -f docker-compose-styleguide.yml build;
++    docker-compose -f docker-compose.yml -f docker-compose-styleguide.yml build --no-cache;
+     docker-compose -f docker-compose.yml -f docker-compose-styleguide.yml up -d;
+ else
+-    docker-compose build;
++    docker-compose build --no-cache;
+     docker-compose up -d;
+ fi
+```
+
 ## Permission errors
 
 If you are on a Linux machine, you will need to uncomment the following within the root `.env` file:
