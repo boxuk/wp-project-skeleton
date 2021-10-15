@@ -14,10 +14,10 @@ RUN set -eux; \
     pecl install xdebug && docker-php-ext-enable xdebug; \
     docker-php-ext-enable memcache; \
     docker-php-ext-configure intl; \
-    docker-php-ext-install -j$(nproc) mysqli opcache zip intl gd
+    docker-php-ext-install -j"$(nproc)" mysqli opcache zip intl gd
 
 # Composer
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.1.9 /usr/bin/composer /usr/local/bin/composer
 
 # MhSendmail
 RUN set -eux; \
@@ -27,19 +27,20 @@ RUN set -eux; \
 # Blackfire
 # https://blackfire.io/docs/integrations/docker/php-docker
 RUN set -eux; \
-    version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"); \
-    curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version; \
+    version="$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;")"; \
+    curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s "https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version"; \
     mkdir -p /tmp/blackfire; \
     tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire; \
-    mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get ('extension_dir');")/blackfire.so; \
+    mv /tmp/blackfire/blackfire-*.so "$(php -r "echo ini_get('extension_dir');")"/blackfire.so; \
     rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz;
 
+# Set groups and user when on linux
 RUN set -eux; \
-    if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
+    if [ "${USER_ID:-0}" -ne 0 ] && [ "${GROUP_ID:-0}" -ne 0 ]; then \
       userdel -f www-data; \
       if getent group www-data ; then groupdel www-data; fi; \
-      groupadd -g ${GROUP_ID} www-data; \
-      useradd -l -u ${USER_ID} -g www-data www-data; \
+      groupadd -g "${GROUP_ID}" www-data; \
+      useradd -l -u "${USER_ID}" -g www-data www-data; \
       install -d -m 0755 -o www-data -g www-data /home/www-data; \
     fi
 

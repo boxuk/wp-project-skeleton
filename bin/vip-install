@@ -23,6 +23,10 @@ then
 
     git clone git@github.com:Automattic/vip-go-mu-plugins-built.git wp-content/mu-plugins
     cp wp-content/mu-plugins/drop-ins/object-cache/object-cache.php wp-content/object-cache.php
+else
+    echo 'Pulling latest vip plugins and dropins...'
+    git -C wp-content/mu-plugins pull
+    cp -f wp-content/mu-plugins/drop-ins/object-cache/object-cache.php wp-content/object-cache.php
 fi
 
 # Remove any existing styleguide nginx conf if it exists

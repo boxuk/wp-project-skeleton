@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
 
@@ -26,9 +26,11 @@ services:
         env_file:
             - ./docker/app/.env
         volumes:
-            - '.:/var/www/html/:delegated'
+            - '.:/var/www/html:cached'
         extra_hosts:
             - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
+        depends_on:
+            - database
 
     app_xdebug:
         build:
@@ -40,9 +42,11 @@ services:
         env_file:
             - ./docker/app/.env
         volumes:
-            - '.:/var/www/html/:delegated'
+            - '.:/var/www/html:cached'
         extra_hosts:
             - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
+        depends_on:
+            - database
 
     nginx:
         build:
@@ -57,6 +61,12 @@ services:
         ports:
             - '127.0.0.1:80:80' # always bind to 127.0.0.1 or 192.168.34.1 etc. Never bind to 0.0.0.0 unless you know what you are doing
             - '127.0.0.1:443:443' # always bind to 127.0.0.1 or 192.168.34.1 etc. Never bind to 0.0.0.0 unless you know what you are doing
+        depends_on:
+            - app
+            - app_xdebug
+        links:
+            - app
+            - app_xdebug
         networks:
             default:
                 ipv4_address: 192.168.35.10
@@ -79,5 +89,5 @@ services:
 
 networks:
     default:
-        external:
-            name: ${DOCKER_NETWORK_NAME:-boxuk-docker}
+        external: true
+        name: ${DOCKER_NETWORK_NAME:-boxuk-docker}

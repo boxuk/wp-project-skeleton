@@ -29,9 +29,9 @@ require_once $root_dir . '/wp-content/client-mu-plugins/vendor/autoload.php';
 ## Update config to reflect the move of mu-plugins to client-mu-plugins
 
 Swap references `mu-plugins` with `client-mu-plugins` in the following files:
-- .gitignore 
+- .gitignore
 - phpcs.xml.dist
-- phpunit.xml.dist  
+- phpunit.xml.dist
 
 ## Change the install location of mu-plugins
 
@@ -48,6 +48,10 @@ Swap references `mu-plugins` with `client-mu-plugins` in the following files:
 `mv bin/vip-install bin/install`
 
 > Or remove `bin/install` and just use `bin/vip-install`
+
+## Update vendor volums for app and app_xdebug in docker-compose.yml
+
+We set the vendor directory as a volume in docker so we can set it to `delegated` due to it predominantly being written too by the container. When on VIP this is  likely to differ from `wp-content/vendor` to something more like `wp-content/client-mu-plugins/vendor` so this should be updated accordingly within `docker-compose.yml`.
 
 ## Deactivate plugins that already come with VIP
 `bin/docker/wp plugin deactivate advanced-caching`
@@ -66,12 +70,12 @@ add_filter( 'timber/allow_fs_write', '__return_false' );
 
 ## Ordering of initialisation files
 
-VIP uses a [000-vip-init.php](https://github.com/Automattic/vip-go-mu-plugins/blob/master/000-vip-init.php) file to initialise 
+VIP uses a [000-vip-init.php](https://github.com/Automattic/vip-go-mu-plugins/blob/master/000-vip-init.php) file to initialise
 their code, we use a [000-boxuk-init.php](https://github.com/boxuk/wp-project-skeleton/blob/main/wp-content/mu-plugins/000-boxuk-init.php)
- file. Code initialised by the VIP initialisation script defines a constant called `WPCOM_VIP_CLIENT_MU_PLUGIN_DIR`. It 
- does not check whether this constant is already defined before defining it, so we are unable to set it ourselves. However, 
+ file. Code initialised by the VIP initialisation script defines a constant called `WPCOM_VIP_CLIENT_MU_PLUGIN_DIR`. It
+ does not check whether this constant is already defined before defining it, so we are unable to set it ourselves. However,
  code initialised by our script relies on this constant being set. Therefore the VIP initialiser needs to run before ours.
- Because these files are loaded in alphabetical order, `000-vip-init.php` will be loaded after `000-boxuk-init.php`. Therefore, 
+ Because these files are loaded in alphabetical order, `000-vip-init.php` will be loaded after `000-boxuk-init.php`. Therefore,
  in order to swap the order these are loaded we must rename our initialisation file to `001-boxuk-init.php`.
 
 Also, add the following to the top of your `001-boxuk-init.php` file so that the plugin loader reads from our `client-mu-plugin`

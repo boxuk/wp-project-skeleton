@@ -133,3 +133,8 @@ echo -e "\n${GREEN}Visit site:";
 echo -e "${NC}${WP_HOME}";
 echo -e "\n${GREEN}Visit admin:";
 echo -e "${NC}${WP_HOME}/wp-admin";
+
+if [ ! -z "${STYLEGUIDE_DIR}" ]; then
+    echo -e "\n${GREEN}Visit styleguide:";
+    echo -e "${NC}https://${STYLEGUIDE_HOSTS_ENTRY}";
+fi

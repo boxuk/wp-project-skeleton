@@ -9,7 +9,6 @@ $composer = json_decode( file_get_contents( $root . '/composer.json' ), true, 51
 define( 'ABSPATH', $root . '/' . $composer['extra']['wordpress-install-dir'] . '/' );
 
 define( 'WP_CONTENT_DIR', $root . '/wp-content' );
-// define( 'WP_PLUGINS_DIR', $root . '/plugins-dir' );
 
 // https://make.wordpress.org/core/2020/08/27/wordpress-environment-types/.
 define( 'WP_ENVIRONMENT_TYPE', getenv( 'WP_ENVIRONMENT_TYPE' ) ?: 'test' );

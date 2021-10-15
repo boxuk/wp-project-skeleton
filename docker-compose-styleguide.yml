@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
 
@@ -8,20 +8,20 @@ services:
             args:
                 STYLEGUIDE_DIR: ${STYLEGUIDE_DIR}
         volumes:
-            - './${STYLEGUIDE_DIR}:/var/www/html/${STYLEGUIDE_DIR}/:cached'
+            - './${STYLEGUIDE_DIR}:/var/www/html/${STYLEGUIDE_DIR}:cached'
             - './${STYLEGUIDE_DIR}/vendor:/var/www/html/${STYLEGUIDE_DIR}/vendor:delegated'
             - './${STYLEGUIDE_DIR}/public/assets:/var/www/html/${STYLEGUIDE_DIR}/public/assets:cached'
-            - './${STYLEGUIDE_DIR}/system/library/components:/var/www/html/${STYLEGUIDE_DIR}/system/library/components:cached'
-            - styleguide_var:/var/www/html/styleguide/var/:delegated
+            - './${STYLEGUIDE_DIR}/system/library/blocks:/var/www/html/${STYLEGUIDE_DIR}/system/library/blocks:cached'
+            - 'styleguide_var:/var/www/html/${STYLEGUIDE_DIR}/var:delegated'
 
     nodejs:
         build:
             context: docker/node
             dockerfile: Dockerfile
         volumes:
-            - './${STYLEGUIDE_DIR}:/usr/src/app'
+            - './${STYLEGUIDE_DIR}:/usr/src/app:cached'
             - yarn_cache:/usr/local/share/.cache/yarn/v6:delegated
-            - styleguide_node_modules:/usr/src/app/styleguide/node_modules:delegated
+            - styleguide_node_modules:/usr/src/app/node_modules:delegated
 
     # Extend our nginx container to include the styleguide template.
     nginx:
@@ -33,8 +33,21 @@ services:
         environment:
             - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx/conf.d/conf
             - STYLEGUIDE_DIR=${STYLEGUIDE_DIR}
+        depends_on:
+            - app
+            - app_xdebug
+            - styleguide
+        links:
+            - app
+            - app_xdebug
+            - styleguide
 
 volumes:
-    styleguide_var: {}
-    yarn_cache: { }
-    styleguide_node_modules: { }
+    styleguide_var:
+    yarn_cache:
+    styleguide_node_modules:
+
+networks:
+    default:
+        external: true
+        name: ${DOCKER_NETWORK_NAME:-boxuk-docker}
