@@ -90,13 +90,12 @@ if [ ! -z "${STYLEGUIDE_DIR}" ]; then
     bin/docker/styleguide/yarn encore dev;
 fi
 
-echo 'Please hold...';
+echo 'Installing WordPress...';
 
-sleep 10;
-
-echo 'Thanks for holding, proceeding to install WordPress...';
-
-bin/docker/wp core install --url="${WP_HOME}" --title="${PROJECT_NAME}" --admin_user=admin --admin_email=boxuk@example.com;
+until bin/docker/wp core install --url="${WP_HOME}" --title="${PROJECT_NAME}" --admin_user=admin --admin_email=boxuk@example.com --skip-email;
+do
+    echo 'Waiting for the database...';
+done
 
 echo 'Emptying site...';
 
