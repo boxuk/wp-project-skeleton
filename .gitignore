@@ -37,6 +37,7 @@ debug.log
 !/bin/makepot
 !/bin/pot2po
 !/bin/po2mo
+!/bin/backstop_report
 
 .env
 /.env.local

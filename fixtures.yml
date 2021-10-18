@@ -58,6 +58,8 @@ Hellonico\Fixtures\Entity\Post:
         post_category: '1x @category*->term_id'
         tax_input:
             post_tag: '5x @tag*->term_id'
+    post_sample (extends default):
+        post_title: Sample Post
 
 ## Menu
 Hellonico\Fixtures\Entity\NavMenu:

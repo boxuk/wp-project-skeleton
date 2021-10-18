@@ -1,0 +1,14 @@
+{
+    "name": "boxuk-wordpress-project-visual-regression",
+    "version": "1.0.0",
+    "description": "Visual regression testing for a WordPress project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "GPL-2.0-or-later",
+    "dependencies": {
+        "backstopjs": "^5.3.7"
+    }
+}
