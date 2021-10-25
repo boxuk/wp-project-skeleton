@@ -75,6 +75,8 @@ Admin:
 
 🚩 - First class support for feature flags using [flagpole](https://github.com/jamesrwilliams/flagpole)
 
+✅ - Unit, Integration and Visual Regression testing support
+
 > You can read more about all of these features in [this post on the Box UK blog](https://www.boxuk.com/insight/how-we-develop-wordpress-sites/).
 
 
@@ -96,6 +98,7 @@ Admin:
 * [Working with a styleguide](docs/dev/styleguide.md)
 * [i18n](docs/dev/i18n.md)
 * [Tools](docs/dev/tools.md)
+* [Testing](docs/dev/testing.md)
 
 
 
