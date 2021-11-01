@@ -126,3 +126,44 @@ Under the hood this runs the following commands:
 `bin/docker/composer dump-autoload` to update the composer autoloader
 
 This will give you everything you need to adhere to info above.
+
+## ACF field naming conventions
+
+It's best practice to ensure ACF fields have unique names. This helps avoid collisions in field names. For consistency and 
+uniqueness the following naming convention is recommended:
+
+- snake_case to be used when naming fields
+- ACF field names to consist of block names followed by the name of the field, separated by a double underscore e.g. `block_name__field_name`
+- Nested field names do not need to follow this convention. This is because nested repeater fields (for example) are only ever used in context of the parent, which has a unique name, so ensuring nested field names are unique is unnecessarily verbose. 
+
+This naming convention is similar to the one described in [this article](https://kamilgrzegorczyk.com/2017/10/12/best-practices-naming-convention-for-wordpress-custom-fields/). The main difference is that we don't use hyphens. This is primarily because at some point ACF creates objects, the property names of which are the field names. Properties with hyphens are not valid in PHP. Therefore, in order to access properties created by ACF which contain hyphens we would have to use something like `$theobject->{'the-prop'}`, which isn't ideal.
+
+### Example
+
+If you have a block called accordion, which has a "drawer" repeater field, which consists of multiple accordion items, each of which has a title field, the field list would be:
+- Accordion drawer: `accordion_block__drawer`
+- Accordion item summary: `summary`
+
+Retrieving the values looks like this: 
+
+Twig:
+
+```twig
+{% set drawer = [] %}
+
+{% for item in fields['accordion_block__drawer'] %}
+    {% set drawer = drawer | merge([{
+        summary: item['summary']
+    }]) %}
+{% endfor %}
+```
+
+PHP:
+
+```php
+$drawer = [];
+
+foreach ( get_field( 'accordion_block__drawer' ) as $item ) {
+    $drawer[] = [ 'summary' => $item['summary'] ];
+}
+```
