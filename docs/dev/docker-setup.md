@@ -3,6 +3,11 @@
 If you just want a ready to go docker environment you can just use the [quickstart](quickstart.md), do read on though if you're after more detail.
 
 ### Pre-requisites
+#### Pre-requisites for Windows systems
+* [WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
+* [Linux Kernel Update Package](https://docs.microsoft.com/en-gb/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+* [Cygwin](https://cygwin.com/install.html) (be sure to include the gettext package on install)
+#### Pre-requisites for all systems
 * [Docker](https://www.docker.com/)
 * [Docker compose](https://docs.docker.com/compose/install/)
 
