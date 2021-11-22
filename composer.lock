@@ -480,19 +480,22 @@
         },
         {
             "name": "roots/wordpress",
-            "version": "5.8.1",
+            "version": "5.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress.git",
-                "reference": "5.8.1"
+                "reference": "5.8.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/refs/tags/5.8.1"
+                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/refs/tags/5.8.2"
             },
             "require": {
                 "php": ">=5.3.2",
                 "roots/wordpress-core-installer": ">=1.0.0"
+            },
+            "provide": {
+                "wordpress/core-implementation": "5.8.2"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -531,7 +534,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-09-09T02:22:02+00:00"
+            "time": "2021-11-10T23:24:02+00:00"
         },
         {
             "name": "roots/wordpress-core-installer",
