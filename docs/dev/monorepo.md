@@ -13,7 +13,7 @@ You too can use a monorepo for your project! Uncomment the `project_packages_spl
 Some uses cases for this:
 
 * If your organisation has a theme within a separate repository which you want to work on within the project.
-* You use a shared plugin within a separate repository whcih you want to work on within the project.
+* You use a shared plugin within a separate repository which you want to work on within the project.
 
 ## Useful commands
 
