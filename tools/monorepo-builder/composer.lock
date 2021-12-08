@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a221d5d34efd2db3b84b40c57ec9a1b8",
+    "content-hash": "ad295418e2d70305adf9415893395d94",
     "packages": [],
     "packages-dev": [
         {
             "name": "symplify/monorepo-builder",
-            "version": "9.4.70",
+            "version": "10.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/monorepo-builder.git",
-                "reference": "49260ac962cbeadb1670adc115c3dbe80abdd2b1"
+                "reference": "ab5b1eba1c9f77a72a8b3ceaf7c52f809e0ee748"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/49260ac962cbeadb1670adc115c3dbe80abdd2b1",
-                "reference": "49260ac962cbeadb1670adc115c3dbe80abdd2b1",
+                "url": "https://api.github.com/repos/symplify/monorepo-builder/zipball/ab5b1eba1c9f77a72a8b3ceaf7c52f809e0ee748",
+                "reference": "ab5b1eba1c9f77a72a8b3ceaf7c52f809e0ee748",
                 "shasum": ""
             },
             "require": {
@@ -28,13 +28,18 @@
                 "bin/monorepo-builder"
             ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "9.5-dev"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Prefixed version of Not only Composer tools to build a Monorepo.",
             "support": {
-                "source": "https://github.com/symplify/monorepo-builder/tree/9.4.70"
+                "source": "https://github.com/symplify/monorepo-builder/tree/10.0.1"
             },
             "funding": [
                 {
@@ -46,7 +51,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-02T16:07:18+00:00"
+            "time": "2021-12-08T15:47:05+00:00"
         }
     ],
     "aliases": [],
