@@ -110,6 +110,9 @@ define( 'WP_DEBUG_LOG', isset( $_ENV['WP_DEBUG_LOG'] ) ? filter_var( $_ENV['WP_D
 
 define( 'DISALLOW_FILE_EDIT', ! empty( $_ENV['DISALLOW_FILE_EDIT'] ) ? filter_var( $_ENV['DISALLOW_FILE_EDIT'], FILTER_VALIDATE_BOOLEAN ) : true );
 
+// Enable cache by default.
+define( 'WP_CACHE', isset( $_ENV['WP_CACHE'] ) ? filter_var( $_ENV['WP_CACHE'], FILTER_VALIDATE_BOOLEAN ) : true );
+
 /**
  * Memcached servers
  */

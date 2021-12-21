@@ -16,6 +16,7 @@ settings:
     active_plugins:
         - advanced-caching/advanced-caching.php
         - query-monitor/query-monitor.php
+        - surge/surge.php
 users:
     admin:
         display_name: admin

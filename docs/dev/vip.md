@@ -68,6 +68,14 @@ add_filter('timber/cache/mode', function() {
 add_filter( 'timber/allow_fs_write', '__return_false' );
 ```
 
+## Remove surge plugin and related files/folders
+
+Surge won't work on VIP environments as it needs the ability to write to the file system. [VIP has its own page caching anyhow](https://docs.wpvip.com/technical-references/caching/page-cache/).
+
+`composer remove wpackagist-plugin/surge`
+
+> Remember to remove any related files or folders too, such as `wp-content/advanced-cache.php` and the `wp-content/cache` directory.
+
 ## Ordering of initialisation files
 
 VIP uses a [000-vip-init.php](https://github.com/Automattic/vip-go-mu-plugins/blob/master/000-vip-init.php) file to initialise
