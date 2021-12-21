@@ -48,7 +48,8 @@
         "symfony/yaml": "^5.0",
         "wpackagist-plugin/advanced-caching": "@dev",
         "wpackagist-plugin/memcached": "^4.0",
-        "wpackagist-plugin/query-monitor": "^3.5"
+        "wpackagist-plugin/query-monitor": "^3.5",
+        "wpackagist-plugin/surge": "^1.0"
     },
     "require-dev": {
         "jenko/wp-plugin-trouble-detector": "^0.1.0",
