@@ -33,6 +33,13 @@
             "php": "7.4",
             "ext-mbstring": "1",
             "ext-intl": "1"
+        },
+        "allow-plugins": {
+            "composer/installers": true,
+            "roots/wordpress-core-installer": true,
+            "boxuk/wp-muplugin-loader": true,
+            "inpsyde/wp-translation-downloader": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "require": {
@@ -52,7 +59,6 @@
         "wpackagist-plugin/surge": "^1.0"
     },
     "require-dev": {
-        "jenko/wp-plugin-trouble-detector": "^0.1.0",
         "phpunit/phpunit": "^7",
         "wp-cli/wp-cli-bundle": "^2.4",
         "wp-phpunit/wp-phpunit": "^5.4",

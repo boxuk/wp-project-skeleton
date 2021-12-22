@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a69c2eafaf3d873ff97096af63c6ab2",
+    "content-hash": "af58b0d66b3808e0020949602dafdab3",
     "packages": [
         {
             "name": "boxuk/dictator",
@@ -2211,54 +2211,6 @@
                 "source": "https://github.com/php-gettext/Languages/tree/2.6.0"
             },
             "time": "2019-11-13T10:30:21+00:00"
-        },
-        {
-            "name": "jenko/wp-plugin-trouble-detector",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jenkoian/wp-plugin-trouble-detector.git",
-                "reference": "8a21fef470139ae560d6d950cc5dd3003c751e7f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jenkoian/wp-plugin-trouble-detector/zipball/8a21fef470139ae560d6d950cc5dd3003c751e7f",
-                "reference": "8a21fef470139ae560d6d950cc5dd3003c751e7f",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0 || ^2.0",
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "composer/composer": "^2.0",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Jenko\\WpPluginTroubleDetector\\Plugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jenko\\WpPluginTroubleDetector\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ian Jenkins",
-                    "email": "ian@jenko.me"
-                }
-            ],
-            "description": "A composer plugin to detect potential trouble with WordPress plugins installed via composer.",
-            "support": {
-                "issues": "https://github.com/jenkoian/wp-plugin-trouble-detector/issues",
-                "source": "https://github.com/jenkoian/wp-plugin-trouble-detector/tree/0.1.0"
-            },
-            "time": "2021-06-21T10:02:56+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -7053,5 +7005,5 @@
         "ext-mbstring": "1",
         "ext-intl": "1"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
