@@ -14,6 +14,15 @@ updates:
             - dependency-name: "phpunit/phpunit"
               update-types: ["version-update:semver-major"]
 
+    # GitHub Actions.
+    -   package-ecosystem: github-actions
+        directory: "/"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[ACTIONS]"
+
     # Monorepo builder tool.
     -   package-ecosystem: composer
         directory: "/tools/monorepo-builder"
