@@ -22,6 +22,7 @@ if ( wp_get_environment_type() === 'local' && class_exists( 'WP_CLI' ) ) {
 }
 
 if (
+	class_exists( \WP_CLI\I18n\MakePotCommand::class ) &&
 	class_exists( \Twig\Environment::class ) &&
 	class_exists( \Twig\Extensions\I18nExtension::class ) &&
 	class_exists( \Timber\Loader::class ) &&

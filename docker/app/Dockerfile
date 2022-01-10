@@ -16,7 +16,10 @@ RUN set -eux; \
     docker-php-ext-install -j"$(nproc)" mysqli opcache zip intl gd
 
 # Composer
-COPY --from=composer:2.1.9 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.2.3 /usr/bin/composer /usr/local/bin/composer
+
+# WP-CLI
+COPY --from=wordpress:cli-2.5.0-php7.4 /usr/local/bin/wp /usr/local/bin/wp
 
 # MhSendmail
 RUN set -eux; \
