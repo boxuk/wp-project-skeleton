@@ -60,7 +60,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^7",
-        "wp-cli/wp-cli-bundle": "^2.4",
         "wp-phpunit/wp-phpunit": "^5.4",
         "yoast/phpunit-polyfills": "^1.0"
     },
