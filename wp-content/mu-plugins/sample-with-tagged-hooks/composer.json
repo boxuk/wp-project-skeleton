@@ -4,12 +4,12 @@
     "license": "proprietary",
     "autoload": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\SampleWithHooks\\": "src"
+            "BoxUk\\Mu\\Plugins\\SampleWithTaggedHooks\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\SampleWithHooks\\Tests\\": "tests"
+            "BoxUk\\Mu\\Plugins\\SampleWithTaggedHooks\\Tests\\": "tests"
         }
     },
     "extra": {

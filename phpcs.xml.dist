@@ -57,6 +57,7 @@
 
 	<!-- Exclude any forced mu-plugins -->
 	<exclude-pattern>*/mu-plugins/flagpole/*</exclude-pattern>
+	<exclude-pattern>*/mu-plugins/wp-hook-attributes/*</exclude-pattern>
 
 	<!-- DEFINE STANDARDS -->
 

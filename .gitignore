@@ -26,6 +26,7 @@ debug.log
 
 # Sometimes we want to force mu-plugins but we don't want to commit to repo, list those here
 /wp-content/mu-plugins/flagpole
+/wp-content/mu-plugins/wp-hook-attributes
 
 /bin/*
 !/bin/docker
