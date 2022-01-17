@@ -1,26 +1,27 @@
 <?php
 /**
- * Sample class with hooks.
+ * Sample class with tagged hooks. The methods on this class are called when the hook is fired according to the tagging
+ * within config/services.yaml.
  *
  * @package BoxUk
  */
 
 declare( strict_types=1 );
 
-namespace BoxUk\Mu\Plugins\SampleWithHooks;
+namespace BoxUk\Mu\Plugins\SampleWithTaggedHooks;
 
 use BoxUk\Mu\Plugins\Sample\SampleClass;
 
 /**
- * Sample class with hooks.
+ * Sample class with tagged hooks.
  */
-class SampleWithHooksClass {
+class SampleWithTaggedHooksClass {
 	/**
 	 * Sample class.
 	 *
 	 * @var SampleClass
 	 */
-	private $sample;
+	private SampleClass $sample;
 
 	/**
 	 * SampleWithHooksClass constructor.
@@ -35,7 +36,7 @@ class SampleWithHooksClass {
 	 * Sample method.
 	 */
 	public function log_sample(): void {
-		do_action( 'qm/info', $this->sample->get_sample() ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+		do_action( 'qm/info', $this->sample->get_sample() . ' from tagged hook' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 	}
 
 	/**

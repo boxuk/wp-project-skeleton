@@ -93,6 +93,37 @@ class HookListener {
 
 This allows us to keep the service class nice and clean and will help with unit testing and adherence to single responsibility.
 
+### Hook Attributes
+
+Alternatively, you can use the [wp-hook-attributes](https://github.com/boxuk/wp-hook-attributes) library (installed by default) to use attributes (or annotations) as a way of defining hooks.
+
+Example:
+
+```php
+use BoxUk\WpHookAttributes\Hook\Annotations\Action;
+use BoxUk\WpHookAttributes\Hook\Annotations\Filter;
+
+class MyClass {
+    // Example of using an action hook
+    /**
+     * @Action("init")
+     */
+    public static function basic_action(): string {
+        return 'something...';
+    }
+
+    // Example of using a filter hook
+    /**
+     * @Filter("the_content")
+     */
+    public static function basic_filter(): string {
+        return 'something...';
+    }
+}
+```
+
+There is some setup required, check the `sample-with-hook-attributes` example plugin within `mu-plugins` for an example.
+
 ## Tests
 
 Each `mu-plugin` should have tests in the `tests` directory and an `autoload-dev` section should be set up in `composer.json`. Each test should an appropriate namespace.
@@ -129,12 +160,12 @@ This will give you everything you need to adhere to info above.
 
 ## ACF field naming conventions
 
-It's best practice to ensure ACF fields have unique names. This helps avoid collisions in field names. For consistency and 
+It's best practice to ensure ACF fields have unique names. This helps avoid collisions in field names. For consistency and
 uniqueness the following naming convention is recommended:
 
 - snake_case to be used when naming fields
 - ACF field names to consist of block names followed by the name of the field, separated by a double underscore e.g. `block_name__field_name`
-- Nested field names do not need to follow this convention. This is because nested repeater fields (for example) are only ever used in context of the parent, which has a unique name, so ensuring nested field names are unique is unnecessarily verbose. 
+- Nested field names do not need to follow this convention. This is because nested repeater fields (for example) are only ever used in context of the parent, which has a unique name, so ensuring nested field names are unique is unnecessarily verbose.
 
 This naming convention is similar to the one described in [this article](https://kamilgrzegorczyk.com/2017/10/12/best-practices-naming-convention-for-wordpress-custom-fields/). The main difference is that we don't use hyphens. This is primarily because at some point ACF creates objects, the property names of which are the field names. Properties with hyphens are not valid in PHP. Therefore, in order to access properties created by ACF which contain hyphens we would have to use something like `$theobject->{'the-prop'}`, which isn't ideal.
 
@@ -144,7 +175,7 @@ If you have a block called accordion, which has a "drawer" repeater field, which
 - Accordion drawer: `accordion_block__drawer`
 - Accordion item summary: `summary`
 
-Retrieving the values looks like this: 
+Retrieving the values looks like this:
 
 Twig:
 

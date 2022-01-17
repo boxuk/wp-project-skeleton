@@ -33,6 +33,7 @@ return static function ( ContainerConfigurator $container_configurator ): void {
 		[
 			'flagpole',
 			'styleguide',
+			'wp-hook-attributes',
 		]
 	);
 

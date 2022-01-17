@@ -3,10 +3,10 @@ services:
         autowire: true
         autoconfigure: true
 
-    BoxUk\Mu\Plugins\SampleWithHooks\SampleWithHooksClass:
+    BoxUk\Mu\Plugins\SampleWithTaggedHooks\SampleWithTaggedHooksClass:
         public: true
 
-    BoxUk\Mu\Plugins\SampleWithHooks\HookListener:
+    BoxUk\Mu\Plugins\SampleWithTaggedHooks\HookListener:
         tags:
             - { name: 'wp_hook', action: 'init' } # Will call the on_init method on HookListener
             - { name: 'wp_hook', filter: 'the_content' } # Will call the on_the_content method on HookListener

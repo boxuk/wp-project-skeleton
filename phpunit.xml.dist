@@ -16,6 +16,7 @@
             <directory prefix="test-" suffix=".php">./wp-content/mu-plugins/**/tests</directory>
             <directory suffix="Test.php">./wp-content/mu-plugins/**/tests</directory>
             <exclude>./wp-content/mu-plugins/flagpole/tests</exclude>
+            <exclude>./wp-content/mu-plugins/wp-hook-attributes/tests</exclude>
         </testsuite>
         <testsuite name="Theme tests">
             <directory suffix="Test.php">./wp-content/themes/**/tests/</directory>
@@ -28,6 +29,7 @@
                 <directory>./bin</directory>
                 <directory>./docker</directory>
                 <directory>./wp-content/mu-plugins/flagpole</directory>
+                <directory>./wp-content/mu-plugins/wp-hook-attributes</directory>
                 <directory>./wp-content/plugins</directory>
                 <directory>./wp-content/vendor</directory>
                 <directory>./tests</directory>

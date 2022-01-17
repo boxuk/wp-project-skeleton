@@ -1,25 +1,26 @@
 <?php
 /**
- * Test sample with hooks services.
+ * Test sample with tagged hooks services.
  *
  * @package BoxUk
  */
 
 declare( strict_types=1 );
 
-namespace BoxUk\Mu\Plugins\SampleWithHooks\Tests;
+namespace BoxUk\Mu\Plugins\SampleWithTaggedHooks\Tests;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use WP_UnitTestCase;
 
 use function BoxUk\Mu\Plugins\boxuk_container;
+use BoxUk\Mu\Plugins\SampleWithTaggedHooks\SampleWithTaggedHooksClass;
 
 /**
  * Test services.
  */
-class SampleWithHooksServicesTest extends WP_UnitTestCase {
+class SampleWithTaggedHooksServicesTest extends WP_UnitTestCase {
 
-	private const SERVICE_NAME = 'BoxUk\Mu\Plugins\SampleWithHooks\SampleWithHooksClass';
+	private const SERVICE_NAME = SampleWithTaggedHooksClass::class;
 
 	/**
 	 * Test services can be instantiated.
@@ -27,7 +28,7 @@ class SampleWithHooksServicesTest extends WP_UnitTestCase {
 	public function test_services_can_be_instantiated(): void {
 		$container = boxuk_container();
 		$services = array_filter($container->getServiceIds(), static function ( $service_id ) {
-			return 0 === strpos($service_id, self::SERVICE_NAME );
+			return str_starts_with( $service_id, self::SERVICE_NAME );
 		});
 
 		foreach ($services as $id) {
