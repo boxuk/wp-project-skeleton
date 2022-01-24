@@ -41,6 +41,15 @@ updates:
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[DEPS]"
+    # Visual regression tool.
+    -   package-ecosystem: npm
+        directory: "/tests/visual-regression"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[DEPS]"
     # Docker app image.
     -   package-ecosystem: docker
         directory: "/docker/app"
