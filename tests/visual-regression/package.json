@@ -9,6 +9,6 @@
     "author": "",
     "license": "GPL-2.0-or-later",
     "dependencies": {
-        "backstopjs": "^5.3.7"
+        "backstopjs": "^6.0.4"
     }
 }
