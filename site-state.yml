@@ -5,7 +5,7 @@ settings:
     admin_email: boxuk@example.com
     date_format: F j, Y
     time_format: g:i a
-    active_theme: twentytwentyone
+    active_theme: twentytwentytwo
     super_admins:
         - admin
     upload_filetypes: jpg jpeg png gif mov avi mpg 3gp 3g2 midi mid pdf doc ppt odt pptx docx pps ppsx xls xlsx key mp3 ogg flac m4a wav mp4 m4v webm ogv flv
