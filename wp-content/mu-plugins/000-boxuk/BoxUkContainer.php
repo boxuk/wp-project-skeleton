@@ -47,19 +47,28 @@ class BoxUkContainer {
 	private $container_builder;
 
 	/**
-	 * Are we in debug mode (i.e. non prod)
+	 * Are we in debug mode (i.e. non prod).
 	 *
 	 * @var bool
 	 */
 	private $is_debug;
 
 	/**
+	 * Type of environment (i.e. production or local).
+	 *
+	 * @var string
+	 */
+	private $environment_type;
+
+	/**
 	 * BoxUk_Container constructor.
 	 *
-	 * @param bool $is_debug Whether debug mode should be enabled or not.
+	 * @param bool   $is_debug Whether debug mode should be enabled or not.
+	 * @param string $environment_type Which environment type we are in (i.e. production or local).
 	 */
-	public function __construct( bool $is_debug = false ) {
+	public function __construct( bool $is_debug = false, string $environment_type = 'production' ) {
 		$this->is_debug = $is_debug;
+		$this->environment_type = $environment_type;
 		$this->init_container();
 	}
 
@@ -100,6 +109,7 @@ class BoxUkContainer {
 		}
 
 		$container_builder = $this->build_container();
+		$this->load_config( $container_builder );
 		$this->load_mu_plugins( $container_builder );
 		$this->load_boxuk_plugins( $container_builder );
 
@@ -109,6 +119,25 @@ class BoxUkContainer {
 		if ( ! $this->is_debug ) {
 			$this->cache_container( $container_builder );
 		}
+	}
+
+	/**
+	 * Load parameters depending on environment type. This will allow us to use different parameters in production compared to local.
+	 *
+	 * @see https://make.wordpress.org/core/2020/08/27/wordpress-environment-types/ for list of valid environment types.
+	 *
+	 * @param ContainerBuilder $container_builder Instance ofo ContainerBuilder.
+	 *
+	 * @return void
+	 * @throws InvalidArgumentException If the environment type is invalid and thus a config file cannot be found.
+	 */
+	private function load_config( ContainerBuilder $container_builder ): void {
+		if ( ! file_exists( __DIR__ . '/config/config_' . $this->environment_type . '.yaml' ) ) {
+			throw new InvalidArgumentException( 'Could not find config file for environment type: ' . $this->environment_type );
+		}
+
+		$loader = new YamlFileLoader( $container_builder, new FileLocator( __DIR__ . '/config' ) );
+		$loader->load( 'config_' . $this->environment_type . '.yaml' );
 	}
 
 	/**

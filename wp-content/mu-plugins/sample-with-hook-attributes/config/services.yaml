@@ -3,5 +3,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    BoxUk\Mu\Plugins\SampleWithHookAttributes\SampleWthHookAttributes:
-        public: true # If a service is being used directly (i.e. not being injected into another class) you have to mark it as public.
+    BoxUk\Mu\Plugins\SampleWithHookAttributes\SampleWithHookAttributesClass:
+        public: true

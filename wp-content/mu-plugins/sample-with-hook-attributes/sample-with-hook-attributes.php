@@ -8,7 +8,7 @@
 
 declare( strict_types=1 );
 
-use BoxUk\Mu\Plugins\SampleWithHookAttributes\SampleWithHookAttributes;
+use BoxUk\Mu\Plugins\SampleWithHookAttributes\SampleWithHookAttributesClass;
 use Cache\Adapter\Memcache\MemcacheCachePool;
 use Psr\Cache\CacheItemPoolInterface;
 
@@ -50,7 +50,7 @@ add_filter(
 		return array_merge(
 			$registered_classes,
 			[
-				SampleWithHookAttributes::class,
+				SampleWithHookAttributesClass::class,
 			]
 		);
 	}

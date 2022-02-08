@@ -1,0 +1,5 @@
+imports:
+    - { resource: config.yaml }
+
+parameters:
+    wonolog_default_handler_service_id: 'Monolog\Handler\NewRelicHandler'
