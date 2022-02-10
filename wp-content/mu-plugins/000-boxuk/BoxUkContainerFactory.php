@@ -26,9 +26,10 @@ class BoxUkContainerFactory {
 	 */
 	public static function instance(): BoxUkContainer {
 		$is_debug = defined( 'WP_DEBUG' ) ? WP_DEBUG : false;
+		$environment_type = defined( 'WP_ENVIRONMENT_TYPE' ) ? WP_ENVIRONMENT_TYPE : 'production';
 
 		if ( ! ( static::$instance instanceof BoxUkContainer ) ) {
-			static::$instance = new BoxUkContainer( $is_debug );
+			static::$instance = new BoxUkContainer( $is_debug, $environment_type );
 		}
 
 		return static::$instance;

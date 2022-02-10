@@ -47,6 +47,7 @@
         "boxuk/wp-hook-attributes": "@dev",
         "boxuk/wp-muplugin-loader": "^1.2",
         "cache/memcache-adapter": "^1.2",
+        "inpsyde/wonolog": "^1.0",
         "inpsyde/wp-translation-downloader": "^2.0",
         "jamesrwilliams/flagpole": "@beta",
         "oomphinc/composer-installers-extender": "^2",

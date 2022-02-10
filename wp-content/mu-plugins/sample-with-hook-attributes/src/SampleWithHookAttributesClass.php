@@ -15,8 +15,7 @@ use BoxUk\WpHookAttributes\Hook\Annotations\Filter;
 /**
  * Example service class.
  */
-class SampleWithHookAttributes {
-
+class SampleWithHookAttributesClass {
 	/**
 	 * Sample method.
 	 *

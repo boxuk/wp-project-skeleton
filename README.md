@@ -77,6 +77,8 @@ Admin:
 
 ✅ - Unit, Integration and Visual Regression testing support
 
+💻 - Logging support through [Wonolog](https://github.com/inpsyde/Wonolog)
+
 > You can read more about all of these features in [this post on the Box UK blog](https://www.boxuk.com/insight/how-we-develop-wordpress-sites/).
 
 
@@ -99,6 +101,7 @@ Admin:
 * [i18n](docs/dev/i18n.md)
 * [Tools](docs/dev/tools.md)
 * [Testing](docs/dev/testing.md)
+* [Logging](docs/dev/logging.md)
 
 
 

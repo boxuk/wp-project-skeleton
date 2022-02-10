@@ -11,7 +11,7 @@ define( 'ABSPATH', $root . '/' . $composer['extra']['wordpress-install-dir'] . '
 define( 'WP_CONTENT_DIR', $root . '/wp-content' );
 
 // https://make.wordpress.org/core/2020/08/27/wordpress-environment-types/.
-define( 'WP_ENVIRONMENT_TYPE', getenv( 'WP_ENVIRONMENT_TYPE' ) ?: 'test' );
+define( 'WP_ENVIRONMENT_TYPE', getenv( 'WP_ENVIRONMENT_TYPE' ) ?: 'development' );
 
 // Path to the theme to test with.
 define( 'WP_DEFAULT_THEME', 'default' );

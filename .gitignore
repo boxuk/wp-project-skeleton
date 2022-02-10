@@ -18,6 +18,7 @@
 /wp-content/object-cache.php
 /wp-content/advanced-cache.php
 /wp-content/cache
+/wp-content/wonolog
 
 /wp-content/mu-plugins/000-boxuk/cache/*
 !/wp-content/mu-plugins/000-boxuk/cache/.gitkeep
