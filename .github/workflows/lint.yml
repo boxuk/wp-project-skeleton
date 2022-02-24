@@ -4,7 +4,7 @@ on:
     pull_request:
         paths:
             - "docker/**/Dockerfile"
-            - "docker/app/Dockerfile_xdebug"
+            - "docker/app/**/Dockerfile_xdebug"
     push:
         branches:
             - main
@@ -23,4 +23,4 @@ jobs:
             - name: "Lint Dockerfile(s)"
               uses: jbergstroem/hadolint-gh-action@v1
               with:
-                dockerfile: "./docker/**/Dockerfile ./docker/app/Dockerfile_xdebug"
+                dockerfile: "./docker/**/Dockerfile ./docker/app/**/Dockerfile_xdebug"

@@ -1,12 +1,15 @@
 language: php
+
 php:
     - 7.4
+
 branches:
     only:
         - main
 
 services:
     - mysql
+
 cache:
     directories:
         - "/home/travis/.composer/cache"

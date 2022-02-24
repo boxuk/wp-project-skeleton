@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Container;
  * BoxUK Container test case.
  */
 class Test_BoxUk_Container extends WP_UnitTestCase {
-	public function tearDown() {
+	public function tearDown(): void {
 		parent::tearDown();
 		$cached_container = __DIR__ . '/../cache/container.php';
 		if ( file_exists( $cached_container ) ) {

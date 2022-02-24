@@ -14,7 +14,7 @@ class FeatureFlagManagerTest extends WP_UnitTestCase {
 	private $provider;
 	private $manager;
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		$this->provider = new InMemoryProvider();

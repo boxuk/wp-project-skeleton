@@ -30,7 +30,6 @@
         "sort-packages": true,
         "preferred-install": "dist",
         "platform": {
-            "php": "7.4",
             "ext-mbstring": "1",
             "ext-intl": "1"
         },
@@ -44,7 +43,7 @@
     },
     "require": {
         "boxuk/dictator": "^0.8",
-        "boxuk/wp-hook-attributes": "@dev",
+        "boxuk/wp-hook-attributes": "^0.0.1",
         "boxuk/wp-muplugin-loader": "^1.2",
         "cache/memcache-adapter": "^1.2",
         "inpsyde/wonolog": "^1.0",
@@ -52,10 +51,10 @@
         "jamesrwilliams/flagpole": "@beta",
         "oomphinc/composer-installers-extender": "^2",
         "roots/wordpress": "^5",
-        "symfony/config": "^5.0",
-        "symfony/dependency-injection": "^5.0",
-        "symfony/dotenv": "^5.0",
-        "symfony/yaml": "^5.0",
+        "symfony/config": "^5.0 || ^6.0",
+        "symfony/dependency-injection": "^5.0 || ^6.0",
+        "symfony/dotenv": "^5.0 || ^6.0",
+        "symfony/yaml": "^5.0 || ^6.0",
         "wp-cli/scaffold-command": "^2.0",
         "wp-cli/wp-cli": "^2.5",
         "wpackagist-plugin/advanced-caching": "@dev",
@@ -64,7 +63,7 @@
         "wpackagist-plugin/surge": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7",
+        "phpunit/phpunit": "^7 || ^8 || ^9",
         "wp-phpunit/wp-phpunit": "^5.4",
         "yoast/phpunit-polyfills": "^1.0"
     },

@@ -87,6 +87,7 @@ Admin:
 * Getting Started
     * [Quickstart](docs/dev/quickstart.md)
     * [Docker Setup](docs/dev/docker-setup.md)
+    * [PHP Versions](docs/dev/php-versions.md)
     * [Non Docker Setup](docs/dev/non-docker-setup.md)
     * [Fixtures](docs/dev/fixtures.md)
 * [Usage](docs/dev/usage.md)

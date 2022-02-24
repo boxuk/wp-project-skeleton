@@ -3,9 +3,9 @@
 # Exit when any command fails
 set -e
 
-# Usage: bin/install [project_name] [styleguide_dir] [docker_network_name]
+# Usage: bin/install [project_name] [styleguide_dir] [docker_network_name] [php_version]
 #
-# Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker
+# Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker, php_version = 7.4
 
 GREEN='\033[0;32m'
 BG_GREEN='\033[42m'
@@ -40,7 +40,15 @@ else
     export DOCKER_NETWORK_NAME="boxuk-docker";
 fi
 
-envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR,\$DOCKER_NETWORK_NAME < .env.dist > .env
+if [ $4 ]; then
+    echo -e "Using ${GREEN}${4}${NC} for PHP_VERSION";
+    export PHP_VERSION="${4}";
+else
+    echo -e "Using ${GREEN}7.4${NC} for PHP_VERSION";
+    export PHP_VERSION="7.4";
+fi
+
+envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR,\$DOCKER_NETWORK_NAME,\$PHP_VERSION < .env.dist > .env
 envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR < ./docker/app/.env.dist > ./docker/app/.env
 
 if [ ! -f ./docker/database/.env ]; then
@@ -109,6 +117,9 @@ echo 'Setting up fixtures...'
 
 bin/docker/wp package install git@github.com:nlemoine/wp-cli-fixtures.git;
 bin/docker/wp fixtures load;
+
+echo 'Flushing cache...'
+bin/docker/wp cache flush;
 
 STYLEGUIDE_HOSTS_ENTRY=
 if [ ! -z "${STYLEGUIDE_DIR}" ]; then
