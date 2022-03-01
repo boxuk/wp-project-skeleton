@@ -1,5 +1,6 @@
 /vendor/
 /tools/*/vendor
+composer.lock
 
 /wp
 /wp-content/plugins/*
@@ -51,6 +52,7 @@ debug.log
 /tests/.env
 /tests/tmp/*
 !/tests/tmp/.gitkeep
+.phpunit.result.cache
 
 !docker/database/init.sql
 auth.json

@@ -16,11 +16,12 @@ the [docker setup](docker-setup.md) or [non docker setup](non-docker-setup.md) d
 
 
 ```
-bin/install [project_name] [styleguide_dir] [docker_network_name]
+bin/install [project_name] [styleguide_dir] [docker_network_name] [php_version]
 
 # project_name will default to boxuk-wp-skeleton if not provided.
 # only include a stylguide_dir when including a styleguide - do not prepend the styleguide_dir with . or ./
 # docker_network_name will default to boxuk-docker, if you wish to rename without supplying a styleguide_dir pass an empty string as the 2nd argument, e.g. `bin/install my-project '' my-network`
+# php_version allows you set which PHP version you wish to run, e.g. 7.4, 8.0, 8.1.
 ```
 
 > The docker network is required to ensure the loopback works with the expected IP address.
@@ -31,17 +32,19 @@ bin/install [project_name] [styleguide_dir] [docker_network_name]
 <summary>Install details</summary>
 
 ```
-docker network create --subnet=192.168.35.0/24 boxuk-docker;
 cp .env.dist .env; cp ./docker/database/.env.dist ./docker/database/.env; cp ./docker/app/.env.dist ./docker/app/.env;
+docker network create --subnet=192.168.35.0/24 boxuk-docker;
+docker-compose stop;
 docker-compose build;
 docker-compose up -d;
 bin/docker/composer install;
 cp wp-content/plugins/memcached/object-cache.php wp-content/object-cache.php;
-bin/docker/wp core install --url="https://$PROJECT_NAME.local" --title="Box UK WordPress Project" --admin_user=admin --admin_email=boxuk@example.com;
+bin/docker/wp core install --url="https://$PROJECT_NAME.local" --title="Box UK WordPress Project" --admin_user=admin --admin_email=boxuk@example.com --skip-email;
 bin/docker/wp site empty;
 bin/docker/wp dictator impose site-state.yml;
 bin/docker/wp package install git@github.com:nlemoine/wp-cli-fixtures.git;
 bin/docker/wp fixtures load;
+bin/docker/wp cache flush;
 echo '127.0.0.1 $PROJECT_NAME.local | sudo tee -a /etc/hosts;
 ```
 </details>

@@ -22,7 +22,7 @@ class EnableGutenbergTest extends WP_UnitTestCase {
 	/**
 	 * Test set up
 	 */
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		$this->sut = new EnableGutenberg();

@@ -11,7 +11,6 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*; \
     pecl install memcache-4.0.5.2; \
     pecl install imagick && docker-php-ext-enable imagick; \
-    pecl install xdebug && docker-php-ext-enable xdebug; \
     docker-php-ext-enable memcache; \
     docker-php-ext-configure intl; \
     docker-php-ext-install -j"$(nproc)" mysqli opcache zip intl gd
@@ -49,7 +48,7 @@ RUN set -eux; \
       install -d -m 0755 -o www-data -g www-data /home/www-data; \
     fi
 
-COPY ./php/*.ini /usr/local/etc/php/conf.d/
+COPY ./php-config/*.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /var/www/html
 RUN chown -R www-data:www-data /var/www

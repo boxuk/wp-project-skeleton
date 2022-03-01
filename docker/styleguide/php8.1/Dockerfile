@@ -1,4 +1,4 @@
-FROM php:7.4.28-fpm
+FROM php:8.1.3-fpm
 
 ARG STYLEGUIDE_DIR
 
@@ -14,8 +14,8 @@ RUN set -eux; \
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-COPY ./php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-COPY ./php/php.ini /usr/local/etc/php/conf.d/zzz_styleguide.ini
+COPY ./php-config/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY ./php-config/php.ini /usr/local/etc/php/conf.d/zzz_styleguide.ini
 
 WORKDIR /var/www/html/${STYLEGUIDE_DIR}
 
