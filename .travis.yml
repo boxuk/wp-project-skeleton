@@ -7,6 +7,11 @@ php:
     - 8.0
     - 8.1.0 # See https://travis-ci.community/t/php-8-1-support/12439/16
 
+matrix:
+    allow_failures:
+        - php: 8.1.0
+    fast_finish: true
+
 branches:
     only:
         - main
