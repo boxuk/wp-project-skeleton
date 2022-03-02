@@ -63,7 +63,8 @@
           "ignoreHTTPSErrors": true,
           "args": [
               "--no-sandbox"
-          ]
+          ],
+          "executablePath": "/usr/bin/chromium"
       },
       "asyncCaptureLimit": 5,
       "asyncCompareLimit": 50,

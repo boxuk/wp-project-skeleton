@@ -1,4 +1,4 @@
-FROM node:14.18.1
+FROM node:16.14.0
 
 ARG BACKSTOPJS_VERSION
 
@@ -10,7 +10,10 @@ RUN apt-get update && \
     apt-get install -y git sudo software-properties-common --no-install-recommends; \
     rm -rf /var/lib/apt/lists/*
 
-#RUN sudo npm install -g --unsafe-perm=true --allow-root backstopjs@${BACKSTOPJS_VERSION}
+# Update npm
+#RUN sudo npm install -g npm@latest
+
+#RUN sudo PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install -g --unsafe-perm=true --allow-root backstopjs@${BACKSTOPJS_VERSION}
 
 RUN wget --progress=dot:giga https://dl-ssl.google.com/linux/linux_signing_key.pub && apt-key add linux_signing_key.pub; \
     add-apt-repository "deb http://dl.google.com/linux/chrome/deb/ stable main"
@@ -23,6 +26,7 @@ RUN wget --progress=dot:giga https://dl-ssl.google.com/linux/linux_signing_key.p
 
 RUN apt-get -qqy update \
   && apt-get -qqy --no-install-recommends install \
+    chromium \
     libfontconfig \
     libfreetype6 \
     xfonts-cyrillic \
