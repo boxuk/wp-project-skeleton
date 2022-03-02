@@ -44,7 +44,7 @@
     "require": {
         "boxuk/dictator": "^0.8",
         "boxuk/wp-hook-attributes": "^0.0.1",
-        "boxuk/wp-muplugin-loader": "^1.2",
+        "boxuk/wp-muplugin-loader": "^2.0",
         "cache/memcache-adapter": "^1.2",
         "inpsyde/wonolog": "^1.0",
         "inpsyde/wp-translation-downloader": "^2.0",
@@ -125,6 +125,10 @@
         "install-tools": [
             "@composer install --working-dir=tools/monorepo-builder",
             "@composer install --working-dir=tools/php_codesniffer"
+        ],
+        "update-tools": [
+            "@composer update --working-dir=tools/monorepo-builder",
+            "@composer update --working-dir=tools/php_codesniffer"
         ],
         "phpcs": [
             "tools/php_codesniffer/vendor/bin/phpcs"
