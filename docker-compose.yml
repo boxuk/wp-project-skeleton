@@ -91,6 +91,7 @@ services:
         build:
             context: docker/backstop
             dockerfile: Dockerfile
+        platform: ${BACKSTOP_PLATFORM}
         volumes:
             - './tests/visual-regression:/src:cached'
             - vr_yarn_cache:/usr/local/share/.cache/yarn/v6:delegated

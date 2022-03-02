@@ -10,5 +10,12 @@
     "license": "GPL-2.0-or-later",
     "dependencies": {
         "backstopjs": "^6.0.4"
+    },
+    "overrides": {
+        "backstopjs": {
+            "puppeteer": {
+                "node-fetch@2.6.5": "2.6.7"
+            }
+        }
     }
 }

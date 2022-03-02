@@ -7,6 +7,7 @@ The skeleton supports the following PHP versions:
 * 8.1*
 
 > *Please note with 8.1 you will likely see a bunch of deprecation notices, [please read this post for more information](https://make.wordpress.org/core/2022/01/10/wordpress-5-9-and-php-8-0-8-1/).
+> It's also worth setting `WP_DEBUG_DISPLAY` to false as to not flood the page with notices.
 
 ## Using docker
 
