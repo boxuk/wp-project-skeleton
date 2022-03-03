@@ -26,7 +26,7 @@ jobs:
                         split_repository: 'boxuk-base-wp-plugin'
 
         steps:
-            -   uses: actions/checkout@v2
+            -   uses: actions/checkout@v3
 
             # no tag
             -
@@ -71,7 +71,7 @@ jobs:
 #                        split_repository: 'repository-name-of-your-shared-theme'
 #
 #        steps:
-#            -   uses: actions/checkout@v2
+#            -   uses: actions/checkout@v3
 #
 #            # no tag
 #            -
