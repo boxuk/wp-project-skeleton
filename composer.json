@@ -43,7 +43,7 @@
     },
     "require": {
         "boxuk/dictator": "^0.8",
-        "boxuk/wp-hook-attributes": "^0.0.1",
+        "boxuk/wp-hook-attributes": "^0.0.2",
         "boxuk/wp-muplugin-loader": "^2.0",
         "cache/memcache-adapter": "^1.2",
         "inpsyde/wonolog": "^1.0",
