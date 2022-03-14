@@ -61,7 +61,7 @@ updates:
             prefix: "[SETUP]"
         ignore:
             - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
+              update-types: ["version-update:semver-major", "version-update:semver-minor"]
     # Docker app image.
     -   package-ecosystem: docker
         directory: "/docker/app/php8.0"
@@ -73,7 +73,7 @@ updates:
             prefix: "[SETUP]"
         ignore:
             - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
+              update-types: ["version-update:semver-major", "version-update:semver-minor"]
     # Docker app image.
     -   package-ecosystem: docker
         directory: "/docker/app/php8.1"
@@ -85,7 +85,7 @@ updates:
             prefix: "[SETUP]"
         ignore:
             - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
+              update-types: ["version-update:semver-major", "version-update:semver-minor"]
     # Docker blackfire image.
     -   package-ecosystem: docker
         directory: "/docker/blackfire"
@@ -169,7 +169,7 @@ updates:
             prefix: "[SETUP]"
         ignore:
             - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
+              update-types: ["version-update:semver-major", "version-update:semver-minor"]
     # Docker styleguide image.
     -   package-ecosystem: docker
         directory: "/docker/styleguide/php8.0"
@@ -181,7 +181,7 @@ updates:
             prefix: "[SETUP]"
         ignore:
             - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
+              update-types: ["version-update:semver-major", "version-update:semver-minor"]
     # Docker styleguide image.
     -   package-ecosystem: docker
         directory: "/docker/styleguide/php8.1"
@@ -193,4 +193,4 @@ updates:
             prefix: "[SETUP]"
         ignore:
             - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
+              update-types: ["version-update:semver-major", "version-update:semver-minor"]
