@@ -19,7 +19,7 @@ RUN set -eux; \
 COPY --from=composer:2.2.3 /usr/bin/composer /usr/local/bin/composer
 
 # WP-CLI
-COPY --from=wordpress:cli-2.5.0-php8.0 /usr/local/bin/wp /usr/local/bin/wp
+COPY --from=wordpress:cli-2.6.0-php8.0 /usr/local/bin/wp /usr/local/bin/wp
 
 # MhSendmail
 RUN set -eux; \
