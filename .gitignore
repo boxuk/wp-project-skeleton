@@ -1,6 +1,6 @@
 /vendor/
-/tools/*/vendor
-composer.lock
+/tools/**/vendor
+/tools/**/composer.lock
 
 /wp
 /wp-content/plugins/*

@@ -21,3 +21,15 @@ For example, if you want to use PHP 8.0 you might run something like the followi
 ## Not using docker
 
 If you're not using docker it will use whichever version of PHP is installed on your system.
+
+## composer.lock issues
+
+We need to use `composer.lock` in the main because we are using composer for plugins. We need
+to ensure plugins are locked to specific versions. We can't trust that always updating plugins will work, we
+generally rely on dependabot to update our plugins, so we can review the changes as part of a PR and
+make a decision whether we want to upgrade or not.
+
+This presents a challenge if we need to change our version of PHP as our `composer.lock` file will be locked
+to the original PHP version we were using. This should be a rare occurrence but if you come across it you can solve
+by either updating each library individually which is causing issues or by doing a blanket `composer update` or by removing the
+lock file and running `composer install`.
