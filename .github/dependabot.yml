@@ -52,7 +52,31 @@ updates:
             prefix: "[DEPS]"
     # Docker app image.
     -   package-ecosystem: docker
-        directory: "/docker/app"
+        directory: "/docker/app/php7.4"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+        ignore:
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
+    # Docker app image.
+    -   package-ecosystem: docker
+        directory: "/docker/app/php8.0"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+        ignore:
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
+    # Docker app image.
+    -   package-ecosystem: docker
+        directory: "/docker/app/php8.1"
         registries: "*"
         schedule:
             interval: daily
@@ -136,7 +160,31 @@ updates:
               update-types: ["version-update:semver-major"]
     # Docker styleguide image.
     -   package-ecosystem: docker
-        directory: "/docker/styleguide"
+        directory: "/docker/styleguide/php7.4"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+        ignore:
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
+    # Docker styleguide image.
+    -   package-ecosystem: docker
+        directory: "/docker/styleguide/php8.0"
+        registries: "*"
+        schedule:
+            interval: daily
+        open-pull-requests-limit: 10
+        commit-message:
+            prefix: "[SETUP]"
+        ignore:
+            - dependency-name: "*"
+              update-types: ["version-update:semver-major"]
+    # Docker styleguide image.
+    -   package-ecosystem: docker
+        directory: "/docker/styleguide/php8.1"
         registries: "*"
         schedule:
             interval: daily
