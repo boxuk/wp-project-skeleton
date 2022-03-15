@@ -2,7 +2,7 @@
 
 ENVIRONMENT="${@:-local}"
 
-docker-compose -f docker-compose.yml run --rm --workdir /src backstop cp config/${ENVIRONMENT}/cookies.json.dist config/${ENVIRONMENT}/cookies.json;
-docker-compose -f docker-compose.yml run --rm --workdir /src backstop cp config/${ENVIRONMENT}/secrets.json.dist config/${ENVIRONMENT}/secrets.json;
+docker-compose --profile visual-regression run --rm --workdir /src backstop cp config/${ENVIRONMENT}/cookies.json.dist config/${ENVIRONMENT}/cookies.json;
+docker-compose --profile visual-regression run --rm --workdir /src backstop cp config/${ENVIRONMENT}/secrets.json.dist config/${ENVIRONMENT}/secrets.json;
 
-docker-compose -f docker-compose.yml run --rm --workdir /src backstop npm install;
+docker-compose --profile visual-regression run --rm --workdir /src backstop npm install;

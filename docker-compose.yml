@@ -98,6 +98,19 @@ services:
             - vr_node_modules:/src/app/node_modules:delegated
         extra_hosts:
             - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx above
+        profiles:
+            - visual-regression
+
+    blackfire:
+        build:
+            context: docker/blackfire
+            dockerfile: Dockerfile
+        env_file:
+            - docker/blackfire/.env
+        ports:
+            - '127.0.0.1:8707:8707'
+        profiles:
+            - profiling
 
 volumes:
     vr_yarn_cache:
