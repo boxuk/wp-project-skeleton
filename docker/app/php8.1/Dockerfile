@@ -2,6 +2,7 @@ FROM php:8.1.4-fpm
 
 ARG USER_ID
 ARG GROUP_ID
+ARG INSTALL_XDEBUG
 
 # Do all apt-get installs on one line so they are installed on the same layer
 RUN set -eux; \
@@ -9,9 +10,9 @@ RUN set -eux; \
     apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev --no-install-recommends; \
     apt-get clean && apt-get autoremove; \
     rm -rf /var/lib/apt/lists/*; \
-    pecl install memcache-8.0; \
+    pecl install memcache-8.0 && docker-php-ext-enable memcache; \
     pecl install imagick && docker-php-ext-enable imagick; \
-    docker-php-ext-enable memcache; \
+    [ "${INSTALL_XDEBUG:-false}" = true ] && pecl install xdebug && docker-php-ext-enable xdebug; \
     docker-php-ext-configure intl; \
     docker-php-ext-install -j"$(nproc)" mysqli opcache zip intl gd
 

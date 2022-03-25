@@ -28,6 +28,7 @@ services:
         volumes:
             - '.:/var/www/html:cached'
         extra_hosts:
+            - host.docker.internal:host-gateway
             - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
         depends_on:
             - database
@@ -35,15 +36,17 @@ services:
     app_xdebug:
         build:
             context: docker/app
-            dockerfile: php${PHP_VERSION:-7.4}/Dockerfile_xdebug
+            dockerfile: php${PHP_VERSION:-7.4}/Dockerfile
             args:
                 USER_ID: ${USER_ID:-0}
                 GROUP_ID: ${GROUP_ID:-0}
+                INSTALL_XDEBUG: true
         env_file:
             - ./docker/app/.env
         volumes:
             - '.:/var/www/html:cached'
         extra_hosts:
+            - host.docker.internal:host-gateway
             - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
         depends_on:
             - database
