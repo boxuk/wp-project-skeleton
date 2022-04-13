@@ -10,8 +10,10 @@ RUN set -eux; \
     apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev --no-install-recommends; \
     apt-get clean && apt-get autoremove; \
     rm -rf /var/lib/apt/lists/*; \
-    pecl install memcache-8.0 && docker-php-ext-enable memcache; \
-    pecl install imagick && docker-php-ext-enable imagick; \
+    pecl install memcache-4.0.5.2; \
+    pecl install imagick; \
+    docker-php-ext-enable memcache; \
+    docker-php-ext-enable imagick; \
     [ "${INSTALL_XDEBUG:-false}" = true ] && pecl install xdebug && docker-php-ext-enable xdebug; \
     docker-php-ext-configure intl; \
     docker-php-ext-install -j"$(nproc)" mysqli opcache zip intl gd

@@ -50,6 +50,7 @@ fi
 
 envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR,\$DOCKER_NETWORK_NAME,\$PHP_VERSION < .env.dist > .env
 envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR < ./docker/app/.env.dist > ./docker/app/.env
+cp ./docker/blackfire/.env.dist ./docker/blackfire/.env
 
 if [ ! -f ./docker/database/.env ]; then
     cp ./docker/database/.env.dist ./docker/database/.env;
