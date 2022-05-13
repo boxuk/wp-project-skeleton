@@ -2723,15 +2723,15 @@
         },
         {
             "name": "wpackagist-plugin/surge",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/surge/",
-                "reference": "tags/1.0.3"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/surge.1.0.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/surge.zip?timestamp=1650357131"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
