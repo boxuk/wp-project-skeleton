@@ -4759,7 +4759,7 @@
         },
         {
             "name": "wp-phpunit/wp-phpunit",
-            "version": "5.9.2",
+            "version": "5.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-phpunit/wp-phpunit.git",
