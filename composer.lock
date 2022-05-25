@@ -823,16 +823,16 @@
         },
         {
             "name": "inpsyde/wp-translation-downloader",
-            "version": "2.1.1",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inpsyde/wp-translation-downloader.git",
-                "reference": "72ab08bd03d621bc7235b0836c325827217b568b"
+                "reference": "5edb344008ea3764fd89848b4c3d3fbff76c2e55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/wp-translation-downloader/zipball/72ab08bd03d621bc7235b0836c325827217b568b",
-                "reference": "72ab08bd03d621bc7235b0836c325827217b568b",
+                "url": "https://api.github.com/repos/inpsyde/wp-translation-downloader/zipball/5edb344008ea3764fd89848b4c3d3fbff76c2e55",
+                "reference": "5edb344008ea3764fd89848b4c3d3fbff76c2e55",
                 "shasum": ""
             },
             "require": {
@@ -871,9 +871,9 @@
             "description": "Composer plugin to download translations from wordpress.org API.",
             "support": {
                 "issues": "https://github.com/inpsyde/wp-translation-downloader/issues",
-                "source": "https://github.com/inpsyde/wp-translation-downloader/tree/2.1.1"
+                "source": "https://github.com/inpsyde/wp-translation-downloader/tree/2.2.1"
             },
-            "time": "2022-05-13T09:34:16+00:00"
+            "time": "2022-05-25T11:24:22+00:00"
         },
         {
             "name": "jamesrwilliams/flagpole",
