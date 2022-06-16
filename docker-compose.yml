@@ -40,7 +40,7 @@ services:
             args:
                 USER_ID: ${USER_ID:-0}
                 GROUP_ID: ${GROUP_ID:-0}
-                INSTALL_XDEBUG: true
+                INSTALL_XDEBUG: 'true'
         env_file:
             - ./docker/app/.env
         volumes:
