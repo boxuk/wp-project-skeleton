@@ -49,7 +49,7 @@
         "inpsyde/wp-translation-downloader": "^2.0",
         "jamesrwilliams/flagpole": "@beta",
         "oomphinc/composer-installers-extender": "^2",
-        "roots/wordpress": "^5",
+        "roots/wordpress": "^6",
         "symfony/config": "^5.0 || ^6.0",
         "symfony/dependency-injection": "^5.0 || ^6.0",
         "symfony/dotenv": "^5.0 || ^6.0",
