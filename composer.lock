@@ -823,31 +823,33 @@
         },
         {
             "name": "inpsyde/wp-translation-downloader",
-            "version": "2.1.1",
+            "version": "2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inpsyde/wp-translation-downloader.git",
-                "reference": "72ab08bd03d621bc7235b0836c325827217b568b"
+                "reference": "2539fd343a5540871f15a9c9b0dd569a759f26b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/wp-translation-downloader/zipball/72ab08bd03d621bc7235b0836c325827217b568b",
-                "reference": "72ab08bd03d621bc7235b0836c325827217b568b",
+                "url": "https://api.github.com/repos/inpsyde/wp-translation-downloader/zipball/2539fd343a5540871f15a9c9b0dd569a759f26b0",
+                "reference": "2539fd343a5540871f15a9c9b0dd569a759f26b0",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0 || ^2.0",
+                "composer-plugin-api": "^2.0",
                 "composer/installers": "^1.0 || ^2.0",
                 "ext-json": "*",
                 "php": ">=7.2"
             },
             "require-dev": {
-                "behat/behat": "^3.7",
-                "brain/monkey": "^2",
-                "composer/composer": "^2.0",
+                "behat/behat": "^v3.10.0",
+                "brain/monkey": "^2.6.1",
+                "composer/composer": "^2.3.7",
                 "inpsyde/php-coding-standards": "^1.0.0",
-                "mikey179/vfsstream": "^1.6",
-                "phpunit/phpunit": "^8"
+                "mikey179/vfsstream": "^v1.6.10",
+                "ondram/ci-detector": "^4.1.0",
+                "phpunit/phpunit": "^8.5.26",
+                "vimeo/psalm": "^4.23.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -871,9 +873,9 @@
             "description": "Composer plugin to download translations from wordpress.org API.",
             "support": {
                 "issues": "https://github.com/inpsyde/wp-translation-downloader/issues",
-                "source": "https://github.com/inpsyde/wp-translation-downloader/tree/2.1.1"
+                "source": "https://github.com/inpsyde/wp-translation-downloader/tree/2.3"
             },
-            "time": "2022-05-13T09:34:16+00:00"
+            "time": "2022-06-22T07:49:21+00:00"
         },
         {
             "name": "jamesrwilliams/flagpole",
