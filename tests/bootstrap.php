@@ -8,7 +8,8 @@ $root_dir = dirname( __DIR__, 1 );
 require_once $root_dir . '/wp-content/vendor/autoload.php';
 
 if ( is_readable( __DIR__ . '/.env' ) ) {
-	$dotenv = new Dotenv( true );
+	$dotenv = new Dotenv();
+	$dotenv->usePutenv( true );
 	$dotenv->load( __DIR__ . '/.env' );
 }
 
