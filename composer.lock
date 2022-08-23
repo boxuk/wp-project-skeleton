@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbba699d5a4c4d5d3dc929ec0d1ee307",
+    "content-hash": "ffc7839ebb1c83c736f21fe9b59b38d0",
     "packages": [
         {
             "name": "boxuk/wp-hook-attributes",
@@ -1383,53 +1383,6 @@
             "time": "2021-06-04T09:56:25+00:00"
         },
         {
-            "name": "roots/wordpress",
-            "version": "6.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/roots/wordpress.git",
-                "reference": "41ff6e23ccbc3a1691406d69fe8c211a225514e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/roots/wordpress/zipball/41ff6e23ccbc3a1691406d69fe8c211a225514e2",
-                "reference": "41ff6e23ccbc3a1691406d69fe8c211a225514e2",
-                "shasum": ""
-            },
-            "require": {
-                "roots/wordpress-core-installer": "^1.0.0",
-                "roots/wordpress-no-content": "self.version"
-            },
-            "type": "metapackage",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT",
-                "GPL-2.0-or-later"
-            ],
-            "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.",
-            "homepage": "https://wordpress.org/",
-            "keywords": [
-                "blog",
-                "cms",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/roots/wordpress/issues",
-                "source": "https://github.com/roots/wordpress/tree/6.0.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/roots",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/rootsdev",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2022-06-01T16:54:37+00:00"
-        },
-        {
             "name": "roots/wordpress-core-installer",
             "version": "1.100.0",
             "source": {
@@ -1501,7 +1454,7 @@
             "time": "2020-08-20T00:27:30+00:00"
         },
         {
-            "name": "roots/wordpress-no-content",
+            "name": "roots/wordpress-full",
             "version": "6.0.1",
             "source": {
                 "type": "git",
@@ -1510,8 +1463,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/release/wordpress-6.0.1-no-content.zip",
-                "shasum": "bd78fc2bea7f04683218c679f9e6b606eedf23bc"
+                "url": "https://downloads.wordpress.org/release/wordpress-6.0.1.zip",
+                "shasum": "296700fb4d5361e8805a6400b47a7fc668d77d1c"
             },
             "require": {
                 "php": ">= 5.6.20"
@@ -1568,7 +1521,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2022-07-12T16:30:11+00:00"
+            "time": "2022-07-12T16:30:05+00:00"
         },
         {
             "name": "symfony/config",
@@ -4943,5 +4896,5 @@
         "ext-mbstring": "1",
         "ext-intl": "1"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
