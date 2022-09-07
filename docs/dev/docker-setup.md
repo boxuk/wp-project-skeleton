@@ -55,7 +55,13 @@ for development environments.
 
 > This only needs to be called once to build the image(s)
 
-* `docker-compose up`
+* Use `docker-compose up` to build the containers. You'll only need to use this the first time.
+
+* Use `docker-compose start` to start the container
+
+* Use `docker-compose stop` to stop the container (without removing the volumes).
+
+> Using docker-compose down stops containers but also removes them. This will lead to loss of data (e.g. your database).
 
 That's it! You should now be able to browse to `https://$PROJECT_NAME.local` (or whatever you set) and view the site. Note, at time of writing you will need to go through the install script to have WordPress set up.
 
