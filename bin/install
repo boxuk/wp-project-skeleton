@@ -117,7 +117,7 @@ bin/docker/wp dictator impose site-state.yml;
 
 echo 'Setting up fixtures...'
 
-bin/docker/wp package install hellonico/wp-cli-fixtures;
+bin/docker/wp package install boxuk/wp-cli-fixtures;
 bin/docker/wp fixtures load;
 
 echo 'Flushing cache...'
