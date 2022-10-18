@@ -1455,22 +1455,22 @@
         },
         {
             "name": "roots/wordpress-full",
-            "version": "6.0.2",
+            "version": "6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress.git",
-                "reference": "6.0.2"
+                "reference": "6.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/release/wordpress-6.0.2.zip",
-                "shasum": "9dff179d1243fe7535d8254e8d12b1af366e906e"
+                "url": "https://downloads.wordpress.org/release/wordpress-6.0.3.zip",
+                "shasum": "c11e68191432f08e0522d889a493336a0f131dfd"
             },
             "require": {
                 "php": ">= 5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "6.0.2"
+                "wordpress/core-implementation": "6.0.3"
             },
             "suggest": {
                 "ext-curl": "Performs remote request operations.",
@@ -1521,7 +1521,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2022-08-30T17:52:01+00:00"
+            "time": "2022-10-17T22:55:32+00:00"
         },
         {
             "name": "symfony/config",
