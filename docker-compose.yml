@@ -19,7 +19,7 @@ services:
     app:
         build:
             context: docker/app
-            dockerfile: php${PHP_VERSION:-7.4}/Dockerfile
+            dockerfile: php${PHP_VERSION:-8.0}/Dockerfile
             args:
                 USER_ID: ${USER_ID:-0}
                 GROUP_ID: ${GROUP_ID:-0}
@@ -36,7 +36,7 @@ services:
     app_xdebug:
         build:
             context: docker/app
-            dockerfile: php${PHP_VERSION:-7.4}/Dockerfile
+            dockerfile: php${PHP_VERSION:-8.0}/Dockerfile
             args:
                 USER_ID: ${USER_ID:-0}
                 GROUP_ID: ${GROUP_ID:-0}

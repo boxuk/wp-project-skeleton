@@ -2,8 +2,7 @@
 
 The skeleton supports the following PHP versions:
 
-* 7.4 (default)
-* 8.0
+* 8.0 (default)
 * 8.1*
 
 > *Please note with 8.1 you will likely see a bunch of deprecation notices, [please read this post for more information](https://make.wordpress.org/core/2022/01/10/wordpress-5-9-and-php-8-0-8-1/).
