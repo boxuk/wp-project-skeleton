@@ -5,7 +5,7 @@ set -e
 
 # Usage: bin/vip-install [project_name] [styleguide_dir] [docker_network_name] [PHP_VERSION]
 #
-# Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker, php_version = 7.4
+# Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker, php_version = 8.0
 
 GREEN='\033[0;32m'
 BG_GREEN='\033[42m'
@@ -61,8 +61,8 @@ if [ $4 ]; then
     echo -e "Using ${GREEN}${4}${NC} for PHP_VERSION";
     export PHP_VERSION="${4}";
 else
-    echo -e "Using ${GREEN}7.4${NC} for PHP_VERSION";
-    export PHP_VERSION="7.4";
+    echo -e "Using ${GREEN}8.0${NC} for PHP_VERSION";
+    export PHP_VERSION="8.0";
 fi
 
 envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR,\$DOCKER_NETWORK_NAME,\$PHP_VERSION < .env.dist > .env

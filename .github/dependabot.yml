@@ -52,18 +52,6 @@ updates:
             prefix: "[DEPS]"
     # Docker app image.
     -   package-ecosystem: docker
-        directory: "/docker/app/php7.4"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]
-    # Docker app image.
-    -   package-ecosystem: docker
         directory: "/docker/app/php8.0"
         registries: "*"
         schedule:
@@ -158,18 +146,6 @@ updates:
         ignore:
             - dependency-name: "*"
               update-types: ["version-update:semver-major"]
-    # Docker styleguide image.
-    -   package-ecosystem: docker
-        directory: "/docker/styleguide/php7.4"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]
     # Docker styleguide image.
     -   package-ecosystem: docker
         directory: "/docker/styleguide/php8.0"

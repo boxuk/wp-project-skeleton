@@ -5,7 +5,7 @@ services:
     styleguide:
         build:
             context: docker/styleguide
-            dockerfile: php${PHP_VERSION:-7.4}/Dockerfile
+            dockerfile: php${PHP_VERSION:-8.0}/Dockerfile
             args:
                 STYLEGUIDE_DIR: ${STYLEGUIDE_DIR}
         volumes:

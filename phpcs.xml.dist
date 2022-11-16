@@ -4,9 +4,11 @@
 
 	<file>.</file>
 
-	<config name="testVersion" value="7.4" />
+	<config name="testVersion" value="8.0" />
 	<config name="minimum_supported_wp_version" value="5.3" />
 	<config name="severity" value="1" />
+	<config name="text_domain" value="wp-project-skeleton" /> <!-- Value required for 8.1 support -->
+	<config name="prefixes" value="" /> <!-- Value required for 8.1 support -->
 
 	<!-- How to scan -->
 	<arg value="sp"/> <!-- Show sniff and progress -->
@@ -55,7 +57,7 @@
 	<exclude-pattern>object-cache\.php</exclude-pattern>
 	<exclude-pattern>advanced-cache\.php</exclude-pattern>
 	<exclude-pattern>mu-require\.php</exclude-pattern>
-    <exclude-pattern>db\.php</exclude-pattern>
+	<exclude-pattern>db\.php</exclude-pattern>
 
 	<!-- Exclude any forced mu-plugins -->
 	<exclude-pattern>*/mu-plugins/flagpole/*</exclude-pattern>
