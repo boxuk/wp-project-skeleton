@@ -63,23 +63,25 @@ add_action(
 );
 
 /**
+ *  Register feature flags if we have a flags.yaml set.
+ */ 
+$plugin_active = boxuk_container()->has( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
+if ( $plugin_active === true && file_exists( __DIR__ . '/000-boxuk/flags.yaml' ) ) {
+	/**
+	 * IDE hint.
+	 *
+	 * @var FeatureFlagManager $feature_flag_manager
+	 */
+	$feature_flag_manager = boxuk_container()->get( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
+	$feature_flag_manager->register_from_yaml_file( __DIR__ . '/000-boxuk/flags.yaml' );
+}
+
+/**
  * Things to do by default once all plugins have been loaded.
  */
 add_action(
 	'plugins_loaded',
 	static function() {
-		// Register feature flags if we have a flags.yaml set.
-		$plugin_active = boxuk_container()->has( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
-		if ( $plugin_active === true && file_exists( __DIR__ . '/000-boxuk/flags.yaml' ) ) {
-			/**
-			 * IDE hint.
-			 *
-			 * @var FeatureFlagManager $feature_flag_manager
-			 */
-			$feature_flag_manager = boxuk_container()->get( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
-			$feature_flag_manager->register_from_yaml_file( __DIR__ . '/000-boxuk/flags.yaml' );
-		}
-
 		$locale = get_locale();
 		load_textdomain( PROJECT_NAME, WP_LANG_DIR . '/' . PROJECT_NAME . '-' . $locale . '.mo' );
 	}
