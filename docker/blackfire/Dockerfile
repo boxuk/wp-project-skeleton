@@ -1,1 +1,1 @@
-FROM blackfire/blackfire:2.14.0
+FROM blackfire/blackfire:2.14.2
