@@ -9,7 +9,7 @@
     "author": "",
     "license": "GPL-2.0-or-later",
     "dependencies": {
-        "backstopjs": "^6.2.0"
+        "backstopjs": "^6.2.1"
     },
     "overrides": {
         "backstopjs": {
