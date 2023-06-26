@@ -1,4 +1,4 @@
-FROM php:8.1.19-fpm
+FROM php:8.1.20-fpm
 
 ARG STYLEGUIDE_DIR
 
