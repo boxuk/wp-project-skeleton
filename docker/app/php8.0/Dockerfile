@@ -7,7 +7,7 @@ ARG INSTALL_XDEBUG
 # Do all apt-get installs on one line so they are installed on the same layer
 RUN set -eux; \
     apt-get -y update; \
-    apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev --no-install-recommends; \
+    apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev msmtp --no-install-recommends; \
     apt-get clean && apt-get autoremove; \
     rm -rf /var/lib/apt/lists/*; \
     pecl install memcache-8.0 && docker-php-ext-enable memcache; \
@@ -26,6 +26,12 @@ COPY --from=wordpress:cli-2.6.0-php8.0 /usr/local/bin/wp /usr/local/bin/wp
 RUN set -eux; \
     curl -sSLo /usr/bin/mhsendmail https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64; \
     chmod ugo+x /usr/bin/mhsendmail
+
+# Configure MSMTP
+COPY ./msmtp-config/msmtprc /etc/msmtprc
+RUN set -eux; \
+    chmod 600 /etc/msmtprc; \
+    chown www-data:www-data /etc/msmtprc
 
 # Blackfire
 # https://blackfire.io/docs/integrations/docker/php-docker
