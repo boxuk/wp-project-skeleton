@@ -1,14 +1,24 @@
 language: php
 
+os: linux
 dist: focal
 
 php:
-    - 8.0
-    - 8.1.0 # See https://travis-ci.community/t/php-8-1-support/12439/16
+    # PHP 8.3 not currently supported by Travis.
+    # Available versions: https://docs.travis-ci.com/user/languages/php/#php-versions
+    - 8.2.9
+    - 8.1.9
 
-matrix:
+# Running PHP 8.2 on Travis requires the 'libonig5' package to be included.
+# See: https://chrisguitarguy.com/2023/01/23/using-php-8-2-on-travisci/
+addons:
+  apt:
+    packages:
+      - libonig5
+
+jobs:
     allow_failures:
-        - php: 8.1.0
+        - php: 8.1.9
     fast_finish: true
 
 branches:
@@ -20,7 +30,13 @@ services:
 
 cache:
     directories:
+        - ".cache/phpstan"
+        - "/home/travis/.cache/phpcs"
         - "/home/travis/.composer/cache"
+        - "node_modules"
+        - "wp-content/client-mu-plugins/vendor"
+        - "styleguide/vendor"
+        - "styleguide/node_modules"
         - "tests/tmp"
 
 before_install:
@@ -40,5 +56,6 @@ script:
     - composer check-platform-reqs --no-dev
     - ./tools/php_codesniffer/vendor/bin/phpcs . --severity=1
     - ./bin/php-security-checker
+    - ./bin/phpstan --memory-limit=4G --configuration=phpstan.neon.dist
     - export WP_MULTISITE=0; ./bin/phpunit --exclude-group=ms-required
     - export WP_MULTISITE=1; ./bin/phpunit --exclude-group=ms-excluded

@@ -21,7 +21,7 @@ bin/install [project_name] [styleguide_dir] [docker_network_name] [php_version]
 # project_name will default to boxuk-wp-skeleton if not provided.
 # only include a stylguide_dir when including a styleguide - do not prepend the styleguide_dir with . or ./
 # docker_network_name will default to boxuk-docker, if you wish to rename without supplying a styleguide_dir pass an empty string as the 2nd argument, e.g. `bin/install my-project '' my-network`
-# php_version allows you set which PHP version you wish to run, e.g. 8.0, 8.1.
+# php_version allows you set which PHP version you wish to run, e.g. 8.2, 8.3.
 ```
 
 > The docker network is required to ensure the loopback works with the expected IP address.

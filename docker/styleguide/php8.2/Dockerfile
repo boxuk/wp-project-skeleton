@@ -1,7 +1,5 @@
-FROM php:8.1.27-fpm
+FROM php:8.2.13-fpm
 
-ARG USER_ID
-ARG GROUP_ID
 ARG STYLEGUIDE_DIR
 
 RUN set -eux; \
@@ -14,17 +12,7 @@ RUN set -eux; \
     docker-php-ext-enable apcu
 
 # Composer
-COPY --from=composer:2.2.3 /usr/bin/composer /usr/local/bin/composer
-
-# Set groups and user when on linux
-RUN set -eux; \
-    if [ "${USER_ID:-0}" -ne 0 ] && [ "${GROUP_ID:-0}" -ne 0 ]; then \
-      userdel -f www-data; \
-      if getent group www-data ; then groupdel www-data; fi; \
-      groupadd -g "${GROUP_ID}" www-data; \
-      useradd -l -u "${USER_ID}" -g www-data www-data; \
-      install -d -m 0755 -o www-data -g www-data /home/www-data; \
-    fi
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 COPY ./php-config/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY ./php-config/php.ini /usr/local/etc/php/conf.d/zzz_styleguide.ini
@@ -32,7 +20,6 @@ COPY ./php-config/php.ini /usr/local/etc/php/conf.d/zzz_styleguide.ini
 WORKDIR /var/www/html/${STYLEGUIDE_DIR}
 
 RUN mkdir -p /var/www/html/${STYLEGUIDE_DIR}/var; \
-    mkdir -p /var/www/html/${STYLEGUIDE_DIR}/vendor; \
     chown -R www-data:www-data /var/www
 
 EXPOSE 9000

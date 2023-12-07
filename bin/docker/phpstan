@@ -1,0 +1,4 @@
+
+#!/usr/bin/env bash
+
+docker-compose exec --user www-data app ./bin/phpstan "$@"

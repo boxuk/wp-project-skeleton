@@ -4,7 +4,7 @@
 
 	<file>.</file>
 
-	<config name="testVersion" value="8.0" />
+	<config name="testVersion" value="8.2" />
 	<config name="minimum_supported_wp_version" value="5.3" />
 	<config name="severity" value="1" />
 	<config name="text_domain" value="wp-project-skeleton" /> <!-- Value required for 8.1 support -->

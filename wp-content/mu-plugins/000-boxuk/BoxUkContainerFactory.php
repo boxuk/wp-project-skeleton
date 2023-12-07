@@ -11,7 +11,7 @@ declare( strict_types=1 );
 /**
  * BoxUkContainerFactory class.
  */
-class BoxUkContainerFactory {
+final class BoxUkContainerFactory {
 	/**
 	 * BoxUkContainer instance.
 	 *

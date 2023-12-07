@@ -1,9 +1,7 @@
 version: '3.9'
 
 services:
-
     # Build images for each container to allow for dependabot support, see: https://github.com/dependabot/dependabot-core/issues/390
-
     database:
         build:
             context: docker/database
@@ -19,7 +17,7 @@ services:
     app:
         build:
             context: docker/app
-            dockerfile: php${PHP_VERSION:-8.0}/Dockerfile
+            dockerfile: php${PHP_VERSION:-8.2}/Dockerfile
             args:
                 USER_ID: ${USER_ID:-0}
                 GROUP_ID: ${GROUP_ID:-0}
@@ -36,11 +34,12 @@ services:
     app_xdebug:
         build:
             context: docker/app
-            dockerfile: php${PHP_VERSION:-8.0}/Dockerfile
+            dockerfile: php${PHP_VERSION:-8.2}/Dockerfile
             args:
                 USER_ID: ${USER_ID:-0}
                 GROUP_ID: ${GROUP_ID:-0}
                 INSTALL_XDEBUG: 'true'
+                XDEBUG_VERSION: '3.2.2'
         env_file:
             - ./docker/app/.env
         volumes:
@@ -72,7 +71,9 @@ services:
             - app_xdebug
         networks:
             default:
-                ipv4_address: 192.168.35.10
+                aliases:
+                    - ${PROJECT_NAME}.local
+                    - ${PROJECT_NAME}.styleguide.local
 
     mailhog:
         build:

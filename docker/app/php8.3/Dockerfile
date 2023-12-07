@@ -1,4 +1,4 @@
-FROM php:8.1.27-fpm
+FROM php:8.3.0-fpm
 
 ARG USER_ID
 ARG GROUP_ID
@@ -8,7 +8,7 @@ ARG XDEBUG_VERSION
 # Do all apt-get installs on one line so they are installed on the same layer
 RUN set -eux; \
     apt-get -y update; \
-    apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev --no-install-recommends; \
+    apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev msmtp --no-install-recommends; \
     apt-get clean && apt-get autoremove; \
     rm -rf /var/lib/apt/lists/*; \
     pecl install memcache-8.0 && docker-php-ext-enable memcache; \
@@ -21,7 +21,7 @@ RUN set -eux; \
 COPY --from=composer:2.6.5 /usr/bin/composer /usr/local/bin/composer
 
 # WP-CLI - https://hub.docker.com/_/wordpress/tags?page=1&name=cli
-COPY --from=wordpress:cli-2.6.0-php8.1 /usr/local/bin/wp /usr/local/bin/wp
+COPY --from=wordpress:cli-2.9.0-php8.3 /usr/local/bin/wp /usr/local/bin/wp
 
 # MhSendmail
 RUN set -eux; \

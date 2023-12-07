@@ -15,7 +15,6 @@
 
 /wp-content/uploads
 /wp-content/vendor
-/wp-content/db.php
 /wp-content/object-cache.php
 /wp-content/advanced-cache.php
 /wp-content/cache
@@ -53,6 +52,7 @@ debug.log
 /tests/tmp/*
 !/tests/tmp/.gitkeep
 .phpunit.result.cache
+.phpunit.cache/
 
 !docker/database/init.sql
 auth.json

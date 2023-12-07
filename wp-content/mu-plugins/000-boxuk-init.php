@@ -23,7 +23,7 @@ if ( file_exists( WP_CONTENT_DIR . '/vendor/autoload.php' ) ) {
 	require_once WP_CONTENT_DIR . '/vendor/autoload.php';
 }
 
-if ( \defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
+if ( \defined( 'WP_INSTALLING' ) && true === WP_INSTALLING ) {
 	return;
 }
 
@@ -64,7 +64,7 @@ add_action(
 
 /**
  *  Register feature flags if we have a flags.yaml set.
- */ 
+ */
 $plugin_active = boxuk_container()->has( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
 if ( $plugin_active === true && file_exists( __DIR__ . '/000-boxuk/flags.yaml' ) ) {
 	/**
@@ -92,21 +92,4 @@ if ( class_exists( Timber::class ) ) {
 	 * Initialise timber (if using), needed predominantly for the theme but also for the cache commands outside of the theme.
 	 */
 	new Timber();
-}
-
-/**
- * Bootstrap wonolog for project level logging.
- */
-if ( defined( 'Inpsyde\Wonolog\LOG' ) ) {
-	$default_handler_service_id = boxuk_container()->getParameter( 'wonolog_default_handler_service_id' );
-	/**
-	 * IDE Hint.
-	 *
-	 * @var HandlerInterface $default_handler
-	 */
-	$default_handler = $default_handler_service_id !== null && boxuk_container()->has(
-		$default_handler_service_id
-	) ? boxuk_container()->get( $default_handler_service_id ) : null;
-
-	bootstrap_wonolog( $default_handler );
 }
