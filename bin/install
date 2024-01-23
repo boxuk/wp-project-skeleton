@@ -99,12 +99,25 @@ if [ ! -z "${STYLEGUIDE_DIR}" ]; then
     bin/docker/styleguide/yarn encore dev;
 fi
 
+# mu-plugins can interfere with the initial installation process, rewrite the directory to disable them temporarily
+mv wp-content/mu-plugins wp-content/mu-plugins-disabled
+
+# Add a trap to always move the directory back to it's original state, this covers:
+# - Normal termination (EXIT)
+# - Interrupted (INT)
+# - Killed (TERM)
+# - Hangup (HUP)
+trap '[ -d wp-content/mu-plugins-disabled ] && mv wp-content/mu-plugins-disabled wp-content/mu-plugins' EXIT INT TERM HUP
+
 echo 'Installing WordPress...';
 
 until bin/docker/wp core install --url="${WP_HOME}" --title="${PROJECT_NAME}" --admin_user=admin --admin_email=boxuk@example.com --skip-email;
 do
     echo 'Waiting for the database...';
 done
+
+# Manually move the directory back after the installation
+mv wp-content/mu-plugins-disabled wp-content/mu-plugins
 
 echo 'Emptying site...';
 
