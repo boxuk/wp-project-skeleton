@@ -7,6 +7,6 @@ services:
     Monolog\Handler\NewRelicHandler:
         public: true
 
-    BoxUk\Plugins\Base\Wonolog\Handler\QueryMonitorHandler:
-        public: true
+    # BoxUk\Plugins\Base\Wonolog\Handler\QueryMonitorHandler:
+    #     public: true
 

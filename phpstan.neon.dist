@@ -1,0 +1,26 @@
+includes:
+    - wp-content/vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+  level: 9
+  bootstrapFiles:
+    - phpstan-bootstrap.php
+    - wp-content/vendor/autoload.php
+  scanDirectories:
+    - wp-content
+  paths:
+    - wp-content/mu-plugins
+  excludePaths:
+    analyseAndScan:
+      - 'wp-content/mu-plugins/*/tests/*.php'
+      - 'wp-content/mu-plugins/*/Tests/*.php'
+    analyse:
+      # Plugins that should be analysed in their own repos
+      - wp-content/mu-plugins/000-boxuk
+      - wp-content/mu-plugins/boxuk-base-wp-plugin
+      - wp-content/mu-plugins/flagpole
+      - wp-content/mu-plugins/wp-hook-attributes
+      # Vendor folder
+      - wp-content/mu-plugins/vendor
+  ignoreErrors:
+    - '#^Parameter \#[1-9] \$[a-zA-Z0-9_]+ of method [a-zA-Z0-9\\\:_]+\(\) expects [A-Za-z\\_]+, PHPUnit\\Framework\\MockObject\\MockObject given\.#' # Mocked objects
+  reportUnmatchedIgnoredErrors: false

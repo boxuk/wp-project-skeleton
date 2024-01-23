@@ -36,7 +36,7 @@ class QueryMonitorHandler extends AbstractProcessingHandler {
 	 *
 	 * @return void
 	 */
-	protected function write( array $record ) {
+	protected function write( array $record ): void {
 		if ( empty( $record['message'] ) || ! is_string( $record['message'] ) ) {
 			return;
 		}

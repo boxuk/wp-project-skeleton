@@ -3,50 +3,59 @@
 # Exit when any command fails
 set -e
 
-# Usage: bin/install [project_name] [styleguide_dir] [docker_network_name] [php_version]
+# Usage: bin/install --project=[project_name] --styleguide=[styleguide_dir] --network=[docker_network_name] --php=[php_version]
 #
-# Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker, php_version = 8.0
+# Defaults: project_name = boxuk-wp-skeleton, styleguide_dir = empty, docker_network_name = boxuk-docker, php_version = 8.2
+# All arguments are optional.
+
+# Set defaults
+export PROJECT_NAME="boxuk-wp-skeleton"
+export STYLEGUIDE_DIR=""
+export DOCKER_NETWORK_NAME="boxuk-docker"
+export PHP_VERSION="8.2"
 
 GREEN='\033[0;32m'
 BG_GREEN='\033[42m'
 BOLD='\033[1m'
 NC='\033[0m' # No Color
 
+# Thanks to: https://stackoverflow.com/a/14203146
+for i in "$@"; do
+  case $i in
+    --project=*)
+      export PROJECT_NAME="${i#*=}"
+      shift # past argument=value
+      ;;
+    --styleguide=*)
+      export STYLEGUIDE_DIR="${i#*=}"
+      shift # past argument=value
+      ;;
+    --network=*)
+      export DOCKER_NETWORK_NAME="${i#*=}"
+      shift # past argument=value
+      ;;
+    --php=*)
+      export PHP_VERSION="${i#*=}"
+      shift # past argument=value
+      ;;
+    -*|--*)
+      echo "Unknown option $i"
+      exit 1
+      ;;
+    *)
+      ;;
+  esac
+done
+
 # Remove any existing styleguide nginx conf if it exists
 rm -f docker/nginx/conf/styleguide.conf
 
 echo 'Setting up .env vars...';
 
-if [ $1 ]; then
-    echo -e "Using ${GREEN}${1}${NC} for PROJECT_NAME";
-    export PROJECT_NAME="${1}";
-else
-    echo -e "Using ${GREEN}boxuk-wp-skeleton${NC} for PROJECT_NAME";
-    export PROJECT_NAME="boxuk-wp-skeleton";
-fi
-
-if [ $2 ]; then
-    echo -e "Using ${GREEN}${2}${NC} for STYLEGUIDE_DIR";
-    export STYLEGUIDE_DIR="${2}";
-else
-    export STYLEGUIDE_DIR="";
-fi
-
-if [ $3 ]; then
-    echo -e "Using ${GREEN}${3}${NC} for DOCKER_NETWORK_NAME";
-    export DOCKER_NETWORK_NAME="${3}";
-else
-    echo -e "Using ${GREEN}boxuk-docker${NC} for DOCKER_NETWORK_NAME";
-    export DOCKER_NETWORK_NAME="boxuk-docker";
-fi
-
-if [ $4 ]; then
-    echo -e "Using ${GREEN}${4}${NC} for PHP_VERSION";
-    export PHP_VERSION="${4}";
-else
-    echo -e "Using ${GREEN}8.0${NC} for PHP_VERSION";
-    export PHP_VERSION="8.0";
-fi
+echo -e "Using ${GREEN}${PROJECT_NAME}${NC} for PROJECT_NAME";
+echo -e "Using ${GREEN}${STYLEGUIDE_DIR}${NC} for STYLEGUIDE_DIR";
+echo -e "Using ${GREEN}${DOCKER_NETWORK_NAME}${NC} for DOCKER_NETWORK_NAME";
+echo -e "Using ${GREEN}${PHP_VERSION}${NC} for PHP_VERSION";
 
 envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR,\$DOCKER_NETWORK_NAME,\$PHP_VERSION < .env.dist > .env
 envsubst \$PROJECT_NAME,\$STYLEGUIDE_DIR < ./docker/app/.env.dist > ./docker/app/.env

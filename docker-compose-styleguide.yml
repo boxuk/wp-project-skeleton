@@ -5,8 +5,10 @@ services:
     styleguide:
         build:
             context: docker/styleguide
-            dockerfile: php${PHP_VERSION:-8.0}/Dockerfile
+            dockerfile: php${PHP_VERSION:-8.1}/Dockerfile
             args:
+                USER_ID: ${USER_ID:-0}
+                GROUP_ID: ${GROUP_ID:-0}
                 STYLEGUIDE_DIR: ${STYLEGUIDE_DIR}
         volumes:
             - './${STYLEGUIDE_DIR}:/var/www/html/${STYLEGUIDE_DIR}:cached'
@@ -14,7 +16,6 @@ services:
             - './${STYLEGUIDE_DIR}/public/assets:/var/www/html/${STYLEGUIDE_DIR}/public/assets:cached'
             - './${STYLEGUIDE_DIR}/system/library/blocks:/var/www/html/${STYLEGUIDE_DIR}/system/library/blocks:cached'
             - 'styleguide_var:/var/www/html/${STYLEGUIDE_DIR}/var:delegated'
-
     nodejs:
         build:
             context: docker/node
@@ -35,12 +36,8 @@ services:
             - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx/conf.d/conf
             - STYLEGUIDE_DIR=${STYLEGUIDE_DIR}
         depends_on:
-            - app
-            - app_xdebug
             - styleguide
         links:
-            - app
-            - app_xdebug
             - styleguide
 
 volumes:

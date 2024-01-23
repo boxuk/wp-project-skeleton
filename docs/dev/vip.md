@@ -53,9 +53,6 @@ Swap references `mu-plugins` with `client-mu-plugins` in the following files:
 
 We set the vendor directory as a volume in docker so we can set it to `delegated` due to it predominantly being written too by the container. When on VIP this is  likely to differ from `wp-content/vendor` to something more like `wp-content/client-mu-plugins/vendor` so this should be updated accordingly within `docker-compose.yml`.
 
-## Deactivate plugins that already come with VIP
-`bin/docker/wp plugin deactivate advanced-caching`
-
 ## If using Timber, configure Timber appropriately for VIP
 
 As per the [Timber documentation](https://github.com/timber/timber/blob/75bb47223e32b787fd74e92f692f9fc34dec7e74/docs/guides/hosts-servers.md#wordpress-vip), Timber caching and file writes must be disabled:
