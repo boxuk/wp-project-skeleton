@@ -1,4 +1,4 @@
-FROM php:8.1.27-fpm
+FROM php:8.1.28-fpm
 
 ARG USER_ID
 ARG GROUP_ID
