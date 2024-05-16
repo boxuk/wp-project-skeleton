@@ -1,0 +1,46 @@
+name: PHP Tests
+
+on:
+    pull_request:
+
+env:
+    fail-fast: true
+
+jobs:
+  test:
+    name: PHP Tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: 8.2
+            required: 'required'
+          - php: 8.3
+            required: 'required'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: intl, zip, pcov
+          coverage: pcov
+      - name: Setup dependencies
+        run: composer install
+        continue-on-error: ${{ matrix.required == 'optional' }}
+      - name: Run PHPCS
+        run: composer phpcs
+        continue-on-error: ${{ matrix.required == 'optional' }}
+      - name: Run PHPStan
+        run: composer phpstan
+        continue-on-error: ${{ matrix.required == 'optional' }}
+      - name: Run Security Checks
+        uses: symfonycorp/security-checker-action@v5
+        continue-on-error: ${{ matrix.required == 'optional' }}
+      - name: Run PHPUnit
+        run: composer phpunit
+        continue-on-error: ${{ matrix.required == 'optional' }}

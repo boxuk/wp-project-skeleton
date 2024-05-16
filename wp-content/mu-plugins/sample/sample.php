@@ -21,7 +21,7 @@ $sample_text = $sample->get_sample();
 // As we're logging in Query Monitor we need to make sure it's been loaded before we can log.
 add_action(
 	'plugins_loaded',
-	static function() use ( $sample_text ) {
+	static function () use ( $sample_text ) {
 		if ( flagpole_flag_enabled( 'log_sample_text' ) ) {
 			do_action( 'qm/info', $sample_text . ' if feature enabled.' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 		}

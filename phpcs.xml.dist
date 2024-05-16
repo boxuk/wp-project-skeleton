@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <ruleset name="Box UK WordPress project">
 	<description>A custom set of rules to check for a Box UK WordPress project</description>
+    <file>./wp-content/</file>
 
-	<file>.</file>
+	<config name="text_domain" value="wp-project-skeleton" /> <!-- Set the text domain for the project -->
+	<config name="testVersion" value="8.2" /> <!-- Set the PHP version to test against -->
+	<config name="minimum_supported_wp_version" value="6.4" /> <!-- Set the minimum supported WordPress version -->
+	<config name="prefixes" value="" /> <!-- Set the prefixes for the project -->
 
-	<config name="testVersion" value="8.2" />
-	<config name="minimum_supported_wp_version" value="5.3" />
-	<config name="severity" value="1" />
-	<config name="text_domain" value="wp-project-skeleton" /> <!-- Value required for 8.1 support -->
-	<config name="prefixes" value="" /> <!-- Value required for 8.1 support -->
-
-	<!-- How to scan -->
-	<arg value="sp"/> <!-- Show sniff and progress -->
-	<arg name="severity" value="1" /> <!-- Set severity argument -->
-	<arg name="colors"/> <!-- Show results with colors. Disable if working on Windows -->
-	<arg name="parallel" value="8"/> <!-- Enables parallel processing when available for faster results -->
-	<arg name="extensions" value="php,js"/> <!-- Limit to PHP and JS files -->
+    <!-- Let PHPCS know our custom capabilities. -->
+	<rule ref="WordPress.WP.Capabilities">
+		<properties>
+			<property name="custom_capabilities" type="array">
+				<!-- <element value="custom_capability" /> -->
+			</property>
+		</properties>
+	</rule>
 
 	<!-- EXCLUDED FILES AND FOLDERS -->
 
@@ -33,6 +33,8 @@
 	<exclude-pattern>*/plugins/*</exclude-pattern>
 	<exclude-pattern>*/premium-plugins/*</exclude-pattern>
 	<exclude-pattern>*/patched-plugins/*</exclude-pattern>
+
+    <exclude-pattern>*.asset.php</exclude-pattern>
 
 	<exclude-pattern>*/uploads/*</exclude-pattern>
 
@@ -58,6 +60,13 @@
 	<exclude-pattern>advanced-cache\.php</exclude-pattern>
 	<exclude-pattern>mu-require\.php</exclude-pattern>
 	<exclude-pattern>db\.php</exclude-pattern>
+
+	<config name="severity" value="1" />
+	<arg value="sp"/> <!-- Show sniff and progress -->
+	<arg name="severity" value="1" /> <!-- Set severity argument -->
+	<arg name="colors"/> <!-- Show results with colors. Disable if working on Windows -->
+	<arg name="parallel" value="8"/> <!-- Enables parallel processing when available for faster results -->
+	<arg name="extensions" value="php"/> <!-- Limit to PHP and JS files -->
 
 	<!-- Exclude any forced mu-plugins -->
 	<exclude-pattern>*/mu-plugins/flagpole/*</exclude-pattern>
@@ -92,16 +101,14 @@
 		<exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
 		<exclude name="PSR2.Namespaces.NamespaceDeclaration" />
 		<exclude name="WordPress.PHP.DisallowShortTernary.Found" />
-		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+        <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
 	</rule>
 
-	<!-- Use a set of modern (PHP >7) linting guidelines. -->
-	<rule ref="NeutronStandard">
-		<exclude name="NeutronStandard.Constants.DisallowDefine.Define" />
-		<exclude name="NeutronStandard.Functions.LongFunction.LongFunction" />
-		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace" />
-	</rule>
+
 
 	<!-- Let's also check that everything is properly documented. -->
 	<rule ref="WordPress-Docs" />
+
+    <!-- And ensure there's a new-line at the end of every file -->
+	<rule ref="Generic.Files.EndFileNewline" />
 </ruleset>

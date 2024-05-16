@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+bin/docker/composer run phpcs
+bin/docker/composer run phpstan
+bin/docker/composer run phpunit
+bin/docker/npm run test
+bin/docker/npm run lint

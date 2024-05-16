@@ -10,7 +10,6 @@ A WordPress plugin that includes a number of things to help us work on WordPress
 
 We provide the following useful WP-CLI commands:
 
-* `wp i18n-twig make-pot` - which is an extension of `wp i18n` to add twig support to the `make-pot` command (only available if timber and twig is installed)
 * `wp scaffold boxuk-mu-plugin` - which is an extension of `wp scaffold` to add support for scaffolding an opinionated `mu-plugin`
 
 ## DependencyInjection

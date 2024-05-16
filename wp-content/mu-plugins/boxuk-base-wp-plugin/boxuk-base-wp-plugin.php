@@ -14,19 +14,8 @@
 
 declare ( strict_types=1 );
 
-use BoxUk\Plugins\Base\Cli\MakePotTwigCommand;
 use BoxUk\Plugins\Base\Cli\ScaffoldCommand;
 
 if ( wp_get_environment_type() === 'local' && class_exists( 'WP_CLI' ) ) {
 	\WP_CLI::add_command( 'scaffold', ScaffoldCommand::class );
-}
-
-if (
-	class_exists( \WP_CLI\I18n\MakePotCommand::class ) &&
-	class_exists( \Twig\Environment::class ) &&
-	class_exists( \Twig\Extensions\I18nExtension::class ) &&
-	class_exists( \Timber\Loader::class ) &&
-	class_exists( 'WP_CLI' )
-) {
-	\WP_CLI::add_command( 'i18n-twig make-pot', MakePotTwigCommand::class );
 }

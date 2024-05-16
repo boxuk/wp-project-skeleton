@@ -22,14 +22,19 @@ class QueryRepository {
 	 * Please note that child classes MUST redefine this property, otherwise ::instance() will only ever return the
 	 * very first defined instance irrespective of the fact that it may not be the child class.
 	 *
-	 * @var static;
+	 * @var self;
 	 */
 	protected static $instance;
 
 	/**
+	 * QueryRepository constructor.
+	 */
+	final public function __construct() {}
+
+	/**
 	 * Creates new instance and adds fields
 	 *
-	 * @return static
+	 * @return self
 	 */
 	public static function instance(): self {
 		if ( null === static::$instance ) {
@@ -123,7 +128,7 @@ class QueryRepository {
 	): WP_Query {
 		$tag_taxonomies = \array_filter(
 			get_taxonomies(),
-			function( string $name ): bool {
+			function ( string $name ): bool {
 				return \substr( $name, -4 ) === '_tag';
 			}
 		);
@@ -133,9 +138,6 @@ class QueryRepository {
 		$taxonomy_query_args['relation'] = 'or';
 
 		foreach ( $tag_taxonomies as $taxonomy ) {
-			if ( $taxonomy instanceof \WP_Taxonomy ) {
-				$taxonomy = $taxonomy->name;
-			}
 			$post_types[] = \substr( $taxonomy, 0, -4 );
 			$taxonomy_query_args[] = [
 				'taxonomy' => $taxonomy,
@@ -189,7 +191,7 @@ class QueryRepository {
 	): WP_Query {
 		$tag_taxonomies = \array_filter(
 			get_taxonomies(),
-			function( string $name ): bool {
+			function ( string $name ): bool {
 				return \substr( $name, -4 ) === '_tag';
 			}
 		);
@@ -199,9 +201,6 @@ class QueryRepository {
 		$taxonomy_query_args['relation'] = 'or';
 
 		foreach ( $tag_taxonomies as $taxonomy ) {
-			if ( $taxonomy instanceof \WP_Taxonomy ) {
-				$taxonomy = $taxonomy->name;
-			}
 			$post_types[] = \substr( $taxonomy, 0, -4 );
 			$taxonomy_query_args[] = [
 				'taxonomy' => $taxonomy,

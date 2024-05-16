@@ -12,11 +12,7 @@ namespace BoxUk\Mu\Plugins;
 
 use BoxUk\Plugins\Base\Event\HookDispatcher;
 use BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager;
-use Monolog\Handler\HandlerInterface;
 use Symfony\Component\DependencyInjection\Container;
-use Timber\Timber;
-
-use function Inpsyde\Wonolog\bootstrap as bootstrap_wonolog;
 
 // Load composer autoloader from the wp-content dir (if it isn't already loaded).
 if ( file_exists( WP_CONTENT_DIR . '/vendor/autoload.php' ) ) {
@@ -55,9 +51,15 @@ function boxuk_container(): Container {
  */
 add_action(
 	'boxuk_container_initialised',
-	static function() {
+	static function () {
 		if ( boxuk_container()->has( HookDispatcher::class ) ) {
-			boxuk_container()->get( HookDispatcher::class )->dispatch_all();
+			/**
+			 * Hook Dispatcher
+			 *
+			 * @var HookDispatcher $dispatcher
+			 */
+			$dispatcher = boxuk_container()->get( HookDispatcher::class );
+			$dispatcher->dispatch_all();
 		}
 	}
 );
@@ -66,7 +68,7 @@ add_action(
  *  Register feature flags if we have a flags.yaml set.
  */
 $plugin_active = boxuk_container()->has( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
-if ( $plugin_active === true && file_exists( __DIR__ . '/000-boxuk/flags.yaml' ) ) {
+if ( true === $plugin_active && file_exists( __DIR__ . '/000-boxuk/flags.yaml' ) ) {
 	/**
 	 * IDE hint.
 	 *
@@ -81,15 +83,8 @@ if ( $plugin_active === true && file_exists( __DIR__ . '/000-boxuk/flags.yaml' )
  */
 add_action(
 	'plugins_loaded',
-	static function() {
+	static function () {
 		$locale = get_locale();
 		load_textdomain( PROJECT_NAME, WP_LANG_DIR . '/' . PROJECT_NAME . '-' . $locale . '.mo' );
 	}
 );
-
-if ( class_exists( Timber::class ) ) {
-	/**
-	 * Initialise timber (if using), needed predominantly for the theme but also for the cache commands outside of the theme.
-	 */
-	new Timber();
-}

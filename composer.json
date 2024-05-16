@@ -9,6 +9,10 @@
             "url": "https://wpackagist.org"
         },
         {
+            "type": "git",
+            "url": "https://github.com/automattic/wp-memcached"
+        },
+        {
             "options": {
                 "symlink": false
             },
@@ -38,14 +42,14 @@
             "roots/wordpress-core-installer": true,
             "boxuk/wp-muplugin-loader": true,
             "inpsyde/wp-translation-downloader": true,
-            "oomphinc/composer-installers-extender": true
+            "oomphinc/composer-installers-extender": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "require": {
-        "boxuk/wp-hook-attributes": "^0.0.2",
+        "automattic/wp-memcached": "^4.0",
         "boxuk/wp-muplugin-loader": "^2.0",
         "cache/memcache-adapter": "^1.2",
-        "inpsyde/wonolog": "^2.0",
         "inpsyde/wp-translation-downloader": "^2.5",
         "jamesrwilliams/flagpole": "@beta",
         "oomphinc/composer-installers-extender": "^2",
@@ -57,22 +61,16 @@
         "symfony/yaml": "^6.0 || ^7.0",
         "wp-cli/scaffold-command": "^2.0",
         "wp-cli/wp-cli": "^2.9",
-        "wpackagist-plugin/memcached": "^4.0",
-        "wpackagist-plugin/query-monitor": "^3.5",
-        "wpackagist-plugin/surge": "^1.0"
+        "wpackagist-plugin/query-monitor": "^3.5"
     },
     "require-dev": {
+        "10up/wp_mock": "^1.0",
+        "automattic/vipwpcs": "^3.0",
+        "phpcompatibility/phpcompatibility-wp": "*",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9",
         "szepeviktor/phpstan-wordpress": "^1.3",
-        "wp-phpunit/wp-phpunit": "^6.4",
         "yoast/phpunit-polyfills": "^2"
-    },
-    "suggest": {
-        "wp-cli/i18n-command": "Needed for the i18n-twig WP CLI command.",
-        "timber/timber": "Needed for the i18n-twig WP CLI command.",
-        "twig/twig": "Needed for the i18n-twig WP CLI command.",
-        "twig/extensions": "Needed for the i18n-twig WP CLI command."
     },
     "extra": {
         "wordpress-install-dir": "wp",
@@ -108,7 +106,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\SampleWithHookAttributes\\Tests\\": "wp-content/mu-plugins/sample-with-hook-attributes/tests",
             "BoxUk\\Mu\\Plugins\\SampleWithTaggedHooks\\Tests\\": "wp-content/mu-plugins/sample-with-tagged-hooks/tests",
             "BoxUk\\Mu\\Plugins\\Sample\\Tests\\": "wp-content/mu-plugins/sample/tests",
             "BoxUk\\Plugins\\Base\\Tests\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/tests"
@@ -116,24 +113,16 @@
     },
     "autoload": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\SampleWithHookAttributes\\": "wp-content/mu-plugins/sample-with-hook-attributes/src",
             "BoxUk\\Mu\\Plugins\\SampleWithTaggedHooks\\": "wp-content/mu-plugins/sample-with-tagged-hooks/src",
             "BoxUk\\Mu\\Plugins\\Sample\\": "wp-content/mu-plugins/sample/src",
             "BoxUk\\Plugins\\Base\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/src"
         }
     },
     "scripts": {
-        "install-tools": [
-            "@composer install --working-dir=tools/monorepo-builder",
-            "@composer install --working-dir=tools/php_codesniffer"
-        ],
-        "update-tools": [
-            "@composer update --working-dir=tools/monorepo-builder",
-            "@composer update --working-dir=tools/php_codesniffer"
-        ],
-        "phpcs": [
-            "tools/php_codesniffer/vendor/bin/phpcs"
-        ]
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "phpunit": "phpunit --coverage-html ./coverage/phpunit"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

@@ -58,7 +58,7 @@ class FeatureFlagManager {
 	 * @param string $filename Filename of the yaml to use.
 	 */
 	public function register_from_yaml_file( string $filename ): void {
-		$feature_flags = $this->yaml_parser->parseFile( $filename );
+		$feature_flags = (array) $this->yaml_parser->parseFile( $filename );
 		$this->provider->register_flags( $feature_flags );
 	}
 

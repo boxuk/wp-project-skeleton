@@ -24,10 +24,6 @@ services:
             - '@symfony.yaml_parser'
             - '@base_plugin.feature_flag_flagpole_provider'
 
-    base_plugin.enable_gutenberg:
-        class: BoxUk\Plugins\Base\Gutenberg\EnableGutenberg
-        public: true
-
     BoxUk\Plugins\Base\FeatureFlag\Provider\ProviderInterface: '@BoxUk\Plugins\Base\FeatureFlag\Provider\FlagpoleProvider'
 
     BoxUk\Plugins\Base\Event\HookDispatcher:
@@ -51,7 +47,4 @@ services:
         public: true
     BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager:
         alias: 'base_plugin.feature_flag_manager'
-        public: true
-    BoxUk\Plugins\Base\Gutenberg\EnableGutenberg:
-        alias: 'base_plugin.enable_gutenberg'
         public: true

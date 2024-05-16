@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Test Coverage Reports</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			margin: 0;
+		}
+
+		#wrap {
+			border-bottom: 2px solid #eee;
+			height: 100px;
+			padding: 1em;
+			overflow: hidden;
+		}
+
+		h1 {
+			font-size: 1.5em;
+		}
+		button {
+			font-size: 1.25em;
+		}
+
+		iframe {
+			width: calc( 100vw - 2px );
+			height: calc( 100vh - 102px - 2.5em );
+			border: none;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script>
+		const load = (url) => {
+			const iframe = document.getElementById('main-output');
+			iframe.src = url;
+		};
+
+		const updateUrl = (url) => {
+			if ( url === 'about:blank' ) return;
+			let root = window.location.href.split('#')[0];
+			root = root.replace('index.html', '');
+			window.history.pushState({}, '', root + 'index.html#' + url.replace(root, '') );
+		};
+
+		window.document.addEventListener('DOMContentLoaded', () => {
+			const hash = window.location.hash;
+			if ( hash ) {
+				load(hash.replace('#', ''));
+			}
+		});
+
+	</script>
+</head>
+
+<body>
+	<div id="wrap">
+		<h1><a href="/coverage/index.html">Test Coverage</a></h1>
+		<p>
+			<button onClick="load('/coverage/phpunit/index.html');">PHPUnit</button>
+			<button onClick="load('/coverage/jest/index.html');">Jest</button>
+		</p>
+	</div>
+	<iframe id="main-output" src="" onLoad="updateUrl(this.contentWindow.location.href);"></iframe>
+
+</body>
+
+</html>

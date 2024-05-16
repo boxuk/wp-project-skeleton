@@ -5,9 +5,9 @@ declare( strict_types=1 );
 namespace BoxUk\Plugins\Base\Tests\Database;
 
 use BoxUk\Plugins\Base\Database\QueryRepository;
-use WP_UnitTestCase;
+use WP_Mock\Tools\TestCase;
 
-class QueryRepositoryTest extends WP_UnitTestCase {
+class QueryRepositoryTest extends TestCase {
 
 	private $query_repository;
 

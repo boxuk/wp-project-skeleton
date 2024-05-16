@@ -1,6 +1,0 @@
-node_modules
-output
-!output/.gitkeep
-config/**/cookies.json
-config/**/secrets.json
-config/profile.json

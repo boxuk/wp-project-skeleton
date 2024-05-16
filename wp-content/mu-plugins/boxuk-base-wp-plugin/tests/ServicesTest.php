@@ -10,14 +10,14 @@ declare( strict_types=1 );
 namespace BoxUk\Plugins\Base\Tests;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use WP_UnitTestCase;
+use WP_Mock\Tools\TestCase;
 
 use function BoxUk\Mu\Plugins\boxuk_container;
 
 /**
  * Test services.
  */
-class ServicesTest extends WP_UnitTestCase {
+class ServicesTest extends TestCase {
 
 	/**
 	 * Test services can be instantiated.
@@ -56,7 +56,6 @@ class ServicesTest extends WP_UnitTestCase {
 			'QueryRepository' => [ 'BoxUk\Plugins\Base\Database\QueryRepository' ],
 			'PostRepository' => [ 'BoxUk\Plugins\Base\Database\PostRepository' ],
 			'FeatureFlagManager' => [ 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' ],
-			'EnableGutenberg' => [ 'BoxUk\Plugins\Base\Gutenberg\EnableGutenberg' ],
 		];
 	}
 

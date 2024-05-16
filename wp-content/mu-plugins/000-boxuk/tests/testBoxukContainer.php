@@ -8,11 +8,12 @@
 declare( strict_types=1 );
 
 use Symfony\Component\DependencyInjection\Container;
+use WP_Mock\Tools\TestCase;
 
 /**
  * BoxUK Container test case.
  */
-class Test_BoxUk_Container extends WP_UnitTestCase {
+class Test_BoxUk_Container extends TestCase {
 	public function tearDown(): void {
 		parent::tearDown();
 		$cached_container = __DIR__ . '/../cache/container.php';

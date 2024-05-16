@@ -3,24 +3,29 @@ includes:
 parameters:
   level: 9
   bootstrapFiles:
-    - phpstan-bootstrap.php
-    - wp-content/vendor/autoload.php
+    - ./tests/phpstan-bootstrap.php
+  dynamicConstantNames:
+    - VIP_GO_ENV
+    - WP_PLUGIN_DIR
+    - A8C_PROXIED_REQUEST
   scanDirectories:
+    - wp
     - wp-content
   paths:
     - wp-content/mu-plugins
+    - wp-content/themes
   excludePaths:
     analyseAndScan:
       - 'wp-content/mu-plugins/*/tests/*.php'
       - 'wp-content/mu-plugins/*/Tests/*.php'
+      - 'wp-content/db.php'
+      - 'wp-content/object-cache.php'
     analyse:
-      # Plugins that should be analysed in their own repos
-      - wp-content/mu-plugins/000-boxuk
-      - wp-content/mu-plugins/boxuk-base-wp-plugin
       - wp-content/mu-plugins/flagpole
       - wp-content/mu-plugins/wp-hook-attributes
-      # Vendor folder
       - wp-content/mu-plugins/vendor
   ignoreErrors:
     - '#^Parameter \#[1-9] \$[a-zA-Z0-9_]+ of method [a-zA-Z0-9\\\:_]+\(\) expects [A-Za-z\\_]+, PHPUnit\\Framework\\MockObject\\MockObject given\.#' # Mocked objects
+    - '#no value type specified in iterable type array#' # Undefined Array Types (Method)
+    - identifier: missingType.generics
   reportUnmatchedIgnoredErrors: false
