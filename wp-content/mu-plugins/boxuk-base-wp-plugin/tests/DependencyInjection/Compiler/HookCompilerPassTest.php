@@ -7,8 +7,9 @@ use BoxUk\Plugins\Base\Event\HookDispatcher;
 use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
+use WP_Mock\Tools\TestCase;
 
-class HookCompilerPassTest extends \WP_UnitTestCase {
+class HookCompilerPassTest extends TestCase {
 	public function test_no_method_calls_if_hook_dispatcher_not_registered(): void {
 		$container = new ContainerBuilder();
 		$container->register( HookDispatcher::class, 'stdClass');

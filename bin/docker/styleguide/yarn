@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-docker-compose -f docker-compose.yml -f docker-compose-styleguide.yml run --rm --workdir /usr/src/app nodejs yarn "$@"

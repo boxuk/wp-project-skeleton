@@ -1,0 +1,15 @@
+{
+	"$schema": "https://github.com/boxuk/wp-project-skeleton/tree/main/schemas/post-type.schema.json",
+	"post_types": {
+		"example": {
+			"has_archive": true,
+			"labels": {
+				"name": "Examples",
+				"singular_name": "example"
+			},
+			"menu_icon": "dashicons-lightbulb",
+			"taxonomies": [ "category", "post_tag" ],
+			"supports": [ "title", "editor", "thumbnail", "excerpt" ]
+		}
+	}
+}

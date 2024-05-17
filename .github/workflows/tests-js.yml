@@ -1,0 +1,32 @@
+# Lint & Jest Playwright Test
+
+name: JS Quality Tests
+
+on:
+    pull_request:
+
+env:
+    fail-fast: true
+
+jobs:
+  test:
+    name: JS Quality Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Setup dependencies
+        run: npm install
+      - name: Lint JS
+        run: npm run lint
+      - name: Unit Test
+        run: npm run test
+      - name: Build
+        run: npm run build

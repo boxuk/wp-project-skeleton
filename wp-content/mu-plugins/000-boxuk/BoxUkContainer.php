@@ -42,7 +42,7 @@ class BoxUkContainer {
 	/**
 	 * ContainerBuilder instance.
 	 *
-	 * @var ContainerBuilder
+	 * @var ?ContainerBuilder
 	 */
 	private $container_builder;
 
@@ -87,8 +87,6 @@ class BoxUkContainer {
 	 * @return ContainerBuilder
 	 */
 	private function build_container(): ContainerBuilder {
-		$this->container_builder;
-
 		if ( ! $this->container_builder ) {
 			$this->container_builder = new ContainerBuilder();
 		}
@@ -133,7 +131,7 @@ class BoxUkContainer {
 	 */
 	private function load_config( ContainerBuilder $container_builder ): void {
 		if ( ! file_exists( __DIR__ . '/config/config_' . $this->environment_type . '.yaml' ) ) {
-			throw new InvalidArgumentException( 'Could not find config file for environment type: ' . $this->environment_type );
+			throw new InvalidArgumentException( 'Could not find config file for environment type: ' . $this->environment_type ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		}
 
 		$loader = new YamlFileLoader( $container_builder, new FileLocator( __DIR__ . '/config' ) );
@@ -147,14 +145,18 @@ class BoxUkContainer {
 	 */
 	private function load_mu_plugins( ContainerBuilder $container_builder ): void {
 		// Go through plugins and register any services it may have defined.
-		$mu_plugins_configs = array_filter( glob( self::MU_PLUGINS . '/**/config' ), 'is_dir' );
-		$loader = new YamlFileLoader( $container_builder, new FileLocator( $mu_plugins_configs ) );
+		$configs = glob( self::MU_PLUGINS . '/**/config' );
+		if ( ! $configs ) {
+			return;
+		}
+		$config_dirs = array_filter( $configs, 'is_dir' );
+		$loader = new YamlFileLoader( $container_builder, new FileLocator( $config_dirs ) );
 
 		array_map(
 			static function ( string $dir ) use ( $loader ): void {
 				$loader->load( $dir . '/services.yaml' );
 			},
-			$mu_plugins_configs
+			$config_dirs
 		);
 	}
 
@@ -170,14 +172,31 @@ class BoxUkContainer {
 	 * @param ContainerBuilder $container_builder Instance of ContainerBuilder.
 	 */
 	private function load_boxuk_plugins( ContainerBuilder $container_builder ): void {
-		$plugins_extensions = array_filter( glob( self::PLUGINS . '/**/src/DependencyInjection' ), 'is_dir' );
-		$mu_plugins_extensions = array_filter( glob( self::MU_PLUGINS . '/**/src/DependencyInjection' ), 'is_dir' );
+		$plugin_di = glob( self::PLUGINS . '/**/src/DependencyInjection' );
+		$mu_plugin_di = glob( self::MU_PLUGINS . '/**/src/DependencyInjection' );
+
+		if ( ! $plugin_di ) {
+			$plugin_di = [];
+		}
+
+		if ( ! $mu_plugin_di ) {
+			$mu_plugin_di = [];
+		}
+
+
+		$plugins_extensions_dirs = array_filter( $plugin_di, 'is_dir' );
+		$mu_plugins_extensions = array_filter( $mu_plugin_di, 'is_dir' );
 
 		array_map(
 			static function ( string $extension_dir ) use ( $container_builder ): void {
-				$extension = array_filter( glob( $extension_dir . '/BoxUk*Extension.php' ), 'is_file' )[0] ?? '';
+				$extension_glob = glob( $extension_dir . '/BoxUk*Extension.php' );
+				if ( ! $extension_glob ) {
+					return;
+				}
 
-				if ( $extension === '' || ! file_exists( $extension ) ) {
+				$extension = array_filter( $extension_glob, 'is_file' )[0] ?? '';
+
+				if ( '' === $extension || ! file_exists( $extension ) ) {
 					return;
 				}
 
@@ -186,27 +205,27 @@ class BoxUkContainer {
 				$declared_classes = get_declared_classes();
 				$extension_class = end( $declared_classes );
 
-				if ( \in_array( ExtensionInterface::class, class_implements( $extension_class ), true ) ) {
+				if ( \in_array( ExtensionInterface::class, class_implements( $extension_class ?: '' ) ?: [], true ) ) { // phpcs:ignore Universal.Operators.DisallowShortTernary.Found
 					$extension_instance = new $extension_class(); // phpcs:ignore NeutronStandard.Functions.VariableFunctions.VariableFunction
 					$container_builder->registerExtension( $extension_instance );
 					$container_builder->loadFromExtension( $extension_instance->getAlias() );
 				}
 
 				// Handle compiler passes.
-				$compiler_passes = array_filter( glob( $extension_dir . '/Compiler/*CompilerPass.php' ), 'is_file' ) ?? [];
+				$compiler_passes = array_filter( glob( $extension_dir . '/Compiler/*CompilerPass.php' ) ?: [], 'is_file' ); // phpcs:ignore Universal.Operators.DisallowShortTernary.Found
 				foreach ( $compiler_passes as $compiler_pass ) {
 					include_once $compiler_pass; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
 
 					$declared_classes = get_declared_classes();
 					$compiler_class = end( $declared_classes );
 
-					if ( \in_array( CompilerPassInterface::class, class_implements( $compiler_class ), true ) ) {
+					if ( \in_array( CompilerPassInterface::class, class_implements( $compiler_class ?: '' ) ?: [], true ) ) { // phpcs:ignore Universal.Operators.DisallowShortTernary.Found
 						$pass_instance = new $compiler_class(); // phpcs:ignore NeutronStandard.Functions.VariableFunctions.VariableFunction
 						$container_builder->addCompilerPass( $pass_instance );
 					}
 				}
 			},
-			array_merge( $plugins_extensions, $mu_plugins_extensions )
+			array_merge( $plugins_extensions_dirs, $mu_plugins_extensions )
 		);
 	}
 

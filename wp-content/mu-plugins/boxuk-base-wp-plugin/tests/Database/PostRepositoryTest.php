@@ -5,15 +5,15 @@ declare( strict_types=1 );
 namespace BoxUk\Plugins\Base\Tests\Database;
 
 use BoxUk\Plugins\Base\Database\PostRepository;
-use WP_UnitTestCase;
+use WP_Mock\Tools\TestCase;
 
-class PostRepositoryTest extends WP_UnitTestCase {
+class PostRepositoryTest extends TestCase {
 
 	private $post_repository;
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->post_repository = new PostRepository();
+		$this->post_repository = PostRepository::instance();
 	}
 
 	public function test_find_by_id_returns_expected_post(): void {

@@ -53,26 +53,6 @@ Swap references `mu-plugins` with `client-mu-plugins` in the following files:
 
 We set the vendor directory as a volume in docker so we can set it to `delegated` due to it predominantly being written too by the container. When on VIP this is  likely to differ from `wp-content/vendor` to something more like `wp-content/client-mu-plugins/vendor` so this should be updated accordingly within `docker-compose.yml`.
 
-## If using Timber, configure Timber appropriately for VIP
-
-As per the [Timber documentation](https://github.com/timber/timber/blob/75bb47223e32b787fd74e92f692f9fc34dec7e74/docs/guides/hosts-servers.md#wordpress-vip), Timber caching and file writes must be disabled:
-
-```php
-add_filter('timber/cache/mode', function() {
-	return 'none';
-});
-
-add_filter( 'timber/allow_fs_write', '__return_false' );
-```
-
-## Remove surge plugin and related files/folders
-
-Surge won't work on VIP environments as it needs the ability to write to the file system. [VIP has its own page caching anyhow](https://docs.wpvip.com/technical-references/caching/page-cache/).
-
-`composer remove wpackagist-plugin/surge`
-
-> Remember to remove any related files or folders too, such as `wp-content/advanced-cache.php` and the `wp-content/cache` directory.
-
 ## Ordering of initialisation files
 
 VIP uses a [000-vip-init.php](https://github.com/Automattic/vip-go-mu-plugins/blob/master/000-vip-init.php) file to initialise

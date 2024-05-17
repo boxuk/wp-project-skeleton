@@ -1,6 +1,4 @@
 /vendor/
-/tools/**/vendor
-/tools/**/composer.lock
 
 /wp
 /wp-content/plugins/*
@@ -19,6 +17,7 @@
 /wp-content/advanced-cache.php
 /wp-content/cache
 /wp-content/wonolog
+/wp-content/db.php
 
 /wp-content/mu-plugins/000-boxuk/cache/*
 !/wp-content/mu-plugins/000-boxuk/cache/.gitkeep
@@ -28,6 +27,8 @@ debug.log
 # Sometimes we want to force mu-plugins but we don't want to commit to repo, list those here
 /wp-content/mu-plugins/flagpole
 /wp-content/mu-plugins/wp-hook-attributes
+
+/node_modules/
 
 /bin/*
 !/bin/docker
@@ -58,3 +59,8 @@ debug.log
 auth.json
 
 /docker/nginx/conf/styleguide.conf
+playwright-report
+.turbo/
+
+/coverage/*
+!/coverage/index.html

@@ -20,9 +20,9 @@ final class InMemoryProvider implements ProviderInterface {
 	/**
 	 * Array of flags.
 	 *
-	 * @var array|null $flags Array of flags.
+	 * @var array $flags Array of flags.
 	 */
-	private $flags;
+	private $flags = [];
 
 	/**
 	 * Register flags in memory.
@@ -42,9 +42,10 @@ final class InMemoryProvider implements ProviderInterface {
 	 * @return bool
 	 */
 	public function is_enabled( string $flag_name ): bool {
-		$flag_index = array_search( $flag_name, array_column( $this->flags, 'key' ), true );
+		$keys = array_column( $this->flags, 'key' );
+		$flag_index = array_search( $flag_name, $keys, true );
 
-		if ( $flag_index === false ) {
+		if ( false === $flag_index ) {
 			return false;
 		}
 

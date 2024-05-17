@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.4/theme.json",
+	"description": "A custom theme from BoxUK",
+	"settings": {},
+	"styles": {},
+	"templateParts": [
+		{
+			"area": "header",
+			"name": "header",
+			"title": "Header"
+		},
+		{
+			"area": "footer",
+			"name": "footer",
+			"title": "Footer"
+		}
+	],
+	"title": "BoxUK",
+	"version": 2
+}

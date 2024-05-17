@@ -7,14 +7,3 @@ echo 'Rebuilding app...'
 bin/docker/composer selfupdate;
 bin/docker/composer install;
 bin/docker/clearcache;
-
-if [ ! -z "${STYLEGUIDE_DIR}" ]; then
-    echo 'Rebuilding styleguide...'
-
-    bin/docker/styleguide/composer selfupdate;
-    bin/docker/styleguide/composer install;
-    bin/docker/styleguide/yarn install;
-    bin/docker/styleguide/sync-node-modules;
-    bin/docker/styleguide/yarn encore dev;
-    bin/docker/styleguide/console cache:clear
-fi

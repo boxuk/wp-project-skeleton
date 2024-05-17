@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker compose -f docker-compose.yml run -T --rm --workdir /usr/src/app nodejs npm "$@"

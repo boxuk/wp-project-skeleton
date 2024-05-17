@@ -8,11 +8,12 @@ ARG XDEBUG_VERSION
 # Do all apt-get installs on one line so they are installed on the same layer
 RUN set -eux; \
     apt-get -y update; \
-    apt-get -y install git less zip unzip zlib1g-dev libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev --no-install-recommends; \
+    apt-get -y install git less zip unzip zlib1g-dev sendmail libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev --no-install-recommends; \
     apt-get clean && apt-get autoremove; \
     rm -rf /var/lib/apt/lists/*; \
     pecl install memcache-8.0 && docker-php-ext-enable memcache; \
     pecl install imagick && docker-php-ext-enable imagick; \
+    pecl install pcov && docker-php-ext-enable pcov; \
     [ "${INSTALL_XDEBUG:-false}" = true ] && pecl install xdebug-${XDEBUG_VERSION} && docker-php-ext-enable xdebug; \
     docker-php-ext-configure intl; \
     docker-php-ext-install -j"$(nproc)" mysqli opcache zip intl gd
@@ -23,10 +24,6 @@ COPY --from=composer:2.6.5 /usr/bin/composer /usr/local/bin/composer
 # WP-CLI - https://hub.docker.com/_/wordpress/tags?page=1&name=cli
 COPY --from=wordpress:cli-2.9.0-php8.2 /usr/local/bin/wp /usr/local/bin/wp
 
-# MhSendmail
-RUN set -eux; \
-    curl -sSLo /usr/bin/mhsendmail https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64; \
-    chmod ugo+x /usr/bin/mhsendmail
 
 # Blackfire
 # https://blackfire.io/docs/integrations/docker/php-docker

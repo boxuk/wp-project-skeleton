@@ -42,7 +42,7 @@ class Security {
 			global $wp_query;
 			$wp_query->set_404();
 
-			add_action(
+			add_filter(
 				'wp_title',
 				fn() => '404: Not Found',
 				9999

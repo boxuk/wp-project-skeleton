@@ -30,37 +30,37 @@ class HookDispatcher implements EventDispatcherInterface {
 	/**
 	 * Add action to the list of actions to dispatch.
 	 *
-	 * @param string $hook_name Name of the hook to add.
-	 * @param mixed  $callable Callable to fire when the hook is dispatched.
-	 * @param int    $priority Priority of the hook.
-	 * @param int    $accepted_args Number of args to pass to the callable.
+	 * @param string   $hook_name Name of the hook to add.
+	 * @param callable $callable Callable to fire when the hook is dispatched.
+	 * @param int      $priority Priority of the hook.
+	 * @param int      $accepted_args Number of args to pass to the callable.
 	 */
-	public function add_action( string $hook_name, $callable, int $priority, int $accepted_args ): void { // phpcs:ignore NeutronStandard.Functions.TypeHint.NoArgumentType
+	public function add_action( string $hook_name, $callable, int $priority, int $accepted_args ): void { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.callableFound
 		$this->add_hook( 'actions', $hook_name, $callable, $priority, $accepted_args );
 	}
 
 	/**
 	 * Add filter to the list of filters to dispatch.
 	 *
-	 * @param string $hook_name Name of the hook to add.
-	 * @param mixed  $callable Callable to fire when the hook is dispatched.
-	 * @param int    $priority Priority of the hook.
-	 * @param int    $accepted_args Number of args to pass to the callable.
+	 * @param string   $hook_name Name of the hook to add.
+	 * @param callable $callable Callable to fire when the hook is dispatched.
+	 * @param int      $priority Priority of the hook.
+	 * @param int      $accepted_args Number of args to pass to the callable.
 	 */
-	public function add_filter( string $hook_name, $callable, int $priority, int $accepted_args ): void { // phpcs:ignore NeutronStandard.Functions.TypeHint.NoArgumentType
+	public function add_filter( string $hook_name, $callable, int $priority, int $accepted_args ): void { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.callableFound
 		$this->add_hook( 'filters', $hook_name, $callable, $priority, $accepted_args );
 	}
 
 	/**
 	 * Add the hook to either our list of actions or filters.
 	 *
-	 * @param string $property_name Which list are we adding to, one of actions or filters.
-	 * @param string $hook_name Name of the hook to add.
-	 * @param mixed  $callable Callable to fire when the hook is dispatched.
-	 * @param int    $priority Priority of the hook.
-	 * @param int    $accepted_args Number of args to pass to the callable.
+	 * @param string   $property_name Which list are we adding to, one of actions or filters.
+	 * @param string   $hook_name Name of the hook to add.
+	 * @param callable $callable Callable to fire when the hook is dispatched.
+	 * @param int      $priority Priority of the hook.
+	 * @param int      $accepted_args Number of args to pass to the callable.
 	 */
-	private function add_hook( string $property_name, string $hook_name, $callable, int $priority, int $accepted_args ) { // phpcs:ignore NeutronStandard.Functions.TypeHint.NoArgumentType
+	private function add_hook( string $property_name, string $hook_name, $callable, int $priority, int $accepted_args ): void { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.callableFound
 		if ( \is_array( $callable ) && $callable[0] instanceof \Closure ) {
 			$class = $callable[0]();
 			$method = $callable[1];

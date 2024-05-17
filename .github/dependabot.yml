@@ -21,35 +21,19 @@ updates:
             interval: daily
         open-pull-requests-limit: 10
         commit-message:
-            prefix: "[ACTIONS]"
+            prefix: "[DEPS]"
 
-    # Monorepo builder tool.
-    -   package-ecosystem: composer
-        directory: "/tools/monorepo-builder"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[DEPS]"
-    # PHP Codesniffer tool.
-    -   package-ecosystem: composer
-        directory: "/tools/php_codesniffer"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[DEPS]"
-    # Visual regression tool.
+    # Node Deps.
     -   package-ecosystem: npm
-        directory: "/tests/visual-regression"
+        directory: "/"
         registries: "*"
         schedule:
             interval: daily
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[DEPS]"
+
+
     # Docker app image.
     -   package-ecosystem: docker
         directory: "/docker/app/php8.3"
@@ -74,9 +58,9 @@ updates:
         ignore:
             - dependency-name: "*"
               update-types: ["version-update:semver-major", "version-update:semver-minor"]
-    # Docker app image.
+    # Docker node image.
     -   package-ecosystem: docker
-        directory: "/docker/app/php8.1"
+        directory: "/docker/node"
         registries: "*"
         schedule:
             interval: daily
@@ -85,7 +69,7 @@ updates:
             prefix: "[SETUP]"
         ignore:
             - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]
+              update-types: ["version-update:semver-major"]
     # Docker blackfire image.
     -   package-ecosystem: docker
         directory: "/docker/blackfire"
@@ -146,51 +130,3 @@ updates:
         ignore:
             - dependency-name: "*"
               update-types: ["version-update:semver-major"]
-    # Docker node image.
-    -   package-ecosystem: docker
-        directory: "/docker/node"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
-    # Docker styleguide image.
-    -   package-ecosystem: docker
-        directory: "/docker/styleguide/php8.3"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]
-    # Docker styleguide image.
-    -   package-ecosystem: docker
-        directory: "/docker/styleguide/php8.2"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]
-    # Docker styleguide image.
-    -   package-ecosystem: docker
-        directory: "/docker/styleguide/php8.1"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]

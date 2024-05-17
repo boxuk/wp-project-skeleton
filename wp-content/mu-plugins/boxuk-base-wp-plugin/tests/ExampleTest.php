@@ -4,10 +4,9 @@ declare( strict_types=1 );
 
 namespace BoxUk\Plugins\Base\Tests;
 
-use ReflectionClass;
-use WP_UnitTestCase;
+use WP_Mock\Tools\TestCase;
 
-class ExampleTest extends WP_UnitTestCase {
+class ExampleTest extends TestCase {
 
 	public function test_wordpress_and_plugin_are_loaded(): void {
 		self::assertTrue( function_exists( 'do_action' ) );

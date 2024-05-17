@@ -70,7 +70,7 @@ class HookCompilerPass implements CompilerPassInterface {
 	 */
 	private function handle_method_call( string $hook_type, string $service_id, array $attributes, Definition $dispatcher ): void {
 		if ( ! \in_array( $hook_type, self::VALID_HOOK_TYPES, true ) ) {
-			throw new InvalidHookException( 'Hook type must be one of ' . implode( ', ', self::VALID_HOOK_TYPES ) );
+			throw new InvalidHookException( 'Hook type must be one of ' . implode( ', ', self::VALID_HOOK_TYPES ) ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		}
 
 		// TODO: Validate hook is valid, using https://github.com/johnbillion/wp-hooks-generator to generate a list of valid hooks used in the application.
@@ -110,6 +110,6 @@ class HookCompilerPass implements CompilerPassInterface {
 		);
 		$method = preg_replace( '/[^a-z0-9]/i', '_', $method );
 
-		return $method;
+		return $method ?? '';
 	}
 }

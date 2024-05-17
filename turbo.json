@@ -1,0 +1,27 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "pipeline": {
+        "build": {
+            "outputs": [
+                "build"
+            ]
+        },
+        "precommit": { 
+            "dependsOn": [ "format", "lint", "test" ]
+        },
+        "format": {},
+        "lint": {},
+        "lint:fix": {},
+        "lint:css": {},
+        "lint:css:fix": {},
+        "lint:js": {},
+        "lint:js:fix": {},
+        "packages-update": {},
+        "start": {
+            "cache": false,
+            "persistent": true
+        },
+        "test": {},
+        "test:unit": {}
+    }
+}

@@ -4,9 +4,9 @@ namespace BoxUk\Plugins\Base\Tests\Wonolog\Handler;
 
 use BoxUk\Plugins\Base\Wonolog\Handler\QueryMonitorHandler;
 use Monolog\Logger;
-use WP_UnitTestCase;
+use WP_Mock\Tools\TestCase;
 
-class QueryMonitorHandlerTest extends WP_UnitTestCase {
+class QueryMonitorHandlerTest extends TestCase {
 	/**
 	 * @dataProvider get_levels
 	 */
@@ -25,6 +25,7 @@ class QueryMonitorHandlerTest extends WP_UnitTestCase {
 
 		$handler = new QueryMonitorHandler();
 		$handler->handle( $this->get_record( Logger::DEBUG, 'This is a test', [ 'foo' => 'bar' ] ) );
+		$this->assertConditionsMet();
 	}
 
 	public function test_the_handler_does_not_log_if_message_empty(): void {

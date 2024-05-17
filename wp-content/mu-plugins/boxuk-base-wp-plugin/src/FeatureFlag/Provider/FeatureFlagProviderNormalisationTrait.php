@@ -24,7 +24,7 @@ trait FeatureFlagProviderNormalisationTrait {
 	 */
 	public function normalise_feature_flag_array( array $feature_flags ): array {
 		if ( isset( $feature_flags[ ProviderInterface::FEATURE_FLAGS_TOP_LEVEL_KEY ] ) ) {
-			$feature_flags = $feature_flags[ ProviderInterface::FEATURE_FLAGS_TOP_LEVEL_KEY ];
+			$feature_flags = (array) $feature_flags[ ProviderInterface::FEATURE_FLAGS_TOP_LEVEL_KEY ];
 		}
 
 		// Make the key of the array the key field expected by flagpole.

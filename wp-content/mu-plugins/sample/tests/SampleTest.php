@@ -8,12 +8,13 @@
 declare( strict_types=1 );
 
 namespace BoxUk\Mu\Plugins\Sample\Tests;
-use WP_UnitTestCase;
+
+use WP_Mock\Tools\TestCase;
 
 /**
  * Sample test case.
  */
-class SampleTest extends WP_UnitTestCase {
+class SampleTest extends TestCase {
 
 	/**
 	 * A single sample test.

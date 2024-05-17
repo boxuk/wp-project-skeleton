@@ -8,9 +8,9 @@ use BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager;
 use BoxUk\Plugins\Base\FeatureFlag\Provider\InMemoryProvider;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Parser;
-use WP_UnitTestCase;
+use WP_Mock\Tools\TestCase;
 
-class FeatureFlagManagerTest extends WP_UnitTestCase {
+class FeatureFlagManagerTest extends TestCase {
 	private $provider;
 	private $manager;
 

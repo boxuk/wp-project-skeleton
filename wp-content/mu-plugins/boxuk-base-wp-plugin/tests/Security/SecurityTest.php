@@ -5,12 +5,12 @@ declare( strict_types=1 );
 namespace BoxUk\Plugins\Base\Tests\Security;
 
 use BoxUk\Plugins\Base\Security\Security;
-use WP_UnitTestCase;
+use WP_Mock\Tools\TestCase;
 
 /**
  * Security test case.
  */
-class SecurityTest extends WP_UnitTestCase {
+class SecurityTest extends TestCase {
 
 	/**
 	 * System under test.

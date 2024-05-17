@@ -41,12 +41,6 @@
         "symfony/dotenv": "^5.0",
         "wp-phpunit/wp-phpunit": "^5.4"
     },
-    "suggest": {
-        "wp-cli/i18n-command": "Needed for the i18n-twig WP CLI command.",
-        "timber/timber": "Needed for the i18n-twig WP CLI command.",
-        "twig/twig": "Needed for the i18n-twig WP CLI command.",
-        "twig/extensions": "Needed for the i18n-twig WP CLI command."
-    },
     "extra": {
         "wordpress-install-dir": "wp",
         "branch-alias": {

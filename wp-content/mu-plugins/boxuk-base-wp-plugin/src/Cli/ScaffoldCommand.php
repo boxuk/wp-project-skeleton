@@ -248,7 +248,7 @@ final class ScaffoldCommand extends Scaffold_Command {
 
 		$name = ucwords( str_replace( '-', ' ', $slug ) );
 		$canonical_name = strtok( strtolower( $name ), ' ' );
-		$autoload_name = ucfirst( $canonical_name );
+		$autoload_name = ucfirst( $canonical_name ? $canonical_name : self::DEFAULT_PACKAGE_NAME );
 		$package = str_replace( ' ', '_', $name );
 
 		$tests_dir = "{$target_dir}/tests";
@@ -355,26 +355,5 @@ final class ScaffoldCommand extends Scaffold_Command {
 	 */
 	private static function mustache_render( string $template, array $data = [] ): string {
 		return Utils\mustache_render( __DIR__ . "/templates/{$template}", $data );
-	}
-
-	/**
-	 * Gets the template path based on installation type.
-	 *
-	 * Copied verbatim from parent class due to it being private.
-	 *
-	 * @param string $template Template to get path for.
-	 *
-	 * @return string Path of template.
-	 * @throws WP_CLI\ExitException If CLI errors are set to capture.
-	 */
-	private static function get_template_path( string $template ): string {
-		$command_root = Utils\phar_safe_path( __DIR__ );
-		$template_path = "{$command_root}/templates/{$template}";
-
-		if ( ! file_exists( $template_path ) ) {
-			WP_CLI::error( "Couldn't find {$template}" );
-		}
-
-		return $template_path;
 	}
 }
