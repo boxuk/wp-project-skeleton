@@ -30,7 +30,7 @@
 		"@types/wordpress__block-editor": "^11.5.14",
 		"@types/wordpress__blocks": "^12.5.14",
 		"@types/wordpress__editor": "^13.6.8",
-		"@wordpress/block-editor": "^12.23.0",
+		"@wordpress/block-editor": "^12.26.0",
 		"@wordpress/blocks": "^12.32.0",
 		"@wordpress/dom-ready": "^3.54.0",
 		"@wordpress/editor": "^13.32.0",
