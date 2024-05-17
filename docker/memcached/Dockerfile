@@ -1,1 +1,1 @@
-FROM memcached:1.6.26
+FROM memcached:1.6.27
