@@ -30,7 +30,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.0",
+    "@playwright/test": "^1.44.1",
     "dotenv": "^16.4.5",
     "husky": "^9.0.11",
     "playwright": "^1.44.0",
