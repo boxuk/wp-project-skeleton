@@ -25,7 +25,7 @@
 	"license": "proprietary",
 	"devDependencies": {
 		"@jest/globals": "^29.7.0",
-		"@playwright/test": "^1.44.0",
+		"@playwright/test": "^1.44.1",
 		"@testing-library/react": "^15.0.7",
 		"@types/wordpress__block-editor": "^11.5.14",
 		"@types/wordpress__blocks": "^12.5.14",
