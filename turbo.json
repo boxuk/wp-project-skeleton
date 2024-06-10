@@ -1,12 +1,12 @@
 {
     "$schema": "https://turbo.build/schema.json",
-    "pipeline": {
+    "tasks": {
         "build": {
             "outputs": [
                 "build"
             ]
         },
-        "precommit": { 
+        "precommit": {
             "dependsOn": [ "format", "lint", "test" ]
         },
         "format": {},
