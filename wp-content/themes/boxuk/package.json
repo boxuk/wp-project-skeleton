@@ -31,7 +31,7 @@
 		"@types/wordpress__blocks": "^12.5.14",
 		"@types/wordpress__editor": "^13.6.8",
 		"@wordpress/block-editor": "^13.3.0",
-		"@wordpress/blocks": "^13.2.0",
+		"@wordpress/blocks": "^13.4.0",
 		"@wordpress/dom-ready": "^4.4.0",
 		"@wordpress/editor": "^14.3.0",
 		"@wordpress/icons": "^10.4.0",
