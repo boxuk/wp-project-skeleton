@@ -34,7 +34,7 @@
 		"@wordpress/blocks": "^13.5.0",
 		"@wordpress/dom-ready": "^4.4.0",
 		"@wordpress/editor": "^14.5.0",
-		"@wordpress/icons": "^10.5.0",
+		"@wordpress/icons": "^10.6.0",
 		"@wordpress/scripts": "^28.5.0",
 		"jest-junit": "^16.0.0",
 		"react": "^18.2.0"
