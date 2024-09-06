@@ -33,7 +33,7 @@
     "@playwright/test": "^1.46.1",
     "dotenv": "^16.4.5",
     "husky": "^9.1.5",
-    "playwright": "^1.46.1",
+    "playwright": "^1.47.0",
     "turbo": "^2.1.1",
     "webpack-cli": "^5.1.4"
   },
