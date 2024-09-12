@@ -32,7 +32,7 @@
   "devDependencies": {
     "@playwright/test": "^1.47.0",
     "dotenv": "^16.4.5",
-    "husky": "^9.1.5",
+    "husky": "^9.1.6",
     "playwright": "^1.47.0",
     "turbo": "^2.1.1",
     "webpack-cli": "^5.1.4"
