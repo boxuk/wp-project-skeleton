@@ -1,0 +1,28 @@
+<phpunit
+        bootstrap="tests/phpintegration-bootstrap.php"
+        backupGlobals="false"
+        colors="true"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        beStrictAboutTestsThatDoNotTestAnything="true"
+        beStrictAboutOutputDuringTests="true"
+>
+    <php>
+        <env name="WP_PHPUNIT__TESTS_CONFIG" value="tests/phpintegration-wp-config.php" />
+    </php>
+    <testsuites>
+        <testsuite name="Integration Tests">
+            <directory suffix=".php">tests/integration</directory>
+        </testsuite>
+    </testsuites>
+    <coverage>
+        <include>
+            <directory suffix=".php">./wp-content/mu-plugins</directory>
+            <directory suffix=".php">./wp-content/themes</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">./wp-content/mu-plugins/vendor</directory>
+        </exclude>
+    </coverage>
+</phpunit>

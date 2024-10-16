@@ -9,25 +9,26 @@ Testing WordPress sites can be a challenge. We should strive to make use of diff
 
 ## Unit Testing
 
-Unit tests should be added for every `(mu-)plugin`/`theme` we create. We should always aim to decouple the core logic from WordPress, for this to be true we should avoid any use of global functions or hidden dependencies in any classes/functions we use for our core logic. We should then be able to unit test these easily.
+Unit tests should test _your_ code decoupled and independent the core logic from WordPress. For this to be true we should avoid any use of global functions or hidden dependencies in any classes/functions we use for our core logic. We should then be able to unit test these easily.
 
-We use [PHPUnit](https://phpunit.de/) for unit testing.
+We use [WP_Mock](https://github.com/10up/wp_mock) to help mock some WP core functions, with [PHPUnit](https://phpunit.de/) as the test runner.
 
 ## Integration Testing
 
-Integration tests should also be added wherever appropriate. For any part of your `(mu-)plugin`/`theme` that interacts with WordPress this should be covered by an integration test.
+Integration tests should test where your code depends on intergration with other codebases, including WordPress _or_ other plugins.
 
 We also use [PHPUnit](https://phpunit.de/) for integration testing along with [WP PHPUnit](https://github.com/wp-phpunit/wp-phpunit) which will allow you to interact with the WordPress install easily. It also provides a number of helpers to allow for easy generation of synthetic data for testing.
 
-### Running the unit & integration tests
+### Running the unit tests
 
-Both the unit tests and integration tests follow the same structure, tests are designed to be added within each `mu-plugin` you create within a `tests` directory. The test runner sits outside though in the root of this repo. It works by looping over each `mu-plugin` and running its test.
+Unit tests are should live within each `mu-plugin` in a `tests` directory.
+Integration tests are to be stored in `/tests/integration` though it would be sensible to structure this folder with names consistent with the class under test.
 
-> It's important each `mu-plugin` follows the format `plugin-name/plugin-name.php`
 
-`bin/docker/phpunit`
+`bin/docker/composer run phpunit`
+`bin/docker/composer run phpintegration`
 
-(or `bin/phpunit` if not using docker)
+(or `composer run phpunit` if not using docker)
 
 ## Visual Regression Testing
 
