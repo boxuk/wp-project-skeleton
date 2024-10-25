@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose exec -T --user www-data app php -d memory_limit=1G /usr/local/bin/composer "$@"
+bin/docker/php /usr/local/bin/composer "$@"

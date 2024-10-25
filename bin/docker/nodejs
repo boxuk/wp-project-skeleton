@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# if node is already running, use it
+
+if [ "$(docker inspect -f '{{.State.Running}}' nodejs 2>/dev/null)" = "true" ]; then
+  docker exec -it nodejs "$@"
+else
+  docker compose run --rm nodejs "$@"
+fi
