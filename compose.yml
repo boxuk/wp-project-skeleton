@@ -29,13 +29,6 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
       - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
-    depends_on:
-      database:
-          condition: service_healthy
-      mailpit:
-          condition: service_healthy
-      memcached:
-          condition: service_healthy
     healthcheck:
       test: ["CMD", "php", "-v"]
       interval: 10s
@@ -58,9 +51,6 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
       - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
-    depends_on:
-      app:
-        condition: service_healthy
     healthcheck:
       test: ["CMD", "php", "-v"]
       interval: 10s
@@ -83,6 +73,12 @@ services:
         condition: service_healthy
       app_xdebug:
         condition: service_healthy
+      database:
+          condition: service_healthy
+      mailpit:
+          condition: service_healthy
+      memcached:
+          condition: service_healthy
     links:
       - app
       - app_xdebug
@@ -105,6 +101,7 @@ services:
 
   nodejs:
     build: docker/node
+    working_dir: /usr/src/app
     volumes:
       - '.:/usr/src/app:cached'
       - './node_modules:/usr/src/app/node_modules:delegated'
