@@ -10,6 +10,15 @@ jobs:
   test:
     name: PHP Tests
     runs-on: ubuntu-latest
+    services:
+      database:
+        image: mariadb:10.11.9
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wordpress
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     strategy:
       fail-fast: false
       matrix:
@@ -44,3 +53,11 @@ jobs:
       - name: Run PHPUnit
         run: composer phpunit
         continue-on-error: ${{ matrix.required == 'optional' }}
+      - name: Run PHP Integration Tests
+        run: composer phpintegration
+        continue-on-error: ${{ matrix.required == 'optional' }}
+        env:
+          DB_NAME: wordpress
+          DB_USER: root
+          DB_PASSWORD: root
+          DB_HOST: database
