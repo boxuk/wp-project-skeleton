@@ -18,10 +18,12 @@ parameters:
     analyseAndScan:
       - 'wp-content/mu-plugins/*/tests/*.php'
       - 'wp-content/mu-plugins/*/Tests/*.php'
+      - 'wp-content/mu-plugins/*/build/*.php'
+      - 'wp-content/themes/*/build/*.php'
       - 'wp-content/db.php'
       - 'wp-content/object-cache.php'
       - 'wp/wp-admin/includes/noop.php'
-      - 'wp-content/client-mu-plugins/vendor/10up/wp_mock'
+      - 'wp-content/vendor/10up/wp_mock'
     analyse:
       - wp-content/mu-plugins/flagpole
       - wp-content/mu-plugins/wp-hook-attributes

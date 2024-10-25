@@ -75,9 +75,6 @@
     },
     "extra": {
         "wordpress-install-dir": "wp",
-        "installer-types": [
-            "styleguide"
-        ],
         "installer-paths": {
             "wp-content/mu-plugins/{$name}/": [
                 "type:wordpress-muplugin"
@@ -107,14 +104,12 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\SampleWithTaggedHooks\\Tests\\": "wp-content/mu-plugins/sample-with-tagged-hooks/tests",
             "BoxUk\\Mu\\Plugins\\Sample\\Tests\\": "wp-content/mu-plugins/sample/tests",
             "BoxUk\\Plugins\\Base\\Tests\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/tests"
         }
     },
     "autoload": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\SampleWithTaggedHooks\\": "wp-content/mu-plugins/sample-with-tagged-hooks/src",
             "BoxUk\\Mu\\Plugins\\Sample\\": "wp-content/mu-plugins/sample/src",
             "BoxUk\\Plugins\\Base\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/src"
         }
