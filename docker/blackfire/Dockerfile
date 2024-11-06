@@ -1,1 +1,1 @@
-FROM blackfire/blackfire:2.28.17
+FROM blackfire/blackfire:2.28.18
