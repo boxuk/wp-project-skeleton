@@ -26,7 +26,7 @@
 	"devDependencies": {
 		"@jest/globals": "^29.7.0",
 		"@playwright/test": "^1.49.0",
-		"@testing-library/react": "^16.0.1",
+		"@testing-library/react": "^16.1.0",
 		"@types/wordpress__block-editor": "^11.5.15",
 		"@types/wordpress__blocks": "^12.5.14",
 		"@types/wordpress__editor": "^13.6.8",
