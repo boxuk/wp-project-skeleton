@@ -37,6 +37,6 @@
 		"@wordpress/icons": "^10.14.0",
 		"@wordpress/scripts": "^28.6.0",
 		"jest-junit": "^16.0.0",
-		"react": "^18.2.0"
+		"react": "^19.0.0"
 	}
 }
