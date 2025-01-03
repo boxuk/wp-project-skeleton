@@ -12,6 +12,7 @@ set -e
 export PROJECT_NAME="boxuk-wp-skeleton"
 export DOCKER_NETWORK_NAME="boxuk-docker"
 export PHP_VERSION="8.2"
+export WORDPRESS_VERSION="6.7"
 
 GREEN='\033[0;32m'
 BG_GREEN='\033[42m'
@@ -48,7 +49,7 @@ echo -e "Using ${GREEN}${PROJECT_NAME}${NC} for PROJECT_NAME";
 echo -e "Using ${GREEN}${DOCKER_NETWORK_NAME}${NC} for DOCKER_NETWORK_NAME";
 echo -e "Using ${GREEN}${PHP_VERSION}${NC} for PHP_VERSION";
 
-envsubst \$PROJECT_NAME,\$DOCKER_NETWORK_NAME,\$PHP_VERSION < .env.dist > .env
+envsubst \$PROJECT_NAME,\$DOCKER_NETWORK_NAME,\$PHP_VERSION,\$WORDPRESS_VERSION < .env.dist > .env
 envsubst \$PROJECT_NAME < ./docker/app/.env.dist > ./docker/app/.env
 cp ./docker/blackfire/.env.dist ./docker/blackfire/.env
 
