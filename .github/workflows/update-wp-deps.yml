@@ -1,0 +1,25 @@
+name: Update WP Deps
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      # Read the current WP version from the `roots/wordpress-full` package in `composer.lock`, and save it to the environment with just the major and minor version.
+      - name: Read WP version
+        run: echo "WP_VERSION=$(jq -r '.packages[] | select(.name == "roots/wordpress-no-content") | .version' composer.lock | cut -d '.' -f 1,2)" >> $GITHUB_ENV
+      - name: Run Update
+        uses: boxuk/wp-deps-auto-update@main
+        with:
+          WP_VERSION: ${{ env.WP_VERSION }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
