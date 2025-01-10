@@ -32,6 +32,10 @@ updates:
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[DEPS]"
+        ignore:
+          - dependency-name: "@wordpress/*"
+          - dependency-name: "react"
+          - dependency-name: "react-dom"
 
 
     # Docker app image.
@@ -79,9 +83,7 @@ updates:
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
+
     # Docker database image.
     -   package-ecosystem: docker
         directory: "/docker/database"
@@ -91,21 +93,16 @@ updates:
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
-    # Docker mailhog image.
+
+    # Docker mailpit image.
     -   package-ecosystem: docker
-        directory: "/docker/mailhog"
+        directory: "/docker/mailpit"
         registries: "*"
         schedule:
             interval: daily
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
     # Docker memcached image.
     -   package-ecosystem: docker
         directory: "/docker/memcached"
@@ -115,9 +112,6 @@ updates:
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
     # Docker nginx image.
     -   package-ecosystem: docker
         directory: "/docker/nginx"
@@ -127,6 +121,3 @@ updates:
         open-pull-requests-limit: 10
         commit-message:
             prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major"]
