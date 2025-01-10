@@ -11,7 +11,6 @@ declare( strict_types=1 );
 namespace BoxUk\Mu\Plugins;
 
 use BoxUk\Plugins\Base\Event\HookDispatcher;
-use BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager;
 use Symfony\Component\DependencyInjection\Container;
 
 // Load composer autoloader from the wp-content dir (if it isn't already loaded).
@@ -25,7 +24,6 @@ if ( \defined( 'WP_INSTALLING' ) && true === WP_INSTALLING ) {
 
 require_once __DIR__ . '/000-boxuk/BoxUkContainerFactory.php';
 require_once __DIR__ . '/000-boxuk/BoxUkContainer.php';
-require_once __DIR__ . '/flagpole/flagpole.php';
 
 /**
  * Retrieve or create our container.
@@ -63,20 +61,6 @@ add_action(
 		}
 	}
 );
-
-/**
- *  Register feature flags if we have a flags.yaml set.
- */
-$plugin_active = boxuk_container()->has( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
-if ( true === $plugin_active && file_exists( __DIR__ . '/000-boxuk/flags.yaml' ) ) {
-	/**
-	 * IDE hint.
-	 *
-	 * @var FeatureFlagManager $feature_flag_manager
-	 */
-	$feature_flag_manager = boxuk_container()->get( 'BoxUk\Plugins\Base\FeatureFlag\FeatureFlagManager' );
-	$feature_flag_manager->register_from_yaml_file( __DIR__ . '/000-boxuk/flags.yaml' );
-}
 
 /**
  * Things to do by default once all plugins have been loaded.

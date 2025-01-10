@@ -19,6 +19,7 @@ parameters:
       - 'wp-content/mu-plugins/*/tests/*.php'
       - 'wp-content/mu-plugins/*/Tests/*.php'
       - 'wp-content/mu-plugins/*/build/*.php'
+      - 'wp-content/mu-plugins/wp-feature-flags'
       - 'wp-content/themes/*/build/*.php'
       - 'wp-content/db.php'
       - 'wp-content/object-cache.php'

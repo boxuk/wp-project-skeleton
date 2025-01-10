@@ -48,10 +48,10 @@
     },
     "require": {
         "automattic/wp-memcached": "^4.0",
+        "boxuk/wp-feature-flags": "^0.0.10",
         "boxuk/wp-muplugin-loader": "^2.0",
         "cache/memcache-adapter": "^1.2",
         "inpsyde/wp-translation-downloader": "^2.5",
-        "jamesrwilliams/flagpole": "@beta",
         "oomphinc/composer-installers-extender": "^2",
         "roots/wordpress-core-installer": "^2.0",
         "roots/wordpress-no-content": "^6.4",
@@ -88,7 +88,7 @@
         },
         "force-mu": [
             "boxuk/boxuk-base-wp-plugin",
-            "jamesrwilliams/flagpole"
+            "boxuk/wp-feature-flags"
         ],
         "mu-require-file": "zzz-mu-require.php",
         "wp-translation-downloader": {
