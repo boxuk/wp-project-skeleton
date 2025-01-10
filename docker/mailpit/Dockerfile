@@ -1,1 +1,1 @@
-FROM axllent/mailpit:v1.17.1
+FROM axllent/mailpit:v1.21.8
