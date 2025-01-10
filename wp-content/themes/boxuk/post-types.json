@@ -1,5 +1,5 @@
 {
-	"$schema": "https://github.com/boxuk/wp-project-skeleton/tree/main/schemas/post-type.schema.json",
+	"$schema": "https://raw.githubusercontent.com/boxuk/wp-packages/refs/heads/main/packages/editor-tools/schema/post-type.schema.json",
 	"post_types": {
 		"example": {
 			"has_archive": true,
