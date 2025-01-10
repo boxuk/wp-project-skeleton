@@ -40,7 +40,6 @@
         "allow-plugins": {
             "composer/installers": true,
             "roots/wordpress-core-installer": true,
-            "boxuk/wp-muplugin-loader": true,
             "inpsyde/wp-translation-downloader": true,
             "oomphinc/composer-installers-extender": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
@@ -49,10 +48,10 @@
     "require": {
         "automattic/wp-memcached": "^4.0",
         "boxuk/wp-feature-flags": "^0.0.10",
-        "boxuk/wp-muplugin-loader": "^2.0",
         "cache/memcache-adapter": "^1.2",
         "inpsyde/wp-translation-downloader": "^2.5",
         "oomphinc/composer-installers-extender": "^2",
+        "roots/bedrock-autoloader": "^1.0",
         "roots/wordpress-core-installer": "^2.0",
         "roots/wordpress-no-content": "^6.4",
         "symfony/config": "^6.0 || ^7.0",
