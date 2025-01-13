@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-. .env
-
-echo 'Rebuilding app...'
-
-bin/docker/composer selfupdate;
-bin/docker/composer install;
-bin/docker/clearcache;
