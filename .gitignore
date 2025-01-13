@@ -22,6 +22,7 @@
 /wp-content/mu-plugins/000-boxuk/cache/*
 !/wp-content/mu-plugins/000-boxuk/cache/.gitkeep
 /wp-content/mu-plugins/wp-feature-flags
+/wp-content/mu-plugins/wp-editor-tools
 
 debug.log
 

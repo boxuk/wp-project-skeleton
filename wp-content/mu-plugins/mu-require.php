@@ -10,6 +10,17 @@
 
 namespace Roots\Bedrock;
 
-if (is_blog_installed() && class_exists(Autoloader::class)) {
+/**
+ * Load composer deps
+ */
+$vendor = __DIR__.'/vendor/autoload.php';
+if ( file_exists( $vendor ) ) {
+	require_once $vendor;
+}
+
+/**
+ * Autoload mu-plugins
+ */
+if ( is_blog_installed() && class_exists( Autoloader::class ) ) {
     new Autoloader();
 }

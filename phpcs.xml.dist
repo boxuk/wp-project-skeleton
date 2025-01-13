@@ -34,6 +34,7 @@
 	<exclude-pattern>*/premium-plugins/*</exclude-pattern>
 	<exclude-pattern>*/patched-plugins/*</exclude-pattern>
     <exclude-pattern>*/mu-plugins/wp-feature-flags*</exclude-pattern>
+    <exclude-pattern>*/mu-plugins/wp-editor-tools*</exclude-pattern>
 
     <exclude-pattern>*.asset.php</exclude-pattern>
 

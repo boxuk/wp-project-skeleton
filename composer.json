@@ -47,6 +47,7 @@
     },
     "require": {
         "automattic/wp-memcached": "^4.0",
+        "boxuk/wp-editor-tools": "^0.0.10",
         "boxuk/wp-feature-flags": "^0.0.10",
         "cache/memcache-adapter": "^1.2",
         "inpsyde/wp-translation-downloader": "^2.5",
@@ -54,10 +55,7 @@
         "roots/bedrock-autoloader": "^1.0",
         "roots/wordpress-core-installer": "^2.0",
         "roots/wordpress-no-content": "^6.4",
-        "symfony/config": "^6.0 || ^7.0",
-        "symfony/dependency-injection": "^6.0 || ^7.0",
         "symfony/dotenv": "^6.0 || ^7.0",
-        "symfony/yaml": "^6.0 || ^7.0",
         "wp-cli/scaffold-command": "^2.0",
         "wp-cli/wp-cli": "^2.9",
         "wpackagist-plugin/query-monitor": "^3.5"
@@ -76,7 +74,9 @@
         "wordpress-install-dir": "wp",
         "installer-paths": {
             "wp-content/mu-plugins/{$name}/": [
-                "type:wordpress-muplugin"
+                "type:wordpress-muplugin",
+                "boxuk/wp-feature-flags",
+                "boxuk/wp-editor-tools"
             ],
             "wp-content/plugins/{$name}/": [
                 "type:wordpress-plugin"
@@ -85,11 +85,6 @@
                 "type:wordpress-theme"
             ]
         },
-        "force-mu": [
-            "boxuk/boxuk-base-wp-plugin",
-            "boxuk/wp-feature-flags"
-        ],
-        "mu-require-file": "zzz-mu-require.php",
         "wp-translation-downloader": {
             "auto-run": false,
             "languages": [
@@ -98,19 +93,14 @@
             "directory": "wp-content/languages"
         }
     },
-    "replace": {
-        "boxuk/boxuk-base-wp-plugin": "0.4.0"
-    },
     "autoload-dev": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\Sample\\Tests\\": "wp-content/mu-plugins/sample/tests",
-            "BoxUk\\Plugins\\Base\\Tests\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/tests"
+            "BoxUk\\Mu\\Plugins\\Sample\\Tests\\": "wp-content/mu-plugins/sample/tests"
         }
     },
     "autoload": {
         "psr-4": {
-            "BoxUk\\Mu\\Plugins\\Sample\\": "wp-content/mu-plugins/sample/src",
-            "BoxUk\\Plugins\\Base\\": "wp-content/mu-plugins/boxuk-base-wp-plugin/src"
+            "BoxUk\\Mu\\Plugins\\Sample\\": "wp-content/mu-plugins/sample/includes"
         }
     },
     "scripts": {
