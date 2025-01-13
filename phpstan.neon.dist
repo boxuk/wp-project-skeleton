@@ -16,18 +16,15 @@ parameters:
     - wp-content/themes
   excludePaths:
     analyseAndScan:
-      - 'wp-content/mu-plugins/*/tests/*.php'
-      - 'wp-content/mu-plugins/*/Tests/*.php'
-      - 'wp-content/mu-plugins/*/build/*.php'
-      - 'wp-content/mu-plugins/wp-feature-flags'
-      - 'wp-content/themes/*/build/*.php'
-      - 'wp-content/db.php'
-      - 'wp-content/object-cache.php'
-      - 'wp/wp-admin/includes/noop.php'
-      - 'wp-content/vendor/10up/wp_mock'
+      - wp-content/db.php
+      - wp-content/object-cache.php
+      - wp/wp-admin/includes/noop.php
+      - wp-content/vendor/10up/wp_mock
     analyse:
-      - wp-content/mu-plugins/flagpole
-      - wp-content/mu-plugins/wp-hook-attributes
+      - wp-content/mu-plugins/*/build/*.php
+      - wp-content/themes/*/build/*.php
+      - wp-content/mu-plugins/wp-feature-flags
+      - wp-content/mu-plugins/wp-editor-tools
       - wp-content/mu-plugins/vendor
   ignoreErrors:
     - '#^Parameter \#[1-9] \$[a-zA-Z0-9_]+ of method [a-zA-Z0-9\\\:_]+\(\) expects [A-Za-z\\_]+, PHPUnit\\Framework\\MockObject\\MockObject given\.#' # Mocked objects

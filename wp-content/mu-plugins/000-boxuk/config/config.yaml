@@ -1,2 +1,0 @@
-parameters:
-    wonolog_default_handler_service_id: 'BoxUk\Plugins\Base\Wonolog\Handler\QueryMonitorHandler'

@@ -107,6 +107,7 @@ define( 'NONCE_SALT', $_ENV['NONCE_SALT'] );
 define( 'WP_DEBUG', isset( $_ENV['WP_DEBUG'] ) ? filter_var( $_ENV['WP_DEBUG'], FILTER_VALIDATE_BOOLEAN ) : false );
 define( 'WP_DEBUG_DISPLAY', isset( $_ENV['WP_DEBUG_DISPLAY'] ) ? filter_var( $_ENV['WP_DEBUG_DISPLAY'], FILTER_VALIDATE_BOOLEAN ) : false );
 define( 'WP_DEBUG_LOG', isset( $_ENV['WP_DEBUG_LOG'] ) ? filter_var( $_ENV['WP_DEBUG_LOG'], FILTER_VALIDATE_BOOLEAN ) : false );
+define( 'SCRIPT_DEBUG', isset( $_ENV['SCRIPT_DEBUG'] ) ? filter_var( $_ENV['SCRIPT_DEBUG'], FILTER_VALIDATE_BOOLEAN ) : false );
 
 define( 'DISALLOW_FILE_EDIT', ! empty( $_ENV['DISALLOW_FILE_EDIT'] ) ? filter_var( $_ENV['DISALLOW_FILE_EDIT'], FILTER_VALIDATE_BOOLEAN ) : true );
 

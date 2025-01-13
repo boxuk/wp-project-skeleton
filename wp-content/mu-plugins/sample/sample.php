@@ -11,8 +11,6 @@ use BoxUk\Mu\Plugins\Sample\SampleClass;
 use BoxUk\WpFeatureFlags\Flag;
 use BoxUk\WpFeatureFlags\FlagRegister;
 
-use function BoxUk\Mu\Plugins\boxuk_container;
-
 add_action(
 	'plugins_loaded',
 	static function () {
@@ -36,12 +34,7 @@ add_action(
 		$flag = $flag_register->get_flag( 'sample-flag' );
 
 		if ( $flag && $flag->is_enabled() ) {
-			/**
-			 * IDE Hint.
-			 *
-			 * @var SampleClass $sample
-			 */
-			$sample = boxuk_container()->get( 'BoxUk\Mu\Plugins\Sample\SampleClass' );
+			$sample = new SampleClass();
 			$sample_text = $sample->get_sample();
 			do_action( 'qm/info', $sample_text . ' if feature enabled.' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 		}
