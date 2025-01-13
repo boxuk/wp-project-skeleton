@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-. .env
-. docker/wpscan/.env
-
-APP_CONTAINER_ID="$( docker-compose ps -q app )"
-
-docker run --network="container:$APP_CONTAINER_ID" -it --rm wpscanteam/wpscan --disable-tls-checks --api-token "$WPSCAN_API_TOKEN" --url "$WP_HOME" "$@"

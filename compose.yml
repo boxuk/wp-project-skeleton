@@ -124,8 +124,6 @@ services:
       - profiling
 
 volumes:
-  vr_yarn_cache:
-  vr_node_modules:
   maildata:
 
 networks:

@@ -29,7 +29,6 @@
     ],
     "config": {
         "vendor-dir": "wp-content/vendor",
-        "bin-dir": "bin",
         "classmap-authoritative": true,
         "sort-packages": true,
         "preferred-install": "dist",

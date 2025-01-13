@@ -32,20 +32,6 @@ debug.log
 
 /node_modules/
 
-/bin/*
-!/bin/docker
-!/bin/.gitkeep
-!/bin/install
-!/bin/vip-install
-!/bin/clearcache
-!/bin/dump-di-cache
-!/bin/rebuild
-!/bin/create-mu-plugin
-!/bin/makepot
-!/bin/pot2po
-!/bin/po2mo
-!/bin/backstop_report
-
 .env
 /.env.local
 /.env.local.php
