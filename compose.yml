@@ -114,15 +114,6 @@ services:
       timeout: 5s
       retries: 3
 
-  blackfire:
-    build: docker/blackfire
-    env_file:
-      - docker/blackfire/.env
-    ports:
-      - '127.0.0.1:8707:8707'
-    profiles:
-      - profiling
-
 volumes:
   maildata:
 

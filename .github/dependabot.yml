@@ -74,15 +74,6 @@ updates:
         ignore:
             - dependency-name: "*"
               update-types: ["version-update:semver-major"]
-    # Docker blackfire image.
-    -   package-ecosystem: docker
-        directory: "/docker/blackfire"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
 
     # Docker database image.
     -   package-ecosystem: docker

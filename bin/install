@@ -51,7 +51,6 @@ echo -e "Using ${GREEN}${PHP_VERSION}${NC} for PHP_VERSION";
 
 envsubst \$PROJECT_NAME,\$DOCKER_NETWORK_NAME,\$PHP_VERSION,\$WORDPRESS_VERSION < .env.dist > .env
 envsubst \$PROJECT_NAME < ./docker/app/.env.dist > ./docker/app/.env
-cp ./docker/blackfire/.env.dist ./docker/blackfire/.env
 
 if [[ "$(docker network ls | grep ${DOCKER_NETWORK_NAME})" == "" ]] ; then
     echo 'Setting up docker network...';
@@ -74,9 +73,6 @@ docker-compose up -d;
 echo 'Running composer install...';
 
 bin/docker/composer install;
-
-echo 'Setting up object-cache.php...';
-
 
 # mu-plugins can interfere with the initial installation process, rewrite the directory to disable them temporarily
 mv wp-content/mu-plugins wp-content/mu-plugins-disabled
