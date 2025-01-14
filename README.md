@@ -2,6 +2,7 @@
 
 A base WordPress project from Box UK to get you up and running quickly.
 
+## [📚 Read the docs](https://boxuk.github.io/wp-packages/)
 
 ## Installation
 
@@ -38,7 +39,7 @@ bin/docker/wp user update admin --user_pass=your_password_here
 
 ## Features
 
-📕 - Fully [documented](https://github.com/boxuk/wp-packages/blob/main/docs/index.md).
+📕 - Fully [documented](https://boxuk.github.io/wp-packages/).
 
 🐳 - Fully dockerized setup
 
