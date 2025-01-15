@@ -1,0 +1,12 @@
+diff --git a/patched-plugins/example/example.php b/patched-plugins/example/example.php
+index 481bdb4e..dc5cc499 100644
+--- a/patched-plugins/example/example.php
++++ b/patched-plugins/example/example.php
+@@ -1,4 +1,4 @@
+ <?php
+ /*
+ Plugin Name: Example
+-Version: 1.0
++Version: 1.1
+ Description: An example plugin.
+ */
