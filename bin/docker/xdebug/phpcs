@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-bin/docker/xdebug/composer run phpcs "$@"

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# If container is running, exec inside, else run a new container
-if [ "$(docker inspect -f '{{.State.Running}}' app_xdebug 2>/dev/null)" = "true" ]; then
-    docker-compose exec --user www-data app_xdebug php -d memory_limit=1G "$@"
-else
-    docker-compose run --rm --user www-data app_xdebug php -d memory_limit=1G "$@"
-fi

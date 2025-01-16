@@ -1,7 +1,7 @@
 services:
   # Build images for each container to allow for dependabot support, see: https://github.com/dependabot/dependabot-core/issues/390
   database:
-    build: docker/database
+    image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-password}
       MYSQL_DATABASE: ${DB_NAME:-project}
@@ -10,7 +10,7 @@ services:
     ports:
       - '127.0.0.1:3307:3306' # always bind to 127.0.0.1 or 192.168.34.1 etc. Never bind to 0.0.0.0 unless you know what you are doing
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: [ "CMD", "healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized" ]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -22,32 +22,11 @@ services:
       args:
         USER_ID: ${USER_ID:-0}
         GROUP_ID: ${GROUP_ID:-0}
+        XDEBUG_VERSION: '3.4.1'
     env_file:
       - ./docker/app/.env
     volumes:
-      - '.:/var/www/html:cached'
-    extra_hosts:
-      - host.docker.internal:host-gateway
-      - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
-    healthcheck:
-      test: ["CMD", "php", "-v"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-
-  app_xdebug:
-    build:
-      context: docker/app
-      dockerfile: php${PHP_VERSION:-8.2}/Dockerfile
-      args:
-        USER_ID: ${USER_ID:-0}
-        GROUP_ID: ${GROUP_ID:-0}
-        INSTALL_XDEBUG: 'true'
-        XDEBUG_VERSION: '3.2.2'
-    env_file:
-      - ./docker/app/.env
-    volumes:
-      - '.:/var/www/html:cached'
+      - '.:/var/www/html'
     extra_hosts:
       - host.docker.internal:host-gateway
       - '${LOOPBACK_HOST_NAME}:192.168.35.10' # IP should match the IP address set for nginx below
@@ -60,7 +39,7 @@ services:
   nginx:
     build: docker/nginx
     volumes:
-      - '.:/var/www/html:cached'
+      - '.:/var/www/html'
       - './docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
       - './docker/nginx/conf:/etc/nginx/conf.d/conf'
       - './docker/nginx/insecure_https.crt:/etc/pki/tls/certs/insecure_https.crt:delegated'
@@ -71,8 +50,6 @@ services:
     depends_on:
       app:
         condition: service_healthy
-      app_xdebug:
-        condition: service_healthy
       database:
           condition: service_healthy
       mailpit:
@@ -81,7 +58,6 @@ services:
           condition: service_healthy
     links:
       - app
-      - app_xdebug
     networks:
       default:
         aliases:

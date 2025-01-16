@@ -59,7 +59,7 @@ fi
 
 echo 'Stopping any running containers...';
 
-docker-compose stop;
+docker compose stop;
 
 # Import .env files so we have access to env vars. docker/app/.env will override the root.
 . .env;
@@ -67,8 +67,8 @@ docker-compose stop;
 
 echo 'Building docker containers...';
 
-docker-compose build;
-docker-compose up -d;
+docker compose build;
+docker compose up -d;
 
 echo 'Running composer install...';
 
@@ -94,20 +94,6 @@ done
 # Manually move the directory back after the installation
 mv wp-content/mu-plugins-disabled wp-content/mu-plugins
 
-echo 'Emptying site...';
-
-bin/docker/wp site empty;
-
-echo 'Setting up state...';
-
-bin/docker/wp package install boxuk/dictator:@stable;
-bin/docker/wp dictator impose site-state.yml;
-
-echo 'Setting up fixtures...'
-
-bin/docker/wp package install hellonico/wp-cli-fixtures;
-bin/docker/wp fixtures load;
-
 echo 'Flushing cache...'
 bin/docker/wp cache flush;
 
@@ -132,6 +118,10 @@ read -s -p "Enter a password to setup WP admin account: " ADMIN_PASSWORD
 echo -e "\nSetting password...";
 bin/docker/wp user update admin --user_pass=$ADMIN_PASSWORD
 
+# Enable Xdebug
+echo 'Enabling Xdebug..';
+docker compose exec app bash -c "sed -i 's/xdebug.mode=Off/xdebug.mode=debug/' /usr/local/etc/php/conf.d/php.ini; exit;"
+docker compose restart app
 
 clear;
 # Art generated: https://patorjk.com/software/taag/#p=display&v=0&c=echo&f=Standard&t=Installation%0AComplete

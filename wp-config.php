@@ -44,7 +44,7 @@ define( 'WP_HOME', $_ENV['WP_HOME'] );
 define( 'WP_SITEURL', $_ENV['WP_HOME'] );
 
 define( 'WP_CONTENT_URL', $_ENV['WP_HOME'] . '/wp-content' );
-define( 'WP_CONTENT_DIR', __DIR__ . '/wp-content' );
+define( 'WP_CONTENT_DIR', __DIR__ . '/../wp-content' );
 
 define( 'WP_ENVIRONMENT_TYPE', $_ENV['WP_ENVIRONMENT_TYPE'] );
 
@@ -59,8 +59,8 @@ if ( file_exists( WP_CONTENT_DIR . '/themes' ) ) {
 }
 
 // The duplication below is deliberate.
-$GLOBALS['wp_theme_directories'][] = __DIR__ . '/wp/wp-content/themes';
-$GLOBALS['wp_theme_directories'][] = __DIR__ . '/wp/wp-content/themes';
+$GLOBALS['wp_theme_directories'][] = __DIR__ . '/wp-content/themes';
+$GLOBALS['wp_theme_directories'][] = __DIR__ . '/wp-content/themes';
 // phpcs:enable WordPress.WP.GlobalVariablesOverride.Prohibited
 
 /**

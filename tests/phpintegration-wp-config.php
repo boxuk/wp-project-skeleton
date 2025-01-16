@@ -5,7 +5,7 @@ declare ( strict_types=1 );
 use Symfony\Component\Dotenv\Dotenv;
 
 $root = dirname( __DIR__ );
-$composer = json_decode( file_get_contents( $root . '/composer.json' ), true, 512, JSON_THROW_ON_ERROR );
+$composer = json_decode( (string) file_get_contents( $root . '/composer.json' ), true, 512, JSON_THROW_ON_ERROR );
 $vendor = $composer['config']['vendor-dir'];
 
 require_once $vendor . '/autoload.php';

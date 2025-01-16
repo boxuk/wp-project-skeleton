@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-docker-compose --profile profiling stop && docker-compose up -d --remove-orphans
