@@ -15,8 +15,14 @@ composer create-project boxuk/wp-project-skeleton my-project --stability=dev
 Install with the simple install script
 
 ```bash
-bin/install my-project
+bin/install --project=[project_name] --network=[docker_network_name] --php=[php_version]
 ```
+All arguments are optional.
+
+Defaults: 
+- Project Name = boxuk-wp-skeleton 
+- Network Name = boxuk-docker
+- PHP Version = 8.2
 
 > Note: This is an interactive command.
 
@@ -39,17 +45,17 @@ bin/docker/wp user update admin --user_pass=your_password_here
 
 ## Features
 
-📕 - Fully [documented](https://boxuk.github.io/wp-packages/).
+📕 - Fully [documented](https://boxuk.github.io/wp-project-skeleton/).
 
 🐳 - Fully dockerized setup
 
 📦 - Composer based plugin management
 
-🧠 - [Genius xDebug setup](https://strayobject.medium.com/php-docker-and-xdebug-with-no-performance-loss-261ad89efd6e)
+🧠 - Xdebug installed by default
 
-📋 - [Dictator](https://github.com/boxuk/dictator/) support for dictating state across environments
+📋 - Configurable state across environments (WIP)
 
-🪜 - Fixtures support using [wp-cli-fixtures](https://github.com/nlemoine/wp-cli-fixtures)
+🪜 - Customisable fixtures support using the WP CLI (WIP)
 
 🚩 - First class support for feature flags using [wp-feature-flags](https://github.com/boxuk/wp-feature-flags)
 

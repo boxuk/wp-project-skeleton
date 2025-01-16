@@ -54,7 +54,7 @@
         "roots/bedrock-autoloader": "^1.0",
         "roots/wordpress-core-installer": "^2.0",
         "roots/wordpress-no-content": "^6.4",
-        "symfony/dotenv": "^6.0 || ^7.0",
+        "symfony/dotenv": "^7.0",
         "wp-cli/scaffold-command": "^2.0",
         "wp-cli/wp-cli": "^2.9",
         "wpackagist-plugin/query-monitor": "^3.5"
