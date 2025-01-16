@@ -45,7 +45,7 @@ bin/docker/wp user update admin --user_pass=your_password_here
 
 ## Features
 
-📕 - Fully [documented](https://boxuk.github.io/wp-project-skeleton/).
+📕 - Fully [documented](https://boxuk.github.io/wp-packages/docs/skeleton/).
 
 🐳 - Fully dockerized setup
 
