@@ -97,8 +97,6 @@ mv wp-content/mu-plugins-disabled wp-content/mu-plugins
 echo 'Flushing cache...'
 bin/docker/wp cache flush;
 
-cp wp-content/plugins/wp-memcached/object-cache.php wp-content/object-cache.php
-
 while true; do
     read -p "Do you wish to add a hosts entry (you will be prompted for password twice)? [Y/N]" yn
 
