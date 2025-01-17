@@ -113,15 +113,6 @@ define( 'DISALLOW_FILE_EDIT', ! empty( $_ENV['DISALLOW_FILE_EDIT'] ) ? filter_va
 
 // Enable cache by default.
 
-/**
- * Memcached servers
- */
-$memcached_servers = [ //phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-	'default' => [
-		$_ENV['MEMCACHED_HOST'] . ':11211',
-	],
-];
-
 define( 'WP_CACHE', true );
 
 /* That's all, stop editing! Happy publishing. */

@@ -54,8 +54,6 @@ services:
           condition: service_healthy
       mailpit:
           condition: service_healthy
-      memcached:
-          condition: service_healthy
     links:
       - app
     networks:
@@ -81,14 +79,6 @@ services:
     volumes:
       - '.:/usr/src/app:cached'
       - './node_modules:/usr/src/app/node_modules:delegated'
-
-  memcached:
-    build: docker/memcached
-    healthcheck:
-      test: ["CMD", "echo", "stats", "|", "nc", "localhost", "11211"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
 
 volumes:
   maildata:

@@ -10,7 +10,6 @@ RUN set -eux; \
     apt-get -y install git less zip unzip zlib1g-dev sendmail libicu-dev g++ libpng-dev libzip-dev libmagickwand-dev msmtp --no-install-recommends; \
     apt-get clean && apt-get autoremove; \
     rm -rf /var/lib/apt/lists/*; \
-    pecl install memcache-8.0 && docker-php-ext-enable memcache; \
     pecl install imagick && docker-php-ext-enable imagick; \
     pecl install pcov && docker-php-ext-enable pcov; \
     pecl install xdebug-${XDEBUG_VERSION} && docker-php-ext-enable xdebug; \
