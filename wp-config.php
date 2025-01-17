@@ -44,7 +44,7 @@ define( 'WP_HOME', $_ENV['WP_HOME'] );
 define( 'WP_SITEURL', $_ENV['WP_HOME'] );
 
 define( 'WP_CONTENT_URL', $_ENV['WP_HOME'] . '/wp-content' );
-define( 'WP_CONTENT_DIR', __DIR__ . '/../wp-content' );
+define( 'WP_CONTENT_DIR', __DIR__ . '/wp-content' );
 
 define( 'WP_ENVIRONMENT_TYPE', $_ENV['WP_ENVIRONMENT_TYPE'] );
 
