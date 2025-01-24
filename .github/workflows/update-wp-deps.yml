@@ -3,7 +3,6 @@ name: Update WP Deps
 on:
   schedule:
     - cron: '0 3 * * *'
-  workflow_dispatch:
 
 jobs:
   update-deps:
@@ -19,7 +18,18 @@ jobs:
       - name: Read WP version
         run: echo "WP_VERSION=$(jq -r '.packages[] | select(.name == "roots/wordpress-no-content") | .version' composer.lock | cut -d '.' -f 1,2)" >> $GITHUB_ENV
       - name: Run Update
-        uses: boxuk/wp-deps-auto-update@main
+        id: update
+        uses: 'boxuk/wp-deps-auto-update@main'
         with:
-          WP_VERSION: ${{ env.WP_VERSION }}
+          WP_VERSION: ${{ env.WORDPRESS_VERSION }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Save PR number
+        env:
+          PR_NUMBER: ${{ steps.update.outputs.pull-request-number }}
+        run: |
+            mkdir -p ./pr
+            echo $PR_NUMBER > ./pr/pr_number
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr_number
+          path: pr/
