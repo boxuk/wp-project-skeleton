@@ -13,7 +13,7 @@ namespace Roots\Bedrock;
 /**
  * Load composer deps
  */
-$vendor = __DIR__.'/vendor/autoload.php';
+$vendor = WP_CONTENT_DIR . '/vendor/autoload.php';
 if ( file_exists( $vendor ) ) {
 	require_once $vendor;
 }
