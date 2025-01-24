@@ -4,6 +4,10 @@ name: JS Quality Tests
 
 on:
     pull_request:
+    workflow_run:
+        workflows: ["Update WP Deps"]
+        types:
+            - completed
 
 env:
     fail-fast: true
@@ -15,8 +19,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        if: github.event_name != 'workflow_run'
+
+      - name: Checkout
+        uses: boxuk/checkout-pr@main
+        id: checkout-deps
+        if: github.event_name == 'workflow_run'
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            job-name: JS Quality Tests
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -30,3 +42,12 @@ jobs:
         run: npm run test
       - name: Build
         run: npm run build
+
+      - name: Mark Check Outcome
+        if: github.event_name == 'workflow_run' && always()
+        uses: boxuk/mark-check-status@main
+        with:
+          status: ${{ job.status }}
+          pr-head-sha: ${{ steps.checkout-deps.outputs.pr-head-sha }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          job-name: Test JS

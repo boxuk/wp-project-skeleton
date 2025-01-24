@@ -2,9 +2,18 @@ name: PHP Tests
 
 on:
     pull_request:
+    workflow_run:
+        workflows: ["Update WP Deps"]
+        types:
+            - completed
 
 env:
     fail-fast: true
+
+
+permissions:
+    contents: read
+    statuses: write
 
 jobs:
   test:
@@ -30,8 +39,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        if: github.event_name != 'workflow_run'
+
+      - name: Checkout
+        uses: boxuk/checkout-pr@main
+        id: checkout-deps
+        if: github.event_name == 'workflow_run'
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            job-name: PHP Tests
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -61,3 +78,12 @@ jobs:
           DB_USER: root
           DB_PASSWORD: root
           DB_HOST: database
+
+      - name: Mark Check Outcome
+        if: github.event_name == 'workflow_run' && always()
+        uses: boxuk/mark-check-status@main
+        with:
+          status: ${{ job.status }}
+          pr-head-sha: ${{ steps.checkout-deps.outputs.pr-head-sha }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          job-name: PHP Tests

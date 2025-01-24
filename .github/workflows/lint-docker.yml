@@ -1,12 +1,9 @@
-name: "Lint"
+name: "Lint Dockerfiles"
 
 on:
     pull_request:
         paths:
             - "docker/**/Dockerfile"
-    push:
-        branches:
-            - main
 
 env:
     fail-fast: true
