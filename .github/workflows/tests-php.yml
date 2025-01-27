@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   test:
-    name: PHP Tests
+    name: PHP Tests ${{ matrix.php }}
     runs-on: ubuntu-latest
     services:
       database:
@@ -47,7 +47,7 @@ jobs:
         if: github.event_name == 'workflow_run'
         with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
-            job-name: PHP Tests
+            job-name: PHP Tests ${{ matrix.php }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -86,4 +86,4 @@ jobs:
           status: ${{ job.status }}
           pr-head-sha: ${{ steps.checkout-deps.outputs.pr-head-sha }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          job-name: PHP Tests
+          job-name: PHP Tests ${{ matrix.php }}

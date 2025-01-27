@@ -50,4 +50,4 @@ jobs:
           status: ${{ job.status }}
           pr-head-sha: ${{ steps.checkout-deps.outputs.pr-head-sha }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          job-name: Test JS
+          job-name: JS Quality Tests
