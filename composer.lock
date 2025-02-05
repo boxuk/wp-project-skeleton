@@ -1469,15 +1469,15 @@
         },
         {
             "name": "wpackagist-plugin/query-monitor",
-            "version": "3.17.1",
+            "version": "3.17.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/query-monitor/",
-                "reference": "tags/3.17.1"
+                "reference": "tags/3.17.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/query-monitor.3.17.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/query-monitor.3.17.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
