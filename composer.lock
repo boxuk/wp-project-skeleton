@@ -534,22 +534,22 @@
         },
         {
             "name": "roots/wordpress-no-content",
-            "version": "6.7.1",
+            "version": "6.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress.git",
-                "reference": "6.7.1"
+                "reference": "6.7.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/release/wordpress-6.7.1-no-content.zip",
-                "shasum": "321a5b819369e772ce606fbc12b1e264fb73da5b"
+                "url": "https://downloads.wordpress.org/release/wordpress-6.7.2-no-content.zip",
+                "shasum": "c33ca276601dee0ddf1e80d3e66403929a696e63"
             },
             "require": {
                 "php": ">= 7.2.24"
             },
             "provide": {
-                "wordpress/core-implementation": "6.7.1"
+                "wordpress/core-implementation": "6.7.2"
             },
             "suggest": {
                 "ext-curl": "Performs remote request operations.",
@@ -600,7 +600,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2024-11-21T14:15:19+00:00"
+            "time": "2025-02-11T16:29:31+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
