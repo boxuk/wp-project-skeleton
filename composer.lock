@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12e93a11da07d35506ef735b91379b3e",
+    "content-hash": "bf9dad3f02c99650c7ea7fa425cb1c1c",
     "packages": [
         {
             "name": "boxuk/wp-editor-tools",
@@ -49,16 +49,16 @@
         },
         {
             "name": "boxuk/wp-feature-flags",
-            "version": "0.0.10",
+            "version": "0.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boxuk/wp-feature-flags.git",
-                "reference": "dd6efe05a5027ac6c4c2ebe5024b73cfdeebea23"
+                "reference": "c4037a5b61bce479866ed1b0aa3fcca879805d55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boxuk/wp-feature-flags/zipball/dd6efe05a5027ac6c4c2ebe5024b73cfdeebea23",
-                "reference": "dd6efe05a5027ac6c4c2ebe5024b73cfdeebea23",
+                "url": "https://api.github.com/repos/boxuk/wp-feature-flags/zipball/c4037a5b61bce479866ed1b0aa3fcca879805d55",
+                "reference": "c4037a5b61bce479866ed1b0aa3fcca879805d55",
                 "shasum": ""
             },
             "require-dev": {
@@ -78,9 +78,9 @@
             ],
             "description": "A feature flag manager and register for releasing features across environments.",
             "support": {
-                "source": "https://github.com/boxuk/wp-feature-flags/tree/0.0.10"
+                "source": "https://github.com/boxuk/wp-feature-flags/tree/0.0.11"
             },
-            "time": "2025-01-10T09:23:36+00:00"
+            "time": "2025-02-11T11:34:32+00:00"
         },
         {
             "name": "composer/installers",
