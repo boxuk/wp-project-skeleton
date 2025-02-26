@@ -20,7 +20,7 @@ RUN set -eux; \
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # WP-CLI - https://hub.docker.com/_/wordpress/tags?page=1&name=cli
-COPY --from=wordpress:cli-2.9.0-php8.3 /usr/local/bin/wp /usr/local/bin/wp
+COPY --from=wordpress:cli-php8.3 /usr/local/bin/wp /usr/local/bin/wp
 
 # Set groups and user when on linux
 RUN set -eux; \
