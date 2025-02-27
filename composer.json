@@ -43,6 +43,7 @@
     "require": {
         "boxuk/wp-editor-tools": "^0.0.11",
         "boxuk/wp-feature-flags": "^0.0.11",
+        "humanmade/wp-simple-saml": "^0.5.1",
         "inpsyde/wp-translation-downloader": "^2.5",
         "oomphinc/composer-installers-extender": "^2",
         "roots/bedrock-autoloader": "^1.0",
