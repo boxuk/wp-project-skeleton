@@ -74,6 +74,14 @@ echo 'Running composer install...';
 
 bin/docker/composer install;
 
+if [ ! -d wp-content/themes/$PROJECT_NAME ]; then
+    echo 'Cloning boxuk theme...';
+    rm -rf ./wp-packages;
+    git clone https://github.com/boxuk/wp-packages.git ./wp-packages;
+    mv wp-packages/packages/base-theme wp-content/themes/$PROJECT_NAME;
+    rm -rf wp-packages;
+fi
+
 # mu-plugins can interfere with the initial installation process, rewrite the directory to disable them temporarily
 mv wp-content/mu-plugins wp-content/mu-plugins-disabled
 
@@ -115,6 +123,9 @@ done
 read -s -p "Enter a password to setup WP admin account: " ADMIN_PASSWORD
 echo -e "\nSetting password...";
 bin/docker/wp user update admin --user_pass=$ADMIN_PASSWORD
+
+echo 'Activating theme...';
+bin/docker/wp theme activate $PROJECT_NAME
 
 # Enable Xdebug
 echo 'Enabling Xdebug..';
