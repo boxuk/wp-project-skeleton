@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b78e293565f96caa58dc47fcedc7d3c2",
+    "content-hash": "64a199e4b9e396917b5face2af28b37f",
     "packages": [
         {
             "name": "boxuk/wp-editor-tools",
@@ -229,6 +229,54 @@
             "time": "2024-06-24T20:46:46+00:00"
         },
         {
+            "name": "humanmade/wp-simple-saml",
+            "version": "0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/humanmade/wp-simple-saml.git",
+                "reference": "87d1d1e48c717aaba4196fcd688fb856d5494189"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/humanmade/wp-simple-saml/zipball/87d1d1e48c717aaba4196fcd688fb856d5494189",
+                "reference": "87d1d1e48c717aaba4196fcd688fb856d5494189",
+                "shasum": ""
+            },
+            "require": {
+                "onelogin/php-saml": "^3.0"
+            },
+            "require-dev": {
+                "humanmade/coding-standards": "dev-master"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Shady Sharaf",
+                    "email": "shady@humanmade.com",
+                    "homepage": "http://sharaf.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "WordPress Simple SAML plugin",
+            "homepage": "https://github.com/humanmade/wp-simple-saml",
+            "keywords": [
+                "SSO",
+                "onelogin",
+                "saml",
+                "single-sign-on",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/humanmade/wp-simple-saml/issues",
+                "source": "https://github.com/humanmade/wp-simple-saml/tree/0.5.1"
+            },
+            "time": "2024-04-03T11:00:01+00:00"
+        },
+        {
             "name": "inpsyde/wp-translation-downloader",
             "version": "2.5",
             "source": {
@@ -335,6 +383,69 @@
             "time": "2022-08-23T13:07:01+00:00"
         },
         {
+            "name": "onelogin/php-saml",
+            "version": "3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SAML-Toolkits/php-saml.git",
+                "reference": "91c1a3b3e2390aba9facc64ba81b407a50962ebb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SAML-Toolkits/php-saml/zipball/91c1a3b3e2390aba9facc64ba81b407a50962ebb",
+                "reference": "91c1a3b3e2390aba9facc64ba81b407a50962ebb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "robrichards/xmlseclibs": ">=3.1.1"
+            },
+            "require-dev": {
+                "pdepend/pdepend": "^2.5.0",
+                "php-coveralls/php-coveralls": "^1.0.2 || ^2.0",
+                "phploc/phploc": "^2.1 || ^3.0 || ^4.0",
+                "phpunit/phpunit": "<7.5.18",
+                "sebastian/phpcpd": "^2.0 || ^3.0 || ^4.0",
+                "squizlabs/php_codesniffer": "^3.1.1"
+            },
+            "suggest": {
+                "ext-curl": "Install curl lib to be able to use the IdPMetadataParser for parsing remote XMLs",
+                "ext-gettext": "Install gettext and php5-gettext libs to handle translations",
+                "ext-openssl": "Install openssl lib in order to handle with x509 certs (require to support sign and encryption)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OneLogin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP SAML Toolkit",
+            "homepage": "https://github.com/SAML-Toolkits/php-saml",
+            "keywords": [
+                "Federation",
+                "SAML2",
+                "SSO",
+                "identity",
+                "saml"
+            ],
+            "support": {
+                "email": "sixto.martin.garcia@gmail.com",
+                "issues": "https://github.com/onelogin/SAML-Toolkits/issues",
+                "source": "https://github.com/onelogin/SAML-Toolkits/"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/SAML-Toolkits",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-05-30T15:14:26+00:00"
+        },
+        {
             "name": "oomphinc/composer-installers-extender",
             "version": "2.0.1",
             "source": {
@@ -390,6 +501,48 @@
                 "source": "https://github.com/oomphinc/composer-installers-extender/tree/2.0.1"
             },
             "time": "2021-12-15T12:32:42+00:00"
+        },
+        {
+            "name": "robrichards/xmlseclibs",
+            "version": "3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/robrichards/xmlseclibs.git",
+                "reference": "2bdfd742624d739dfadbd415f00181b4a77aaf07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/robrichards/xmlseclibs/zipball/2bdfd742624d739dfadbd415f00181b4a77aaf07",
+                "reference": "2bdfd742624d739dfadbd415f00181b4a77aaf07",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": ">= 5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RobRichards\\XMLSecLibs\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "A PHP library for XML Security",
+            "homepage": "https://github.com/robrichards/xmlseclibs",
+            "keywords": [
+                "security",
+                "signature",
+                "xml",
+                "xmldsig"
+            ],
+            "support": {
+                "issues": "https://github.com/robrichards/xmlseclibs/issues",
+                "source": "https://github.com/robrichards/xmlseclibs/tree/3.1.3"
+            },
+            "time": "2024-11-20T21:13:56+00:00"
         },
         {
             "name": "roots/bedrock-autoloader",
@@ -4528,14 +4681,14 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "ext-mbstring": "1",
         "ext-intl": "1"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
