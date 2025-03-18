@@ -6,6 +6,8 @@
  * Author:       Roots
  * Author URI:   https://roots.io/
  * License:      MIT License
+ *
+ * @package Roots\Bedrock
  */
 
 namespace Roots\Bedrock;
@@ -15,12 +17,12 @@ namespace Roots\Bedrock;
  */
 $vendor = WP_CONTENT_DIR . '/vendor/autoload.php';
 if ( file_exists( $vendor ) ) {
-	require_once $vendor;
+	require_once $vendor; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable -- Including via variable is better here.
 }
 
 /**
  * Autoload mu-plugins
  */
 if ( is_blog_installed() && class_exists( Autoloader::class ) ) {
-    new Autoloader();
+	new Autoloader();
 }

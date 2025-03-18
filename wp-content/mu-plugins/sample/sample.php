@@ -31,10 +31,10 @@ add_action(
 	'init',
 	function () {
 		$flag_register = FlagRegister::instance();
-		$flag = $flag_register->get_flag( 'sample-flag' );
+		$flag          = $flag_register->get_flag( 'sample-flag' );
 
 		if ( $flag && $flag->is_enabled() ) {
-			$sample = new SampleClass();
+			$sample      = new SampleClass();
 			$sample_text = $sample->get_sample();
 			do_action( 'qm/info', $sample_text . ' if feature enabled.' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 		}

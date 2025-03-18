@@ -1,12 +1,23 @@
 <?xml version="1.0"?>
-<ruleset name="Box UK WordPress project">
-	<description>A custom set of rules to check for a Box UK WordPress project</description>
-    <file>./wp-content/</file>
+<ruleset name="BoxUK WordPress Project"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
 
 	<config name="text_domain" value="wp-project-skeleton" /> <!-- Set the text domain for the project -->
-	<config name="testVersion" value="8.2" /> <!-- Set the PHP version to test against -->
+	<config name="testVersion" value="8.2-" /> <!-- Set the PHP version to test against -->
 	<config name="minimum_supported_wp_version" value="6.4" /> <!-- Set the minimum supported WordPress version -->
-	<config name="prefixes" value="" /> <!-- Set the prefixes for the project -->
+
+    <!-- Output Progress and Colors -->
+    <arg value="sp"/>
+    <arg name="colors"/>
+
+    <!-- Scan Themes and Plugins -->
+    <file>wp-content</file>
+
+    <!-- Exclude dependencies -->
+    <exclude-pattern>*/mu-plugins/wp-feature-flags*</exclude-pattern>
+    <exclude-pattern>*/mu-plugins/wp-editor-tools*</exclude-pattern>
+    <exclude-pattern>wp-content/plugins*</exclude-pattern>
 
     <!-- Let PHPCS know our custom capabilities. -->
 	<rule ref="WordPress.WP.Capabilities">
@@ -17,100 +28,6 @@
 		</properties>
 	</rule>
 
-	<!-- EXCLUDED FILES AND FOLDERS -->
-
-	<!-- Exclude VIP folders and files from being checked. -->
-	<!-- Enable only when working on a VIP project
-	<exclude-pattern>*/mu-plugins/*</exclude-pattern>
-	<exclude-pattern>*/db\.php</exclude-pattern>
-	<exclude-pattern>*/sunrise\.php</exclude-pattern>
-	-->
-
-	<exclude-pattern>*/wp/</exclude-pattern>
-
-	<exclude-pattern>*/upgrade/*</exclude-pattern>
-
-	<exclude-pattern>*/plugins/*</exclude-pattern>
-	<exclude-pattern>*/premium-plugins/*</exclude-pattern>
-	<exclude-pattern>*/patched-plugins/*</exclude-pattern>
-    <exclude-pattern>*/mu-plugins/wp-feature-flags*</exclude-pattern>
-    <exclude-pattern>*/mu-plugins/wp-editor-tools*</exclude-pattern>
-
-    <exclude-pattern>*.asset.php</exclude-pattern>
-
-	<exclude-pattern>*/uploads/*</exclude-pattern>
-
-	<exclude-pattern>*/tests/*</exclude-pattern>
-
-	<exclude-pattern>*/cache/*</exclude-pattern>
-
-	<!-- Exclude the Node Modules directory. -->
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
-
-	<!-- Exclude the Composer Vendor directory. -->
-	<exclude-pattern>*/vendor/*</exclude-pattern>
-
-	<!-- Exclude the styleguide. -->
-	<exclude-pattern>*/styleguide/*</exclude-pattern>
-	<exclude-pattern>*/assets/*</exclude-pattern>
-
-	<!-- Exclude minified files. -->
-	<exclude-pattern>*\.min\.*</exclude-pattern>
-
-	<!-- Exclude cached or generated files. -->
-	<exclude-pattern>object-cache\.php</exclude-pattern>
-	<exclude-pattern>advanced-cache\.php</exclude-pattern>
-	<exclude-pattern>mu-require\.php</exclude-pattern>
-	<exclude-pattern>db\.php</exclude-pattern>
-
-	<config name="severity" value="1" />
-	<arg value="sp"/> <!-- Show sniff and progress -->
-	<arg name="severity" value="1" /> <!-- Set severity argument -->
-	<arg name="colors"/> <!-- Show results with colors. Disable if working on Windows -->
-	<arg name="parallel" value="8"/> <!-- Enables parallel processing when available for faster results -->
-	<arg name="extensions" value="php"/> <!-- Limit to PHP and JS files -->
-
-	<!-- Exclude any forced mu-plugins -->
-	<exclude-pattern>*/mu-plugins/flagpole/*</exclude-pattern>
-	<exclude-pattern>*/mu-plugins/wp-hook-attributes/*</exclude-pattern>
-
-	<!-- DEFINE STANDARDS -->
-
-	<!-- Rules: Check PHP version compatibility - see https://github.com/PHPCompatibility/PHPCompatibilityWP -->
-	<rule ref="PHPCompatibilityWP"/>
-
-	<!-- Include the VIP GO standard. Even when not on VIP this is a useful standard to follow. -->
-	<rule ref="WordPress-VIP-Go">
-		<!-- Remove the following if on VIP project and ensure the CACHE_DIR env var conforms -->
-		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents" />
-
-		<!-- Remove this so we can use PSR-4 autoloading -->
-		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
-		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
-	</rule>
-
-	<!-- Include the WordPress-Extra standard. -->
-	<rule ref="WordPress-Extra">
-		<!--
-		Remove the rules that don't suit this project or conflict with neutron standard.
-		We can do this by running `phpcs` with the '-s' flag, which allows us to
-		see the names of the sniffs reporting errors.
-		Once we know the sniff names, we can opt to exclude sniffs which don't
-		suit our project.
-		-->
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
-		<exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
-		<exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
-		<exclude name="PSR2.Namespaces.NamespaceDeclaration" />
-		<exclude name="WordPress.PHP.DisallowShortTernary.Found" />
-        <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
-	</rule>
-
-
-
-	<!-- Let's also check that everything is properly documented. -->
-	<rule ref="WordPress-Docs" />
-
-    <!-- And ensure there's a new-line at the end of every file -->
-	<rule ref="Generic.Files.EndFileNewline" />
+    <!-- Follow BoxUK Coding Standards -->
+    <rule ref="WordPress-Box" />
 </ruleset>
