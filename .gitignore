@@ -42,6 +42,7 @@ debug.log
 !/tests/tmp/.gitkeep
 .phpunit.result.cache
 .phpunit.cache/
+.phpcs.cache
 
 !docker/database/init.sql
 auth.json

@@ -9,6 +9,10 @@
             "url": "https://wpackagist.org"
         },
         {
+            "type": "git",
+            "url": "https://github.com/boxuk/coding-standards.git"
+        },
+        {
             "options": {
                 "symlink": false
             },
@@ -56,7 +60,8 @@
     "require-dev": {
         "10up/wp_mock": "^1.0",
         "automattic/vipwpcs": "^3.0",
-        "phpcompatibility/phpcompatibility-wp": "*",
+        "boxuk/coding-standards": "dev-wordpress",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9",
         "szepeviktor/phpstan-wordpress": "^1.3",
