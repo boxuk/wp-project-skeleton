@@ -230,16 +230,16 @@
         },
         {
             "name": "inpsyde/wp-translation-downloader",
-            "version": "2.5",
+            "version": "2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inpsyde/wp-translation-downloader.git",
-                "reference": "623b060cfc22210c8599d14a2eafa1e0bec53df1"
+                "reference": "60c4a8092d5e0feca2bd8b62c645257fc3bff12e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/wp-translation-downloader/zipball/623b060cfc22210c8599d14a2eafa1e0bec53df1",
-                "reference": "623b060cfc22210c8599d14a2eafa1e0bec53df1",
+                "url": "https://api.github.com/repos/inpsyde/wp-translation-downloader/zipball/60c4a8092d5e0feca2bd8b62c645257fc3bff12e",
+                "reference": "60c4a8092d5e0feca2bd8b62c645257fc3bff12e",
                 "shasum": ""
             },
             "require": {
@@ -255,7 +255,7 @@
                 "inpsyde/php-coding-standards": "^1.0.0",
                 "mikey179/vfsstream": "^v1.6.10",
                 "ondram/ci-detector": "^4.1.0",
-                "phpunit/phpunit": "^8.5.26",
+                "phpunit/phpunit": "^9.6.0",
                 "vimeo/psalm": "^4.23.0"
             },
             "type": "composer-plugin",
@@ -273,6 +273,12 @@
             ],
             "authors": [
                 {
+                    "name": "Syde GmbH",
+                    "email": "hello@syde.com",
+                    "homepage": "https://syde.com/",
+                    "role": "Company"
+                },
+                {
                     "name": "Christian Leucht",
                     "email": "c.leucht@inpsyde.com"
                 }
@@ -280,9 +286,9 @@
             "description": "Composer plugin to download translations from wordpress.org API.",
             "support": {
                 "issues": "https://github.com/inpsyde/wp-translation-downloader/issues",
-                "source": "https://github.com/inpsyde/wp-translation-downloader/tree/2.5"
+                "source": "https://github.com/inpsyde/wp-translation-downloader/tree/2.6"
             },
-            "time": "2023-04-14T08:49:43+00:00"
+            "time": "2025-05-28T12:02:26+00:00"
         },
         {
             "name": "mustache/mustache",
