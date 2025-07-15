@@ -46,7 +46,7 @@
         "inpsyde/wp-translation-downloader": "^2.5",
         "oomphinc/composer-installers-extender": "^2",
         "roots/bedrock-autoloader": "^1.0",
-        "roots/wordpress-core-installer": "^2.0",
+        "roots/wordpress-core-installer": "^3.0",
         "roots/wordpress-no-content": "^6.4",
         "symfony/dotenv": "^7.0",
         "wp-cli/scaffold-command": "^2.0",
