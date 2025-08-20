@@ -29,7 +29,7 @@
     "test:playwright": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "^1.55.0",
     "dotenv": "^16.6.0",
     "playwright": "^1.55.0",
     "turbo": "^2.5.6",
