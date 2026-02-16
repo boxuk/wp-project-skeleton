@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "dotenv": "^16.6.0",
+    "dotenv": "^17.3.1",
     "playwright": "^1.58.2",
     "turbo": "^2.8.9",
     "webpack-cli": "^5.1.4"
