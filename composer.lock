@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5eeb4127b139a31995f73bce24fa57ad",
+    "content-hash": "ea45eda1abe246cf23424b54937f3576",
     "packages": [
         {
             "name": "boxuk/wp-editor-tools",
