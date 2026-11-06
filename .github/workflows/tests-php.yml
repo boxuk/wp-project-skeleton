@@ -55,6 +55,8 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: intl, zip, pcov
           coverage: pcov
+        env:
+          UPDATE: true
       - name: Setup dependencies
         run: composer install
         continue-on-error: ${{ matrix.required == 'optional' }}
