@@ -1,8 +1,7 @@
-FROM php:8.2.35-fpm
+FROM php:8.2-fpm
 
 ARG USER_ID
 ARG GROUP_ID
-ARG XDEBUG_VERSION
 
 # Do all apt-get installs on one line so they are installed on the same layer
 RUN set -eux; \
@@ -12,7 +11,7 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*; \
     pecl install imagick && docker-php-ext-enable imagick; \
     pecl install pcov && docker-php-ext-enable pcov; \
-    pecl install xdebug-${XDEBUG_VERSION} && docker-php-ext-enable xdebug; \
+    pecl install xdebug && docker-php-ext-enable xdebug; \
     docker-php-ext-configure intl; \
     docker-php-ext-install -j"$(nproc)" mysqli opcache zip intl gd
 

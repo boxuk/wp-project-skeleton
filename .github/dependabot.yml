@@ -38,30 +38,10 @@ updates:
           - dependency-name: "react-dom"
 
 
-    # Docker app image.
-    -   package-ecosystem: docker
-        directory: "/docker/app/php8.3"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]
-    # Docker app image.
-    -   package-ecosystem: docker
-        directory: "/docker/app/php8.2"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-        ignore:
-            - dependency-name: "*"
-              update-types: ["version-update:semver-major", "version-update:semver-minor"]
+    # Docker images float on patch versions (e.g. php:8.2-fpm, nginx:1.30), so
+    # patches arrive via bin/docker/rebuild rather than Dependabot. PHP versions
+    # are changed via PHP_VERSION / docker/app/php8.x folders, not here.
+
     # Docker node image.
     -   package-ecosystem: docker
         directory: "/docker/node"
@@ -75,27 +55,8 @@ updates:
             - dependency-name: "*"
               update-types: ["version-update:semver-major"]
 
-    # Docker database image.
-    -   package-ecosystem: docker
-        directory: "/docker/database"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-
-    # Docker mailpit image.
-    -   package-ecosystem: docker
-        directory: "/docker/mailpit"
-        registries: "*"
-        schedule:
-            interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-            prefix: "[SETUP]"
-
     # Docker nginx image.
+    # Only merge even minors (stable line); close odd-minor (mainline) PRs.
     -   package-ecosystem: docker
         directory: "/docker/nginx"
         registries: "*"

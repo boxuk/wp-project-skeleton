@@ -22,7 +22,6 @@ services:
       args:
         USER_ID: ${USER_ID:-0}
         GROUP_ID: ${GROUP_ID:-0}
-        XDEBUG_VERSION: '3.4.1'
     env_file:
       - ./docker/app/.env
     volumes:
