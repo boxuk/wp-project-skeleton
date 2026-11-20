@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Rebuild the local Docker environment on the latest versions of everything.
+#
+# Pulls the latest images for the image-based services (playwright),
+# re-pulls every base image used by the built services (database, app,
+# elasticsearch, nginx, mailhog, memcached, node), rebuilds them without the
+# layer cache so system packages and PECL extensions are fresh too, then starts
+# everything back up.
+#
+# Data is kept: containers are stopped, never removed. The database has no
+# named volume, so `docker compose down` would orphan its data. Don't swap
+# `stop` for `down` here.
+#
+# Usage:
+#   bin/docker/rebuild
+
+set -e
+
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+cd "$(dirname "$0")/.."
+
+echo -e "${GREEN}Stopping containers...${NC}"
+docker compose stop
+
+echo -e "${GREEN}Pulling latest images...${NC}"
+docker compose pull --ignore-buildable
+
+echo -e "${GREEN}Rebuilding images from latest base images (no cache)...${NC}"
+docker compose build --pull --no-cache
+
+echo -e "${GREEN}Starting containers...${NC}"
+docker compose up -d
+
+echo -e "${GREEN}Rebuild complete.${NC}"
+docker compose exec app php -v | head -1
